@@ -1,0 +1,74 @@
+---
+import Name from "../components/Name.astro";
+import Nav from "../components/Nav.astro";
+import SocialList from "../components/SocialList.astro";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- font: Inter -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- font: Space Mono -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Page Title -->
+		<title>{title}</title>
+	</head>
+	<body>
+		<Nav />
+		<main>
+			<slot></slot>
+		</main>
+		<SocialList />
+		<Name />
+		<style>
+			:root {
+				--primary-color: #ffff;
+				--secondary-color: #0693e3;
+				--tertiary-color: #a3a8c3;
+				--bg-color: #120e26;
+				--font-sans: "Inter", sans-serif;
+				--font-mono: "Space Mono", monospace;
+				--font-xs: 0.75rem;
+				--font-sm: 0.875rem;
+				--font-md: 1rem;
+				--font-lg: 1.125rem;
+				--font-xl: 1.25rem;
+				--font-2xl: 1.5rem;
+				--line-height-xs: 1rem;
+				--line-height-sm: 1.25rem;
+				--line-height-md: 1.5rem;
+				--line-height-lg: 1.75rem;
+				--line-height-xl: 1.75rem;
+				--line-height-2xl: 2rem;
+			}
+			body {
+				background-color: var(--bg-color);
+				color: var(--primary-color);
+			}
+			main {
+				margin: auto;
+				padding: 1em;
+				max-width: 120ch;
+			}
+		</style>
+	</body>
+</html>

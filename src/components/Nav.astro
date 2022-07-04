@@ -1,0 +1,40 @@
+<header>
+	<nav class="nav">
+		<div class="logo">
+			<img src="/favicon.ico" alt="logo" />
+		</div>
+		<div class="links">
+			<a href="#about" class="about-link">About</a>
+			<a href="#experience" class="experience-link">Experience</a>
+			<a href="#projects" class="projects-link">Projects</a>
+			<a href="#contact" class="contact-link">Contact</a>
+		</div>
+	</nav>
+</header>
+
+<style>
+	header {
+		padding: 0 2.5em;
+		height: 6em;
+		display: flex;
+		align-items: center;
+	}
+	.nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	a {
+		margin-left: 3rem;
+		text-decoration: none;
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--primary-color);
+		transition: text-decoration 4s ease-in-out;
+	}
+	a:hover {
+		color: var(--secondary-color);
+	}
+</style>
