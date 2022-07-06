@@ -66,8 +66,20 @@ const { title } = Astro.props as Props;
 			}
 			main {
 				margin: auto;
-				padding: 1em;
+				padding: 2em;
 				max-width: 120ch;
+			}
+			/* Medium devices (landscape tablets, 768px and up) */
+			@media only screen and (min-width: 768px) {
+				main {
+					padding: 2.5em;
+				}
+			}
+			/* Large devices (laptops/desktops, 992px and up) */
+			@media only screen and (min-width: 992px) {
+				main {
+					padding: 5em;
+				}
 			}
 		</style>
 	</body>
