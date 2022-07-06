@@ -4,7 +4,7 @@
 			src="/icons/fa-medium.svg"
 			alt="medium-icon"
 			class="medium-icon"
-			height="50px"
+			height="22px"
 		/>
 	</div>
 	<div class="github">
@@ -12,7 +12,7 @@
 			src="/icons/fa-github.svg"
 			alt="github-icon"
 			class="github-icon"
-			height="50px"
+			height="22px"
 		/>
 	</div>
 	<div class="linkedin">
@@ -20,7 +20,7 @@
 			src="/icons/fa-linkedin.svg"
 			alt="linkedin-icon"
 			class="linkedin-icon"
-			height="50px"
+			height="22px"
 		/>
 	</div>
 	<div class="twitter">
@@ -28,7 +28,7 @@
 			src="/icons/fa-twitter.svg"
 			alt="twitter-icon"
 			class="twitter-icon"
-			height="50px"
+			height="22px"
 		/>
 	</div>
 </div>
@@ -37,7 +37,13 @@
 	.social-list {
 		display: flex;
 		flex-direction: column;
-		width: 5%;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		bottom: 0;
+	}
+	.social-list div {
+		margin: 15px 0;
 	}
 	.social-list::after {
 		content: "";
@@ -45,6 +51,39 @@
 		width: 1px;
 		height: 90px;
 		margin: 0px auto;
-		background-color: black;
+		background-color: var(--primary-color);
+	}
+
+	.twitter-icon {
+		position: sticky;
+		margin-bottom: 20px;
+		color: var(--secondary-color);
+	}
+
+	/* Medium devices (landscape tablets, 768px and up) */
+	@media only screen and (max-width: 768px) {
+		.social-list {
+			display: none;
+		}
+	}
+	/* Large devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 992px) {
+		.social-list {
+			left: 30px;
+		}
+	}
+	/* Extra large devices (large laptops and desktops, 1200px and up) */
+	@media only screen and (min-width: 1200px) {
+		.social-list {
+			left: 50px;
+		}
+	}
+	/* .medium-icon:hover,
+	.github-icon:hover,
+	.linkedin-icon:hover, */
+	.twitter-icon:hover {
+		position: inherit;
+		margin-bottom: 20px;
+		color: var(--secondary-color);
 	}
 </style>
