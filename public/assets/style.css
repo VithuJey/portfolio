@@ -1,0 +1,49 @@
+:root {
+	--primary-color: #ffff;
+	--secondary-color: #0693e3;
+	--tertiary-color: #a3a8c3;
+	--bg-color: #120e26;
+	--font-sans: "Inter", sans-serif;
+	--font-mono: "Space Mono", monospace;
+	--font-xs: 0.75rem;
+	--font-sm: 0.875rem;
+	--font-md: 1rem;
+	--font-lg: 1.125rem;
+	--font-xl: 1.25rem;
+	--font-2xl: 1.5rem;
+	--line-height-xs: 1rem;
+	--line-height-sm: 1.25rem;
+	--line-height-md: 1.5rem;
+	--line-height-lg: 1.75rem;
+	--line-height-xl: 1.75rem;
+	--line-height-2xl: 2rem;
+}
+body {
+	background-color: var(--bg-color);
+	color: var(--primary-color);
+}
+p {
+	font-family: var(--font-sans);
+	font-size: var(--font-md);
+	line-height: var(--line-height-md);
+	color: var(--tertiary-color);
+	text-decoration: none;
+}
+.content-heading {
+	font-family: var(--font-sans);
+	font-size: clamp(26px, 5vw, 2.2rem);
+	font-weight: 600;
+	line-height: var(--line-height-2xl);
+	display: flex;
+	align-items: center;
+}
+.content-heading::after {
+	content: "";
+	display: block;
+	position: relative;
+	top: 0;
+	width: 300px;
+	height: 1px;
+	margin-left: 20px;
+	background-color: var(--secondary-color);
+}
