@@ -1,4 +1,17 @@
-<header>
+<script is:inline>
+	let prevScrollpos = window.pageYOffset;
+	window.onscroll = function () {
+		let currentScrollPos = window.pageYOffset;
+		if (prevScrollpos > currentScrollPos) {
+			document.getElementById("header").style.top = "0";
+		} else {
+			document.getElementById("header").style.top = "-6em";
+		}
+		prevScrollpos = currentScrollPos;
+	};
+</script>
+
+<header id="header">
 	<nav class="nav">
 		<div class="logo">
 			<img src="/icons/fa-v.svg" alt="logo" height="30px" />
@@ -13,11 +26,18 @@
 </header>
 
 <style>
-	header {
+	#header {
+		box-sizing: border-box;
 		padding: 0 2.5em;
+		width: 100vw;
 		height: 6em;
 		display: flex;
 		align-items: center;
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		transition: top 0.3s;
 	}
 	.nav {
 		display: flex;
