@@ -29,6 +29,9 @@ p {
 	color: var(--tertiary-color);
 	text-decoration: none;
 }
+section {
+	padding: 100px 0;
+}
 .content-heading {
 	font-family: var(--font-sans);
 	font-size: clamp(26px, 5vw, 2.2rem);
