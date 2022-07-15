@@ -1,9 +1,12 @@
-<div id="experience">
+<section id="experience">
 	<h3 class="content-heading">Experience</h3>
-	<ul>
+	<div>
 		<div>
-			<p>Flatline Agency</p>
-			<p>Software Enigneer</p>
+			<p class="job-title">
+				Software Enigneer &nbsp; <span class="company-name"
+					>@ Flatline Agency
+				</span>
+			</p>
 			<ul>
 				<li>
 					Created Meditation mobile application using React Native with features
@@ -24,8 +27,11 @@
 			</ul>
 		</div>
 		<div>
-			<p>Trabeya</p>
-			<p>Software Engineer Trainee</p>
+			<p class="job-title">
+				Software Engineer Trainee &nbsp; <span class="company-name"
+					>@ Trabeya
+				</span>
+			</p>
 			<ul>
 				<li>
 					Worked on Virtual Concierge system for Lake Nona region to create a
@@ -38,5 +44,34 @@
 				</li>
 			</ul>
 		</div>
-	</ul>
-</div>
+	</div>
+</section>
+
+<style>
+	ul {
+		list-style: none;
+	}
+	li {
+		font-family: var(--font-sans);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--tertiary-color);
+		text-decoration: none;
+		margin-bottom: 10px;
+	}
+	li::before {
+		content: "▹ ";
+		position: relative;
+		right: 5px;
+		color: var(--secondary-color);
+	}
+	.job-title {
+		font-size: var(--font-lg);
+		line-height: var(--line-height-lg);
+	}
+	.company-name {
+		font-family: var(--font-mono);
+		font-size: var(--font-lg);
+		line-height: var(--line-height-lg);
+	}
+</style>
