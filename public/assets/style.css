@@ -27,7 +27,12 @@ p {
 	font-size: var(--font-md);
 	line-height: var(--line-height-md);
 	color: var(--tertiary-color);
-	text-decoration: none;
+}
+span {
+	font-family: var(--font-sans);
+	font-size: var(--font-md);
+	line-height: var(--line-height-md);
+	color: var(--secondary-color);
 }
 section {
 	padding: 100px 0;
