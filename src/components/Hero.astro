@@ -1,0 +1,67 @@
+<div class="hero">
+	<h6>Welcome, I'm</h6>
+	<h1>Vithushan Jey.</h1>
+	<h2>I build web and mobile apps.</h2>
+	<p>
+		I'm a software developer based in Sri Lanka, specializing in building user
+		centric websites and mobile applications.
+	</p>
+	<a
+		href="/docs/vithushan_jeyasothy_resume.pdf"
+		target="_blank"
+		class="resume-button"
+	>
+		Get Resume
+	</a>
+</div>
+
+<style>
+	.hero {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: 100vh;
+	}
+	h6 {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--secondary-color);
+	}
+	h1,
+	h2 {
+		font-family: var(--font-sans);
+		font-size: clamp(40px, 8vw, 80px);
+		font-weight: 550;
+		line-height: 0.8;
+		color: var(--primary-color);
+		margin: 0;
+	}
+	h1 {
+		color: var(--primary-color);
+	}
+	h2 {
+		color: var(--secondary-color);
+		margin: 30px 0;
+	}
+	p {
+		margin: 20px 0;
+		max-width: 500px;
+	}
+	.resume-button {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--secondary-color);
+		text-decoration: none;
+		background-color: transparent;
+		border-radius: 50px;
+		border: 2px solid var(--secondary-color);
+		padding: 0.5rem 1.5rem;
+		margin: 30px 0;
+	}
+	.resume-button:hover {
+		background-color: var(--active-color);
+	}
+</style>

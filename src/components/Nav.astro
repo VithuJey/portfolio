@@ -1,0 +1,62 @@
+<script is:inline>
+	let prevScrollpos = window.pageYOffset;
+	window.onscroll = function () {
+		let currentScrollPos = window.pageYOffset;
+		if (prevScrollpos > currentScrollPos) {
+			document.getElementById("header").style.top = "0";
+		} else {
+			document.getElementById("header").style.top = "-6em";
+		}
+		prevScrollpos = currentScrollPos;
+	};
+</script>
+
+<header id="header">
+	<nav class="nav">
+		<div class="logo">
+			<a href="/">
+				<img src="/icons/fa-v.svg" alt="logo" height="30px" />
+			</a>
+		</div>
+		<div class="links">
+			<a href="#about" class="about-link">About</a>
+			<a href="#experience" class="experience-link">Experience</a>
+			<a href="#projects" class="projects-link">Projects</a>
+			<a href="#contact" class="contact-link">Contact</a>
+		</div>
+	</nav>
+</header>
+
+<style>
+	#header {
+		background-color: var(--bg-light-color);
+		opacity: 0.1px;
+		box-sizing: border-box;
+		padding: 0 3.5em;
+		width: 100vw;
+		height: 6em;
+		display: flex;
+		align-items: center;
+		position: fixed;
+		inset: 0;
+		z-index: 10;
+		transition: top 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+	}
+	.nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	a {
+		margin-left: 3rem;
+		text-decoration: none;
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--primary-color);
+	}
+	a:hover {
+		color: var(--secondary-color);
+	}
+</style>

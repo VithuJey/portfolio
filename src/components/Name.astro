@@ -1,0 +1,56 @@
+<div class="name">
+	<a href="mailto:vithushjeytharma@gmail.com">vithushjeytharma@gmail.com</a>
+</div>
+
+<style>
+	.name {
+		display: flex;
+		align-items: center;
+		position: fixed;
+		bottom: 0;
+		right: 50px;
+		-webkit-writing-mode: vertical-rl;
+		writing-mode: vertical-rl;
+	}
+
+	a {
+		margin: 15px 0;
+		text-decoration: none;
+		font-family: var(--font-mono);
+		font-size: var(--font-sm);
+		letter-spacing: 0.1em;
+		color: var(--primary-color);
+		transition: margin-bottom 0.2s;
+	}
+	.name::after {
+		content: "";
+		display: block;
+		width: 1px;
+		height: 90px;
+		background-color: var(--primary-color);
+		/* margin: 0px auto; */
+	}
+
+	/* Medium devices (landscape tablets, 768px and up) */
+	@media only screen and (max-width: 768px) {
+		.name {
+			display: none;
+		}
+	}
+	/* Large devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 992px) {
+		.name {
+			right: 30px;
+		}
+	}
+	/* Extra large devices (large laptops and desktops, 1200px and up) */
+	@media only screen and (min-width: 1200px) {
+		.name {
+			right: 50px;
+		}
+	}
+	a:hover {
+		margin-bottom: 20px;
+		color: var(--secondary-color);
+	}
+</style>

@@ -1,0 +1,101 @@
+<section id="about">
+	<h3 class="content-heading">About Me</h3>
+	<div class="content-section">
+		<div class="left">
+			<p>
+				Hello!, I'm Vithushan, a software developer based in Colombo, Sri Lanka.
+			</p>
+			<p>
+				I enjoy designing and developing <span
+					>websites and mobile applications
+				</span>.
+			</p>
+			<p>
+				I have a passion for building things that people love to use in their
+				daily life.
+			</p>
+			<p class="skill-top">
+				Here are the few technologies I have been working with recently:
+			</p>
+			<ul class="skill-list">
+				<li>JavaScript</li>
+				<li>TypeScript</li>
+				<li>React</li>
+				<li>React Native</li>
+				<li>Next.js</li>
+				<li>Node</li>
+			</ul>
+		</div>
+		<div class="right">
+			<div class="wrapper">
+				<img src="/images/vithu.jpg" alt="avatar" />
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.content-section {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+	.left {
+		width: 70%;
+	}
+	.right {
+		width: 30%;
+	}
+	.right .wrapper {
+		display: flex;
+		border-radius: 8px;
+		box-shadow: var(--bg-color) 20px 20px 0px -3px,
+			var(--tertiary-color) 20px 20px;
+		transition: box-shadow 0.5s;
+	}
+	.right .wrapper:hover {
+		box-shadow: var(--bg-color) 14px 14px 0px -3px,
+			var(--secondary-color) 14px 14px;
+	}
+	.right img {
+		min-width: 100%;
+		max-width: 100%;
+		min-height: 100%;
+		max-height: 100%;
+		border-radius: 8px;
+		filter: grayscale(100%) opacity(0.5) blur(0.5px);
+		transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.right img:hover {
+		filter: blur(0.2px);
+	}
+	p {
+		margin: auto;
+	}
+	.skill-top {
+		margin-top: 20px;
+	}
+	.skill-list {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(140px, 250px));
+		list-style: none;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 10px 0 0 0;
+	}
+	.skill-list li {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--tertiary-color);
+		text-decoration: none;
+		margin: 0 10px 10px 0;
+	}
+	.skill-list li::before {
+		content: "▹ ";
+		position: relative;
+		color: var(--secondary-color);
+	}
+</style>
