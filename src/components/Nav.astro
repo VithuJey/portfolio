@@ -14,7 +14,9 @@
 <header id="header">
 	<nav class="nav">
 		<div class="logo">
-			<img src="/icons/fa-v.svg" alt="logo" height="30px" />
+			<a href="/">
+				<img src="/icons/fa-v.svg" alt="logo" height="30px" />
+			</a>
 		</div>
 		<div class="links">
 			<a href="#about" class="about-link">About</a>
@@ -27,6 +29,8 @@
 
 <style>
 	#header {
+		background-color: var(--bg-light-color);
+		opacity: 0.1px;
 		box-sizing: border-box;
 		padding: 0 3.5em;
 		width: 100vw;
@@ -34,9 +38,8 @@
 		display: flex;
 		align-items: center;
 		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
+		inset: 0;
+		z-index: 10;
 		transition: top 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
 	}
 	.nav {
