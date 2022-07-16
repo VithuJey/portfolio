@@ -1,44 +1,199 @@
-<div id="projects">
+<section id="projects">
 	<h3 class="content-heading">Projects</h3>
-	<ul>
-		<div>
-			<img
-				src="/images/ss-gradient-animation.png"
-				alt="gradient-img"
-				height="50px"
-			/>
-			<p>Gradient Animation Generator</p>
-			<p>
-				A mobile resposnsive web app to generate WebGl gradient animation
-				similar to that of <a href="https://stripe.com/">Stripe</a>.
-			</p>
-			<ul>
-				<li>Svelte</li>
-				<li>Vite</li>
-			</ul>
-			<a
-				id="github"
-				href="https://github.com/VithuJey/svelte-gradient-animation"
-				>Github
-			</a>
-			<a id="website" href="https://gradient-animation.netlify.app/">Website</a>
+
+	<div class="project-list">
+		<!-- project 1 -->
+		<div class="project-type-one">
+			<div class="left">
+				<img
+					class="project-img"
+					src="/images/ss-gradient-animation.png"
+					alt="gradient-img"
+				/>
+			</div>
+			<div class="right">
+				<p class="title">Gradient Animator</p>
+				<div class="card">
+					<p class="desc">
+						A mobile resposnsive web app to generate WebGl gradient animation
+						similar to that of <a href="https://stripe.com/">Stripe</a>.
+					</p>
+				</div>
+				<ul>
+					<li>Svelte</li>
+					<li>Vite</li>
+				</ul>
+				<ul>
+					<a
+						id="github"
+						target="_blank"
+						href="https://github.com/VithuJey/svelte-gradient-animation"
+					>
+						<img
+							src="/icons/fa-github.svg"
+							alt="github-icon"
+							class="github-icon"
+							height="22px"
+						/>
+					</a>
+					<a
+						id="website"
+						target="_blank"
+						href="https://gradient-animation.netlify.app/"
+						><img
+							src="/icons/fa-link.svg"
+							alt="link-icon"
+							class="link-icon"
+							height="22px"
+						/>
+					</a>
+				</ul>
+			</div>
 		</div>
-	</ul>
-	<ul>
-		<div>
-			<img src="/images/ss-wine-view.png" alt="wine-view-img" height="50px" />
-			<p>Wine View Dashboard</p>
-			<p>A mobile resposnsive demo dashboard to manage wine records.</p>
-			<ul>
-				<li>React</li>
-				<li>TypeScript</li>
-				<li>Less</li>
-				<li>Ant Design</li>
-			</ul>
-			<a id="github" href="https://github.com/VithuJey/wine-view-dashboard"
-				>Github
-			</a>
-			<a id="website" href="https://wineview.netlify.app/">Website</a>
+
+		<!-- project 2 -->
+		<div class="project-type-two">
+			<div class="left">
+				<p class="title">Wine View Dashboard</p>
+				<div class="card">
+					<p class="desc">
+						A mobile resposnsive demo dashboard to manage wine records.
+					</p>
+				</div>
+				<ul>
+					<li>React</li>
+					<li>TypeScript</li>
+					<li>Ant Design</li>
+					<li>Figma</li>
+				</ul>
+				<ul>
+					<a
+						id="github"
+						target="_blank"
+						href="https://github.com/VithuJey/wine-view-dashboard"
+					>
+						<img
+							src="/icons/fa-github.svg"
+							alt="github-icon"
+							class="github-icon"
+							height="22px"
+						/>
+					</a>
+					<a
+						id="github"
+						target="_blank"
+						href="https://www.figma.com/file/xorRRWzTJKH9spnWKbMEa5/WineView-Dashboard-(Desktop-%26-Mobile)?node-id=43%3A4442"
+					>
+						<img
+							src="/icons/fa-figma.svg"
+							alt="figma-icon"
+							class="figma-icon"
+							height="22px"
+						/>
+					</a>
+					<a id="website" target="_blank" href="https://wineview.netlify.app/"
+						><img
+							src="/icons/fa-link.svg"
+							alt="link-icon"
+							class="link-icon"
+							height="22px"
+						/>
+					</a>
+				</ul>
+			</div>
+			<div class="right">
+				<img
+					class="project-img"
+					src="/images/ss-wine-view.png"
+					alt="gradient-img"
+				/>
+			</div>
 		</div>
-	</ul>
-</div>
+	</div>
+</section>
+
+<style>
+	.project-list > * {
+		margin-bottom: 100px;
+	}
+	.project-img {
+		height: 320px;
+		object-fit: cover;
+	}
+	.project-type-one {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+	.project-type-one .left {
+		width: 60%;
+	}
+	.project-type-one .right {
+		width: 40%;
+		text-align: right;
+	}
+	.left .project-img {
+		width: 100%;
+		border-radius: 10px;
+		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+	}
+	.title {
+		font-size: var(--font-2xl);
+		font-weight: 500;
+		line-height: 0;
+		color: var(--primary-color);
+		margin-top: 0;
+		padding-top: 0;
+	}
+	.card {
+		background-color: var(--card-color);
+		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+		border-radius: 10px;
+		padding: 10px 20px;
+	}
+	.right ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		justify-content: flex-end;
+	}
+	.right ul > * {
+		padding-left: 20px;
+		margin-top: 20px;
+	}
+	li {
+		font-family: var(--font-mono);
+		font-size: var(--font-sm);
+		color: var(--tertiary-color);
+	}
+
+	.project-type-two {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+	.project-type-two .left {
+		width: 40%;
+	}
+	.project-type-two .right {
+		width: 60%;
+	}
+	.right .project-img {
+		width: 100%;
+		border-radius: 10px;
+		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+	}
+
+	.left ul {
+		display: flex;
+		justify-content: flex-start;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.left ul > * {
+		padding-right: 20px;
+		margin-top: 20px;
+	}
+</style>
