@@ -80,17 +80,22 @@
 		grid-template-columns: repeat(3, minmax(140px, 250px));
 		list-style: none;
 	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 10px 0 0 0;
+	}
 	.skill-list li {
 		font-family: var(--font-mono);
 		font-size: var(--font-md);
 		line-height: var(--line-height-md);
 		color: var(--tertiary-color);
 		text-decoration: none;
-		margin: 0 20px 20px 0;
+		margin: 0 10px 10px 0;
 	}
 	.skill-list li::before {
 		content: "▹ ";
 		position: relative;
-		color: var(--bg-color);
+		color: var(--secondary-color);
 	}
 </style>
