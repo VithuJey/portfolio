@@ -1,57 +1,66 @@
 <div class="social-list">
-	<div class="medium">
+	<a
+		href="https://medium.com/@vithushjeytharma"
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		<img src="/icons/fa-medium.svg" alt="medium-icon" height="22px" />
+	</a>
+
+	<a
+		href="https://github.com/vithujey"
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		<img src="/icons/fa-github.svg" alt="github-icon" height="22px" />
+	</a>
+
+	<a
+		href="https://www.linkedin.com/in/vithujey/"
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		<img src="/icons/fa-linkedin.svg" alt="linkedin-icon" height="22px" />
+	</a>
+
+	<a
+		href="https://twitter.com/jeyvithu"
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		<img src="/icons/fa-twitter.svg" alt="twitter-icon" height="22px" />
+	</a>
+
+	<a
+		href="https://www.fiverr.com/vithushanjey"
+		target="_blank"
+		rel="noopener noreferrer"
+	>
 		<img
-			src="/icons/fa-medium.svg"
-			alt="medium-icon"
-			class="medium-icon"
-			height="22px"
-		/>
-	</div>
-	<div class="github">
-		<img
-			src="/icons/fa-github.svg"
-			alt="github-icon"
-			class="github-icon"
-			height="22px"
-		/>
-	</div>
-	<div class="linkedin">
-		<img
-			src="/icons/fa-linkedin.svg"
-			alt="linkedin-icon"
-			class="linkedin-icon"
-			height="22px"
-		/>
-	</div>
-	<div class="twitter">
-		<img
-			src="/icons/fa-twitter.svg"
-			alt="twitter-icon"
-			class="twitter-icon"
-			height="22px"
-		/>
-	</div>
-	<div class="fiverr">
-		<img
-			src="/icons/fiverr.svg"
-			alt="fiverr-icon"
 			class="fiverr-icon"
+			src="/icons/fiverr-white.svg"
+			alt="fiverr-icon"
 			height="22px"
 		/>
-	</div>
+	</a>
 </div>
 
 <style>
 	.social-list {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 		position: fixed;
 		bottom: 0;
 	}
-	.social-list div {
-		margin: 15px 0;
+	.social-list a {
+		margin: 0 0 30px 0;
+		position: relative;
+		bottom: 0;
+		transition: bottom 0.2s;
+	}
+	.social-list a:hover {
+		bottom: 3px;
 	}
 	.social-list::after {
 		content: "";
@@ -60,6 +69,18 @@
 		height: 90px;
 		margin: 0px auto;
 		background-color: var(--primary-color);
+	}
+	img {
+		filter: brightness(0) invert(1);
+	}
+	img:hover {
+		filter: none;
+	}
+	.fiverr-icon {
+		filter: none;
+	}
+	.fiverr-icon:hover {
+		content: url("/icons/fiverr-blue.svg");
 	}
 
 	/* Medium devices (landscape tablets, 768px and up) */
