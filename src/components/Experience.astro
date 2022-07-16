@@ -3,34 +3,36 @@
 	<div>
 		<div>
 			<p class="job-title">
-				Software Enigneer &nbsp; <span class="company-name"
-					>@ Flatline Agency
-				</span>
+				Software Enigneer @
+				<a class="company-name" href="https://www.flatlineagency.com/">
+					Flatline Agency
+				</a>
 			</p>
 			<ul>
 				<li>
-					Created Meditation mobile application using React Native with features
-					like chat, live meditation, and on-demand audio player. Integrated
-					revenue to enable online subscription and Firebase to provide mobile
-					notification, dynamic link, and authentication.
+					Created Meditation mobile application using <span>React Native</span> with
+					features like chat, live meditation, and on-demand audio player. Integrated
+					revenue to enable online subscription and <span>Firebase</span> to provide
+					mobile notification, dynamic link, and authentication.
 				</li>
 				<li>
-					Designed and developed the user interfaces using Fluent Design System
-					for the Public House Visit web application for the Netherland
-					Government. Integrated Analytics API and Floor Planner.
+					Designed and developed the user interfaces using <span>React</span> and
+					<span>Fluent Design System</span>
+					for the Public House Visit web application for the Netherland Government.
+					Integrated Analytics API and Floor Planner.
 				</li>
 				<li>
 					Created Food Order mobile application to cater to the Amsterdam
-					populace using React Native. Integrated Firebase to provide dynamic
-					link and authentication and Google Maps for map services.
+					populace using <span>React Native</span> and
+					<span>React Native Paper</span>. Integrated <span>Firebase</span> to provide
+					dynamic link and authentication and <span>Google Maps</span> for map services.
 				</li>
 			</ul>
 		</div>
 		<div>
 			<p class="job-title">
-				Software Engineer Trainee &nbsp; <span class="company-name"
-					>@ Trabeya
-				</span>
+				Software Engineer Trainee @
+				<span class="company-name">Trabeya</span>
 			</p>
 			<ul>
 				<li>
@@ -73,5 +75,24 @@
 		font-family: var(--font-mono);
 		font-size: var(--font-lg);
 		line-height: var(--line-height-lg);
+		color: var(--secondary-color);
+		text-decoration: none;
+		position: relative;
+	}
+	.company-name:after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 1px;
+		bottom: -1px;
+		left: 0;
+		background-color: var(--secondary-color);
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	}
+	.company-name:hover:after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
 	}
 </style>
