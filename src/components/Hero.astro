@@ -1,10 +1,10 @@
 <div class="hero">
-	<h6>Welcome, I'm</h6>
+	<h6 class="welcome-text">, I'm</h6>
 	<h1>Vithushan Jey.</h1>
 	<h2>I build web and mobile apps.</h2>
 	<p>
-		I'm a software developer based in Sri Lanka, specializing in building user
-		centric websites and mobile applications.
+		I'm a software developer specializing in building human-centric digital
+		experiences. Also a coffee enthusiast ☕
 	</p>
 	<a
 		href="/docs/vithushan_jeyasothy_resume.pdf"
@@ -28,6 +28,27 @@
 		font-size: var(--font-md);
 		line-height: var(--line-height-md);
 		color: var(--secondary-color);
+	}
+	@keyframes word {
+		0% {
+			content: "Welcome";
+		}
+		25% {
+			content: "Welkom";
+		}
+		50% {
+			content: "Hola";
+		}
+		75% {
+			content: "வணக்கம்";
+		}
+		100% {
+			content: "ආයුබෝවන්";
+		}
+	}
+	.welcome-text::before {
+		content: "Hola";
+		animation: word 10s linear 1s infinite;
 	}
 	h1,
 	h2 {

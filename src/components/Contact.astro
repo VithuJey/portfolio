@@ -1,12 +1,10 @@
 <section id="contact">
 	<div class="content">
 		<h2>Get In Touch</h2>
-		<p>
-			I like to meet new people and explore new opporunities. Let's grab a
-			coffee!
-		</p>
-		<a class="contact-button" href="mailto:vithushjeytharma@gmail.com"
-			>Say Hello 👋
+		<p>I like to meet new people and exchange ideas. Let's grab a coffee!</p>
+		<a class="contact-button" href="mailto:vithushjeytharma@gmail.com">
+			Say Hello
+			<span class="hi-emoji">👋</span>
 		</a>
 	</div>
 </section>
@@ -25,6 +23,9 @@
 		font-size: clamp(40px, 5vw, 60px);
 		color: var(--primary-color);
 	}
+	.content p {
+		text-align: center;
+	}
 	.contact-button {
 		font-family: var(--font-mono);
 		font-size: var(--font-md);
@@ -40,4 +41,16 @@
 	.contact-button:hover {
 		background-color: var(--active-color);
 	}
+	/* @keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(20deg);
+		}
+	}
+	.hi-emoji {
+		display: inline-block;
+		animation: rotate 0.8s linear 0s infinite alternate;
+	} */
 </style>

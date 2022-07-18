@@ -24,6 +24,34 @@
 body {
 	background-color: var(--bg-color);
 	color: var(--primary-color);
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	min-height: 100%;
+	overflow-x: hidden !important;
+	-webkit-font-smoothing: antialiased;
+}
+*,
+::before,
+::after {
+	box-sizing: inherit;
+}
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--bg-color);
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--tertiary-color);
+	border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--tertiary-color);
 }
 p {
 	font-family: var(--font-sans);
@@ -47,6 +75,7 @@ section {
 	line-height: var(--line-height-2xl);
 	display: flex;
 	align-items: center;
+	white-space: nowrap;
 }
 .content-heading::after {
 	content: "";

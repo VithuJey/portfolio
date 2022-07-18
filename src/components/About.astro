@@ -3,16 +3,22 @@
 	<div class="content-section">
 		<div class="left">
 			<p>
-				Hello!, I'm Vithushan, a software developer based in Colombo, Sri Lanka.
+				I'm a software developer based in Colombo, Sri Lanka 🇱🇰. I have a
+				passion for building things that people love to use in their daily life.
+				My fascination with computers, computer games, and the evolution of the
+				Internet inspired me to learn software engineering.
 			</p>
 			<p>
-				I enjoy designing and developing <span
-					>websites and mobile applications
-				</span>.
-			</p>
-			<p>
-				I have a passion for building things that people love to use in their
-				daily life.
+				Fast-forward to today, I have shipped freelance projects on
+				<a
+					class="highlight-link"
+					href="https://www.fiverr.com/vithushanjey"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Fiverr
+				</a>
+				and worked in an AI start-up. Now I am developing cool web and mobile apps
+				in a development agency based in Amsterdam 🇳🇱.
 			</p>
 			<p class="skill-top">
 				Here are the few technologies I have been working with recently:
@@ -42,6 +48,7 @@
 	}
 	.left {
 		width: 70%;
+		margin-right: 5px;
 	}
 	.right {
 		width: 30%;
@@ -97,5 +104,66 @@
 		content: "▹ ";
 		position: relative;
 		color: var(--secondary-color);
+	}
+	.highlight-link {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--secondary-color);
+		background-color: var(--active-color);
+		text-decoration: none;
+		position: relative;
+	}
+	.highlight-link:after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 1px;
+		bottom: -1px;
+		left: 0;
+		background-color: var(--secondary-color);
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	}
+	.highlight-link:hover:after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	}
+	@media only screen and (max-width: 768px) {
+		.content-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+		}
+
+		.left {
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 20px;
+		}
+		.right {
+			width: 70%;
+		}
+	}
+	@media only screen and (max-width: 375px) {
+		.skill-list {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(130px, 130px));
+			list-style: none;
+		}
+	}
+	@media only screen and (max-width: 320px) {
+		.skill-list {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(100px, 100px));
+			list-style: none;
+		}
+	}
+	@media only screen and (min-width: 1920px) {
+		.content-section {
+			align-items: flex-start;
+		}
 	}
 </style>
