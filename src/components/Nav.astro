@@ -1,12 +1,27 @@
 <script is:inline>
+	// hide navbar on scroll event
 	let prevScrollpos = window.pageYOffset;
 	window.onscroll = function () {
+		// window width
+		let w = window.innerWidth;
+		// current scroll position
 		let currentScrollPos = window.pageYOffset;
-		if (prevScrollpos > currentScrollPos) {
-			document.getElementById("header").style.top = "0";
+		// if checked true, side menu is visible
+		let checked = document.getElementById("checkbox").checked;
+		// console.log("w,c ", w, checked);
+		// if side menu is visible and device is phone(w<600px), not hide navbar & side menu
+		if (w < 600 && checked) {
+			return;
 		} else {
-			document.getElementById("header").style.top = "-6em";
+			if (prevScrollpos > currentScrollPos) {
+				document.getElementById("header").style.top = "0";
+				document.getElementById("checkbox").checked = false;
+			} else {
+				document.getElementById("header").style.top = "-6em";
+				document.getElementById("checkbox").checked = false;
+			}
 		}
+
 		prevScrollpos = currentScrollPos;
 	};
 </script>
@@ -15,14 +30,57 @@
 	<nav class="nav">
 		<div class="logo">
 			<a href="/">
-				<img src="/icons/fa-v.svg" alt="logo" height="30px" />
+				<img src="/icons/fa-v.svg" alt="logo" height="40px" />
 			</a>
 		</div>
-		<div class="links">
-			<a href="#about" class="about-link">About</a>
-			<a href="#experience" class="experience-link">Experience</a>
-			<a href="#projects" class="projects-link">Projects</a>
-			<a href="#contact" class="contact-link">Contact</a>
+		<div class="h-links">
+			<a href="#about">About</a>
+			<a href="#experience">Experience</a>
+			<a href="#projects">Projects</a>
+			<a href="#contact">Contact</a>
+		</div>
+		<div class="menu">
+			<input
+				class="checkbox"
+				type="checkbox"
+				id="checkbox"
+				name="checkbox"
+				onclick="document.getElementById('content').style.filter = blur(6px)"
+			/>
+			<div class="hamburger-lines">
+				<span class="line line1"></span>
+				<span class="line line2"></span>
+				<span class="line line3"></span>
+			</div>
+
+			<aside id="side">
+				<div class="v-links">
+					<a
+						href="#about"
+						onclick="document.getElementById('checkbox').checked = false"
+					>
+						About
+					</a>
+					<a
+						href="#experience"
+						onclick="document.getElementById('checkbox').checked = false"
+					>
+						Experience
+					</a>
+					<a
+						href="#projects"
+						onclick="document.getElementById('checkbox').checked = false"
+					>
+						Projects
+					</a>
+					<a
+						href="#contact"
+						onclick="document.getElementById('checkbox').checked = false"
+					>
+						Contact
+					</a>
+				</div>
+			</aside>
 		</div>
 	</nav>
 </header>
@@ -32,8 +90,8 @@
 		background-color: var(--bg-light-color);
 		opacity: 0.1px;
 		box-sizing: border-box;
-		padding: 0 3.5em;
-		width: 100vw;
+		padding: 0 4em;
+		min-width: 100%;
 		height: 6em;
 		display: flex;
 		align-items: center;
@@ -48,15 +106,113 @@
 		align-items: center;
 		width: 100%;
 	}
-	a {
-		margin-left: 3rem;
+	.h-links a,
+	.v-links a {
 		text-decoration: none;
 		font-family: var(--font-mono);
 		font-size: var(--font-md);
 		line-height: var(--line-height-md);
 		color: var(--primary-color);
+		transition: color 0.2s;
+		margin-left: 3rem;
 	}
-	a:hover {
+	.h-links a:hover {
 		color: var(--secondary-color);
+	}
+	.menu {
+		display: none;
+	}
+
+	/* menu icon */
+	.menu .checkbox {
+		position: absolute;
+		display: block;
+		height: 26px;
+		width: 32px;
+		z-index: 5;
+		opacity: 0;
+		cursor: pointer;
+	}
+	.menu .hamburger-lines {
+		display: block;
+		height: 26px;
+		width: 32px;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.menu .hamburger-lines .line {
+		display: block;
+		height: 4px;
+		width: 100%;
+		border-radius: 10px;
+		background: #ffffff;
+	}
+	.menu .hamburger-lines .line1 {
+		transform-origin: 0% 0%;
+		transition: transform 0.4s ease-in-out;
+	}
+	.menu .hamburger-lines .line2 {
+		transition: transform 0.2s ease-in-out;
+	}
+	.menu .hamburger-lines .line3 {
+		transform-origin: 0% 100%;
+		transition: transform 0.4s ease-in-out;
+	}
+	.menu input[type="checkbox"]:checked ~ aside {
+		transform: translateX(0);
+		overflow: hidden;
+	}
+	.menu input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+		transform: rotate(45deg);
+	}
+	.menu input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+		transform: scaleY(0);
+	}
+	.menu input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+		transform: rotate(-45deg);
+	}
+
+	@media only screen and (max-width: 768px) {
+		#header {
+			padding: 0 2rem;
+		}
+		.h-links {
+			display: none;
+		}
+		.menu {
+			display: flex;
+		}
+		aside {
+			display: flex;
+			height: 100%;
+			width: 50%;
+			background-color: var(--card-color);
+			position: fixed;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			box-shadow: var(--bg-color) 20px, var(--tertiary-color) 20px;
+			transform: translateX(100%);
+			transition: transform 0.5s ease-in-out;
+		}
+		.v-links {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			width: 100%;
+		}
+		.v-links a {
+			margin: 40px 0;
+		}
+	}
+
+	@media only screen and (max-width: 425px) {
+		aside {
+			width: 100%;
+		}
 	}
 </style>
