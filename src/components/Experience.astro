@@ -4,45 +4,72 @@
 		<div>
 			<p class="job-title">
 				Software Enigneer @
-				<a class="company-name" href="https://www.flatlineagency.com/">
+				<a
+					class="highlight-link"
+					target="_blank"
+					href="https://www.flatlineagency.com/"
+				>
 					Flatline Agency
 				</a>
 			</p>
 			<ul>
 				<li>
-					Created Meditation mobile application using <span>React Native</span> with
-					features like chat, live meditation, and on-demand audio player. Integrated
-					revenue to enable online subscription and <span>Firebase</span> to provide
-					mobile notification, dynamic link, and authentication.
+					Developed and shipped
+					<a
+						class="highlight-link"
+						target="_blank"
+						href="https://365meditaties.nl/"
+					>
+						365 Meditaties
+					</a> app using
+					<span>
+						React Native, TypeScript, MobX-State-Tree, Emotion, Moti, and Sentry
+					</span> with features like chat, live meditation, and an on-demand audio
+					player. Integrated <span>RevenueCat</span> to enable online subscription
+					and <span>Firebase</span>
+					to provide notification, and dynamic links.
 				</li>
 				<li>
-					Designed and developed the user interfaces using <span>React</span> and
-					<span>Fluent Design System</span>
-					for the Public House Visit web application for the Netherland Government.
-					Integrated Analytics API and Floor Planner.
+					Worked on a food order mobile app using <span
+						>React Native, Redux Toolkit, and Emotion
+					</span> to cater to the Amsterdam populace. Integrated <span
+						>Google Maps
+					</span> to access geo location.
 				</li>
 				<li>
-					Created Food Order mobile application to cater to the Amsterdam
-					populace using <span>React Native</span> and
-					<span>React Native Paper</span>. Integrated <span>Firebase</span> to provide
-					dynamic link and authentication and <span>Google Maps</span> for map services.
+					Collaborated with the UI/UX team to design the public house visit web
+					app of the Netherland Government using <span>Microsoft</span> fluent design
+					system.
+				</li>
+				<li>
+					Communicate with multi-disciplinary teams of software engineers,
+					designers, and clients daily to develop the product.
 				</li>
 			</ul>
 		</div>
 		<div>
 			<p class="job-title">
 				Software Engineer Trainee @
-				<a class="company-name" href="https://trabeya.com/"> Trabeya</a>
+				<a class="highlight-link" target="_blank" href="https://trabeya.com/">
+					Trabeya
+				</a>
 			</p>
 			<ul>
 				<li>
-					Worked on Virtual Concierge system for Lake Nona region to create a
-					Natural Language Processing (NLP) based chatbot. Designed and
-					developed the Bot user interface and admin dashboard.
+					Worked with the team of developers and ML engineers to develop a
+					Virtual Concierge system for the Lake Nona region. I developed the bot
+					and admin dashboard interface, wrote an excel sheet reader, and
+					integrated a profanity checker using <span
+						>Java, SpringBoot, Python and MongoDB.
+					</span>
 				</li>
 				<li>
 					Implemented a Document Ingester to search PDFs and textual images
-					using Ingest Attachment Plugin of Elasticsearch.
+					using Ingest Attachment Plugin of <span>Elasticsearch.</span>
+				</li>
+				<li>
+					Worked regularly with UI/UX designers, developers, and ML engineers to
+					improve product accessibility.
 				</li>
 			</ul>
 		</div>
@@ -71,7 +98,7 @@
 		font-size: var(--font-lg);
 		line-height: var(--line-height-lg);
 	}
-	.company-name {
+	.highlight-link {
 		font-family: var(--font-mono);
 		font-size: var(--font-lg);
 		line-height: var(--line-height-lg);
@@ -80,7 +107,7 @@
 		text-decoration: none;
 		position: relative;
 	}
-	.company-name:after {
+	.highlight-link:after {
 		content: "";
 		position: absolute;
 		width: 100%;
@@ -92,7 +119,7 @@
 		transform-origin: bottom right;
 		transition: transform 0.25s ease-out;
 	}
-	.company-name:hover:after {
+	.highlight-link:hover:after {
 		transform: scaleX(1);
 		transform-origin: bottom left;
 	}
