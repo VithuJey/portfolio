@@ -15,10 +15,9 @@
 				<p class="title">Gradient Animator</p>
 				<div class="card">
 					<p class="desc">
-						A mobile resposnsive web app to generate WebGl gradient animation
-						similar to that of <a href="https://stripe.com/" target="_blank"
-							>Stripe
-						</a>.
+						Created this web app to learn the new JS framework Svelte. I really
+						loved the opinionated approaches in Svelte. Also a nice way to spend
+						time for a React developer 😉
 					</p>
 				</div>
 				<ul>
@@ -49,7 +48,9 @@
 				<p class="title">Wine View Dashboard</p>
 				<div class="card">
 					<p class="desc">
-						A mobile resposnsive demo dashboard to manage wine records.
+						Designed & developed this web dashboard to manage the wine
+						distribution of a distributor. This is the demo app of a finished
+						one.
 					</p>
 				</div>
 				<ul>
@@ -95,12 +96,50 @@
 </section>
 
 <style>
+	@media only screen and (max-width: 768px) {
+		.project-type-one .left {
+			width: 100% !important;
+			opacity: 0.15;
+		}
+		.project-type-one .right {
+			position: absolute;
+			width: 83% !important;
+		}
+		.right .card {
+			position: relative;
+			background-color: transparent;
+			box-shadow: none;
+			right: 0 !important;
+			padding: 3px 0 0 0 !important;
+		}
+
+		.project-type-two .left {
+			position: absolute;
+			width: 80% !important;
+			margin-left: 20px !important;
+		}
+		.project-type-two .right {
+			width: 100% !important;
+			opacity: 0.15;
+		}
+		.left .card {
+			position: relative;
+			background-color: transparent;
+			box-shadow: none;
+			padding: 3px 0 0 0 !important;
+		}
+		p,
+		ul > li {
+			color: var(--primary-color);
+		}
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			position: relative;
+		}
+	}
 	.project-list > * {
 		margin-bottom: 100px;
-	}
-	.project-img {
-		height: 320px;
-		object-fit: cover;
 	}
 	.project-type-one {
 		display: flex;
@@ -113,6 +152,10 @@
 	.project-type-one .right {
 		width: 40%;
 		text-align: right;
+	}
+	.project-img {
+		height: 320px;
+		object-fit: cover;
 	}
 	.left .project-img {
 		width: 100%;
@@ -128,17 +171,22 @@
 		padding-top: 0;
 	}
 	.card {
-		background-color: var(--card-color);
-		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+		position: relative;
+		width: 100%;
 		border-radius: 10px;
 		padding: 10px 20px;
+		background-color: var(--card-color);
+		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+	}
+	.right .card {
+		right: 40px;
 	}
 	.right ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
 		display: flex;
 		justify-content: flex-end;
+		padding: 0;
+		margin: 0;
+		list-style: none;
 	}
 	.right ul > * {
 		padding-left: 20px;
@@ -166,7 +214,6 @@
 		border-radius: 10px;
 		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
 	}
-
 	.left ul {
 		display: flex;
 		justify-content: flex-start;
