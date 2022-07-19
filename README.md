@@ -1,8 +1,12 @@
-# Welcome to [Astro](https://astro.build)
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+<div align="center">
+  <img alt="Logo" src="https://github.com/VithuJey/portfolio/blob/master/public/icons/fa-v.svg" width="100" />
+</div>
+<h1 align="center">
+  <a href="https://vithushan.me" target="_blank">vithushan.me</a>
+</h1>
+<p align="center">
+  The design was inspired from <a href="https://brittanychiang.com" target="_blank">Brittany Chiang</a> portfolio. The site was purely developed using  <a href="https://astro.build" target="_blank">Astro.build</a>. As a half trained Astronaut I would say Astro is promising 😉
+</p>
 
 ## 🚀 Project Structure
 
@@ -36,6 +40,21 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`     | Starts local dev server at `localhost:3000`  |
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
+
+## ⚡ Style Configuration
+
+| Font         | Link                                                        |
+| :----------- | :---------------------------------------------------------- |
+| `Inter`      | [Google Font](https://fonts.google.com/specimen/Inter)      |
+| `Space Mono` | [Google Font](https://fonts.google.com/specimen/Space+Mono) |
+
+| Color           | Hex     |
+| :-------------- | :------ |
+| `White`         | #fff    |
+| `Blue Cola`     | #0693e3 |
+| `Crayola`       | #a3a8c3 |
+| `Chinese Black` | #120e26 |
+| `Chinese Black` | #120e26 |
 
 ## 👀 Want to learn more?
 
