@@ -132,6 +132,20 @@
 		transform: scaleX(1);
 		transform-origin: bottom left;
 	}
+	@media only screen and (max-width: 375px) {
+		.skill-list {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(130px, 130px));
+			list-style: none;
+		}
+	}
+	@media only screen and (max-width: 320px) {
+		.skill-list {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(100px, 100px));
+			list-style: none;
+		}
+	}
 	@media only screen and (max-width: 768px) {
 		.content-section {
 			display: flex;
@@ -146,21 +160,7 @@
 			margin-bottom: 20px;
 		}
 		.right {
-			width: 70%;
-		}
-	}
-	@media only screen and (max-width: 375px) {
-		.skill-list {
-			display: grid;
-			grid-template-columns: repeat(3, minmax(130px, 130px));
-			list-style: none;
-		}
-	}
-	@media only screen and (max-width: 320px) {
-		.skill-list {
-			display: grid;
-			grid-template-columns: repeat(3, minmax(100px, 100px));
-			list-style: none;
+			width: 50%;
 		}
 	}
 	@media only screen and (min-width: 1920px) {
