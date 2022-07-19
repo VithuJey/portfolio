@@ -54,7 +54,6 @@ All commands are run from the root of the project, from a terminal:
 | `Blue Cola`     | #0693e3 |
 | `Crayola`       | #a3a8c3 |
 | `Chinese Black` | #120e26 |
-| `Chinese Black` | #120e26 |
 
 ## 👀 Want to learn more?
 
