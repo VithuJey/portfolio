@@ -1,0 +1,86 @@
+---
+import Name from "../components/Name.astro";
+import Nav from "../components/Nav.astro";
+import SocialList from "../components/SocialList.astro";
+import "../../public/assets/style.css";
+interface Props {
+	frontmatter: any;
+}
+
+const { frontmatter } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- font: Inter -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- font: Space Mono -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Page Title -->
+		<title>{frontmatter.title}</title>
+	</head>
+	<body>
+		<Nav />
+		<main id="content">
+			<section id="certificate">
+				<div class="wrapper">
+					<img src={frontmatter.imgSrc} alt={frontmatter.imgAlt} width="85%" />
+				</div>
+			</section>
+			<slot></slot>
+		</main>
+		<SocialList />
+		<Name />
+		<style>
+			#content {
+				margin: auto;
+				padding: 0 25px;
+				max-width: 1600px;
+				min-height: 100vh;
+			}
+			@media only screen and (min-width: 768px) {
+				#content {
+					padding: 0 50px;
+				}
+			}
+			@media only screen and (min-width: 992px) {
+				#content {
+					padding: 0 80px;
+				}
+			}
+			@media only screen and (min-width: 1440px) {
+				#content {
+					padding: 0 250px;
+				}
+			}
+			@media only screen and (min-width: 1920px) {
+				#content {
+					padding: 0 450px;
+				}
+			}
+			@media only screen and (min-width: 2560px) {
+				#content {
+					padding: 0 650px;
+					max-width: 1200px;
+				}
+			}
+		</style>
+	</body>
+</html>
