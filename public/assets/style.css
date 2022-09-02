@@ -87,3 +87,15 @@ section {
 	margin-left: 20px;
 	background-color: var(--secondary-color);
 }
+#certificate {
+	height: 78vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#certificate .wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
