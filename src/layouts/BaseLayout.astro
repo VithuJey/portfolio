@@ -42,7 +42,7 @@ const { title } = Astro.props as Props;
 	<body>
 		<Nav />
 		<main id="content">
-			<slot></slot>
+			<slot />
 		</main>
 		<SocialList />
 		<Name />
@@ -60,7 +60,7 @@ const { title } = Astro.props as Props;
 			}
 			@media only screen and (min-width: 992px) {
 				#content {
-					padding: 0 80px;
+					padding: 0 130px;
 				}
 			}
 			@media only screen and (min-width: 1440px) {

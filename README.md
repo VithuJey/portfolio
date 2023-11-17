@@ -5,7 +5,7 @@
   <a href="https://vithushan.me" target="_blank">vithushan.me</a>
 </h1>
 <p align="center">
-  The design was inspired from <a href="https://github.com/bchiang7/v4" target="_blank">Brittany Chiang</a> portfolio. The site was purely developed using  <a href="https://astro.build" target="_blank">Astro.build</a>. As a half trained Astronaut I would say Astro is promising 😉
+  The site was purely developed using  <a href="https://astro.build" target="_blank">Astro.build</a>. As a half trained Astronaut I would say Astro is promising 😉
 </p>
 
 ## 🚀 Project Structure

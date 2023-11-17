@@ -99,3 +99,29 @@ section {
 	justify-content: center;
 	align-items: center;
 }
+
+.highlight-link {
+	font-family: var(--font-mono);
+	font-size: var(--font-lg);
+	line-height: var(--line-height-lg);
+	color: var(--secondary-color);
+	text-decoration: none;
+	position: relative;
+	display: inline-block;
+}
+.highlight-link:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 1px;
+	bottom: -1px;
+	left: 0;
+	background-color: var(--secondary-color);
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+}
+.highlight-link:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
