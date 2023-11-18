@@ -1,4 +1,4 @@
-<script is:inline>
+<script>
 	// hide navbar on scroll event
 	let prevScrollpos = window.pageYOffset;
 	window.onscroll = function () {
@@ -30,7 +30,7 @@
 	<nav class="nav">
 		<div class="logo">
 			<a href="/">
-				<img src="/icons/fa-v.svg" alt="logo" height="40px" />
+				<img class="logo-img" src="/icons/fa-v.svg" alt="logo" height="40px" />
 			</a>
 		</div>
 		<div class="h-links">
@@ -38,6 +38,13 @@
 			<a href="/#experience">Experience</a>
 			<a href="/#projects">Projects</a>
 			<a href="/#contact">Contact</a>
+			<a
+				class="highlight-link"
+				href="https://medium.com/@vithushjeytharma"
+				target="_blank"
+			>
+				Blog
+			</a>
 		</div>
 		<div class="menu">
 			<input
@@ -79,6 +86,9 @@
 					>
 						Contact
 					</a>
+					<a href="https://medium.com/@vithushjeytharma" target="_blank">
+						Blog
+					</a>
 				</div>
 			</aside>
 		</div>
@@ -92,7 +102,7 @@
 		box-sizing: border-box;
 		padding: 0 4em;
 		min-width: 100%;
-		height: 6em;
+		height: 5em;
 		display: flex;
 		align-items: center;
 		position: fixed;
@@ -105,6 +115,9 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+	}
+	.logo-img {
+		height: 35px;
 	}
 	.h-links a,
 	.v-links a {
@@ -207,6 +220,10 @@
 		}
 		.v-links a {
 			margin: 40px 0;
+		}
+
+		.nav-link-icon {
+			height: 13px;
 		}
 	}
 
