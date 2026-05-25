@@ -4,17 +4,31 @@ import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
+import Insights from "../components/Insights.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
+import portfolioData from "../data/portfolio.json";
+
+// todo: add blogs + webinar section
+// todo: rewrite content according to the new ATS resume
+// todo: change the about-me pic
+// todo: improve style
+// todo: improve nav bar UI & UX
+// todo: update new resume
 
 const title = "Vithushan";
+
+const isVisible = (label: string) =>
+	portfolioData.nav.links.find((link) => link.label === label)?.visible ??
+	false;
 ---
 
 <BaseLayout title={title}>
 	<Hero />
-	<About />
-	<Experience />
-	<!-- <Projects /> -->
-	<Contact />
+	{isVisible("About") && <About />}
+	{isVisible("Experience") && <Experience />}
+	{isVisible("Projects") && <Projects />}
+	{isVisible("Insights") && <Insights />}
+	{isVisible("Contact") && <Contact />}
 	<Footer />
 </BaseLayout>
