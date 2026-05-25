@@ -1,0 +1,23 @@
+:root {
+	--primary-color: #ffffff;
+	--secondary-color: #0693e3;
+	--tertiary-color: #98a2c6;
+	--bg-color: #0a0f1e;
+	--bg-light-color: #0a0f1eec;
+	--active-color: #0692e31d;
+	--card-color: #151d35;
+	--font-sans: 'Syne', sans-serif;
+	--font-mono: "Space Mono", monospace;
+	--font-xs: 0.75rem;
+	--font-sm: 0.875rem;
+	--font-md: 1rem;
+	--font-lg: 1.125rem;
+	--font-xl: 1.25rem;
+	--font-2xl: 1.5rem;
+	--line-height-xs: 1rem;
+	--line-height-sm: 1.25rem;
+	--line-height-md: 1.5rem;
+	--line-height-lg: 1.75rem;
+	--line-height-xl: 1.75rem;
+	--line-height-2xl: 1.75rem;
+}

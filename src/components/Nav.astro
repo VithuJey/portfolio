@@ -1,3 +1,8 @@
+---
+import portfolioData from "../data/portfolio.json";
+const { logo, links } = portfolioData.nav;
+---
+
 <script>
 	// hide navbar on scroll event
 	let prevScrollpos = window.pageYOffset;
@@ -30,21 +35,21 @@
 	<nav class="nav">
 		<div class="logo">
 			<a href="/">
-				<img class="logo-img" src="/icons/fa-v.svg" alt="logo" height="40px" />
+				<img class="logo-img" src={logo} alt="logo" height="40px" />
 			</a>
 		</div>
 		<div class="h-links">
-			<a href="/#about">About</a>
-			<a href="/#experience">Experience</a>
-			<!-- <a href="/#projects">Projects</a> -->
-			<a href="/#contact">Contact</a>
-			<a
-				class="highlight-link"
-				href="https://medium.com/@vithushjeytharma"
-				target="_blank"
-			>
-				Blog
-			</a>
+			{
+				links.filter(link => link.visible).map(link => (
+					<a
+						class={link.highlight ? "highlight-link" : ""}
+						href={link.url}
+						target={link.external ? "_blank" : undefined}
+					>
+						{link.label}
+					</a>
+				))
+			}
 		</div>
 		<div class="menu">
 			<input
@@ -62,38 +67,23 @@
 
 			<aside id="side">
 				<div class="v-links">
-					<a
-						href="/#about"
-						onclick="document.getElementById('checkbox').checked = false"
-					>
-						About
-					</a>
-					<a
-						href="/#experience"
-						onclick="document.getElementById('checkbox').checked = false"
-					>
-						Experience
-					</a>
-					<!-- <a
-						href="/#projects"
-						onclick="document.getElementById('checkbox').checked = false"
-					>
-						Projects
-					</a> -->
-					<a
-						href="/#contact"
-						onclick="document.getElementById('checkbox').checked = false"
-					>
-						Contact
-					</a>
-					<a href="https://medium.com/@vithushjeytharma" target="_blank">
-						Blog
-					</a>
+					{
+						links.filter(link => link.visible).map(link => (
+							<a
+								href={link.url}
+								target={link.external ? "_blank" : undefined}
+								onclick={!link.external ? "document.getElementById('checkbox').checked = false" : undefined}
+							>
+								{link.label}
+							</a>
+						))
+					}
 				</div>
 			</aside>
 		</div>
 	</nav>
 </header>
+
 
 <style>
 	#header {

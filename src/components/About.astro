@@ -1,35 +1,30 @@
+---
+import portfolioData from "../data/portfolio.json";
+const { heading, paragraphs, skillHeading, skills, avatar } = portfolioData.about;
+---
+
 <section id="about">
-	<h3 class="content-heading">About Me</h3>
+	<h3 class="content-heading">{heading}</h3>
 	<div class="content-section">
 		<div class="left">
-			<p>
-				I'm a software developer based in Colombo, Sri Lanka 🇱🇰. I have a
-				passion for building things that people love to use in their daily life.
-				My fascination with computers, computer games, and the evolution of the
-				Internet inspired me to learn software engineering.
-			</p>
-			<br />
-			<p>
-				Fast forward to today, I've successfully delivered freelance projects,
-				completed internship with an AI start-up, launched web and mobile apps
-				at a digital agency in Amsterdam 🇳🇱, and currently developing an online
-				survey platform for an event company in London 🇬🇧.
-			</p>
+			{
+				paragraphs.map((paragraph, index) => (
+					<>
+						<p>{paragraph}</p>
+						{index < paragraphs.length - 1 && <br />}
+					</>
+				))
+			}
 			<p class="skill-top">
-				Here are the few technologies I have been working with recently:
+				{skillHeading}
 			</p>
 			<ul class="skill-list">
-				<li>JavaScript</li>
-				<li>TypeScript</li>
-				<li>React</li>
-				<li>Next.js</li>
-				<li>React Native</li>
-				<li>Node</li>
+				{skills.map(skill => <li>{skill}</li>)}
 			</ul>
 		</div>
 		<div class="right">
 			<div class="wrapper">
-				<img src="/images/vithu.jpg" alt="avatar" />
+				<img src={avatar.src} alt={avatar.alt} />
 			</div>
 		</div>
 	</div>

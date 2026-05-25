@@ -1,14 +1,19 @@
+---
+import portfolioData from "../data/portfolio.json";
+const { welcome, name, subtitle, description, resumeUrl, resumeLabel } = portfolioData.hero;
+---
+
 <div class="hero">
-	<h6 class="welcome-text">, I'm</h6>
-	<h1>Vithushan Jey.</h1>
-	<h2>I build web and mobile apps.</h2>
-	<p>
-		I'm a software developer specializing in building human-centric digital
-		experiences. Also a coffee enthusiast ☕
-	</p>
-	<a href="/docs/Vithushan Jeyasothy.pdf" target="_blank" class="resume-button">
-		Get Resume
-	</a>
+	<div class="glow-bg"></div>
+	<div class="hero-content">
+		<h6>{welcome}</h6>
+		<h1>{name}</h1>
+		<h2>{subtitle}</h2>
+		<p>{description}</p>
+		<a href={resumeUrl} target="_blank" class="resume-button">
+			{resumeLabel}
+		</a>
+	</div>
 </div>
 
 <style>
@@ -18,30 +23,44 @@
 		flex-direction: column;
 		align-items: flex-start;
 		min-height: 100vh;
+		position: relative;
+	}
+	.glow-bg {
+		position: absolute;
+		top: 25%;
+		left: 15%;
+		width: 400px;
+		height: 400px;
+		background: radial-gradient(
+			circle,
+			rgba(99, 102, 241, 0.15) 0%,
+			rgba(6, 147, 227, 0.05) 50%,
+			rgba(0, 0, 0, 0) 70%
+		);
+		filter: blur(60px);
+		z-index: 1;
+		pointer-events: none;
+		animation: pulse-glow 8s infinite alternate ease-in-out;
+	}
+	.hero-content {
+		position: relative;
+		z-index: 2;
+	}
+	@keyframes pulse-glow {
+		0% {
+			transform: scale(1) translate(0, 0);
+			opacity: 0.8;
+		}
+		100% {
+			transform: scale(1.15) translate(5%, 5%);
+			opacity: 1;
+		}
 	}
 	h6 {
 		font-family: var(--font-mono);
 		font-size: var(--font-md);
 		line-height: var(--line-height-md);
 		color: var(--secondary-color);
-	}
-	@keyframes word {
-		0% {
-			content: "Welcome";
-		}
-		25% {
-			content: "Welkom";
-		}
-		50% {
-			content: "Hola";
-		}
-		75% {
-			content: "Vanakkam";
-		}
-	}
-	.welcome-text::before {
-		content: "Welcome";
-		animation: word 10s linear 1s infinite;
 	}
 	h1,
 	h2 {
@@ -75,8 +94,12 @@
 		border: 2px solid var(--secondary-color);
 		padding: 0.5rem 1.5rem;
 		margin: 30px 0;
+		display: inline-block;
+		transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 	}
 	.resume-button:hover {
 		background-color: var(--active-color);
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(6, 147, 227, 0.25);
 	}
 </style>

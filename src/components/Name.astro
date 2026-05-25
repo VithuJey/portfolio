@@ -1,5 +1,10 @@
+---
+import portfolioData from "../data/portfolio.json";
+const { email } = portfolioData;
+---
+
 <div class="name">
-	<a href="mailto:vithushjeytharma@gmail.com">vithushjeytharma@gmail.com</a>
+	<a href={`mailto:${email}`}>{email}</a>
 </div>
 
 <style>
@@ -20,7 +25,8 @@
 		font-size: var(--font-sm);
 		letter-spacing: 0.1em;
 		color: var(--primary-color);
-		transition: margin-bottom 0.2s;
+		display: inline-block;
+		transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 	}
 	.name::after {
 		content: "";
@@ -50,7 +56,7 @@
 		}
 	}
 	a:hover {
-		margin-bottom: 20px;
+		transform: translateY(-5px);
 		color: var(--secondary-color);
 	}
 </style>

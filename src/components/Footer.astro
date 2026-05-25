@@ -1,60 +1,30 @@
+---
+import portfolioData from "../data/portfolio.json";
+const { socials, footer } = portfolioData;
+---
+
 <div class="footer">
 	<div class="social-list">
-		<a
-			href="https://medium.com/@vithushjeytharma"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<img
-				class="social-icons"
-				src="/icons/fa-medium.svg"
-				alt="medium-icon"
-				height="22px"
-			/>
-		</a>
-
-		<a
-			href="https://github.com/vithujey"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<img
-				class="social-icons"
-				src="/icons/fa-github.svg"
-				alt="github-icon"
-				height="22px"
-			/>
-		</a>
-
-		<a
-			href="https://www.linkedin.com/in/vithujey/"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<img
-				class="social-icons"
-				src="/icons/fa-linkedin.svg"
-				alt="linkedin-icon"
-				height="22px"
-			/>
-		</a>
-
-		<!-- <a
-			href="https://twitter.com/jeyvithu"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<img
-				class="social-icons"
-				src="/icons/fa-twitter.svg"
-				alt="twitter-icon"
-				height="22px"
-			/>
-		</a> -->
+		{
+			socials.filter(social => social.visible).map(social => (
+				<a
+					href={social.url}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<img
+						class="social-icons"
+						src={social.icon}
+						alt={social.alt}
+						height="22px"
+					/>
+				</a>
+			))
+		}
 	</div>
-	<p>Built with</p>
-	<a href="https://astro.build/" target="_blank" rel="noopener noreferrer"
-		><img src="/icons/astro.svg" alt="astro-logo" height="40px" />
+	<p>{footer.builtWithText}</p>
+	<a href={footer.builtWithUrl} target="_blank" rel="noopener noreferrer"
+		><img src={footer.builtWithLogo} alt={footer.builtWithAlt} height="40px" />
 	</a>
 </div>
 

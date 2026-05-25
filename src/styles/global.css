@@ -1,26 +1,15 @@
-:root {
-	--primary-color: #ffff;
-	--secondary-color: #0693e3;
-	--tertiary-color: #a3a8c3;
-	--bg-color: #120e26;
-	--bg-light-color: #120e26ec;
-	--active-color: #0692e31d;
-	--card-color: #1a1336;
-	--font-sans: "Inter", sans-serif;
-	--font-mono: "Space Mono", monospace;
-	--font-xs: 0.75rem;
-	--font-sm: 0.875rem;
-	--font-md: 1rem;
-	--font-lg: 1.125rem;
-	--font-xl: 1.25rem;
-	--font-2xl: 1.5rem;
-	--line-height-xs: 1rem;
-	--line-height-sm: 1.25rem;
-	--line-height-md: 1.5rem;
-	--line-height-lg: 1.75rem;
-	--line-height-xl: 1.75rem;
-	--line-height-2xl: 1.75rem;
+@import "./theme.css";
+
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+	background-size: 40px 40px;
+	pointer-events: none;
+	z-index: 0;
 }
+
 body {
 	background-color: var(--bg-color);
 	color: var(--primary-color);
@@ -31,43 +20,53 @@ body {
 	overflow-x: hidden !important;
 	-webkit-font-smoothing: antialiased;
 }
+
 *,
 ::before,
 ::after {
 	box-sizing: inherit;
 }
+
 /* width */
 ::-webkit-scrollbar {
-	width: 5px;
+	width: 8px;
 }
+
 /* Track */
 ::-webkit-scrollbar-track {
 	background: var(--bg-color);
 }
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: var(--tertiary-color);
+	background: rgba(255, 255, 255, 0.12);
 	border-radius: 10px;
+	border: 2px solid var(--bg-color);
 }
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--tertiary-color);
+	background: var(--secondary-color);
 }
+
 p {
 	font-family: var(--font-sans);
 	font-size: var(--font-md);
 	line-height: var(--line-height-md);
 	color: var(--tertiary-color);
 }
+
 span {
 	font-family: var(--font-sans);
 	font-size: var(--font-md);
 	line-height: var(--line-height-md);
 	color: var(--secondary-color);
 }
+
 section {
 	padding: 100px 0;
 }
+
 .content-heading {
 	font-family: var(--font-sans);
 	font-size: clamp(26px, 5vw, 2.2rem);
@@ -77,6 +76,7 @@ section {
 	align-items: center;
 	white-space: nowrap;
 }
+
 .content-heading::after {
 	content: "";
 	display: block;
@@ -87,6 +87,7 @@ section {
 	margin-left: 20px;
 	background-color: var(--secondary-color);
 }
+
 #certificate {
 	height: 78vh;
 	display: flex;
@@ -94,6 +95,7 @@ section {
 	justify-content: center;
 	align-items: center;
 }
+
 #certificate .wrapper {
 	display: flex;
 	justify-content: center;
@@ -109,6 +111,7 @@ section {
 	position: relative;
 	display: inline-block;
 }
+
 .highlight-link:after {
 	content: "";
 	position: absolute;
@@ -121,7 +124,17 @@ section {
 	transform-origin: bottom right;
 	transition: transform 0.25s ease-out;
 }
+
 .highlight-link:hover:after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
+}
+
+#content {
+	transition: filter 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.blurred {
+	filter: blur(6px);
+	pointer-events: none;
 }

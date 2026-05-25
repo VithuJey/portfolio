@@ -1,123 +1,35 @@
+---
+import portfolioData from "../data/portfolio.json";
+const { heading, jobs } = portfolioData.experience;
+---
+
 <section id="experience">
-	<h3 class="content-heading">Experience</h3>
+	<h3 class="content-heading">{heading}</h3>
 	<div class="experience-list">
-		<div>
-			<p class="job-title">
-				Senior Software Enigneer @
-				<a
-					class="highlight-link"
-					target="_blank"
-					href="https://www.creativesoftware.com"
-				>
-					Creative Software
-				</a> 🇱🇰
-			</p>
-			<ul>
-				<li>
-					Leading the transformation of the
-					<a
-						class="highlight-link"
-						target="_blank"
-						href="https://www.explori.com"
-					>
-						Explori
-					</a> 🇬🇧 web app using
-					<span> React, MobX, SCSS, and Apache ECharts</span> by elevating to meet
-					the industrial standards. Conducting extensive code refactoring and implementing
-					new designs with extra care for user experience.
-				</li>
-				<li>
-					Guiding junior engineers to foster their growth and proficiency by
-					facilitating a collaborative and knowledge sharing environment through
-					code reviews, code pairing and other active problem solving
-					activities.
-				</li>
-			</ul>
-		</div>
-		<div>
-			<p class="job-title">
-				Software Enigneer @
-				<a
-					class="highlight-link"
-					target="_blank"
-					href="https://www.flatlineagency.com/"
-				>
-					Flatline Agency
-				</a> 🇳🇱
-			</p>
-			<ul>
-				<li>
-					Developed and maintained a job portal web application using <span
-						>React, Next.js, Redux Toolkit, React Query, and AWS Amplify
-					</span>. The application helped to manage jobs and freelancers easily.
-				</li>
-				<li>
-					Developed and shipped
-					<a
-						class="highlight-link"
-						target="_blank"
-						href="https://365meditaties.nl/"
-					>
-						365 Meditaties
-					</a> app using
-					<span>
-						React Native, TypeScript, MobX-State-Tree, Emotion, Moti, and Sentry
-					</span> with features like chat, live meditation, and an on-demand audio
-					player. Integrated <span>RevenueCat</span> to enable online subscription
-					and <span>Firebase</span>
-					to provide notification, and dynamic links.
-				</li>
-				<li>
-					Collaborated with the UI/UX team to design the public house visit web
-					app of the Netherland Government using <span
-						>Microsoft fluent design system.
-					</span>
-				</li>
-				<li>
-					Communicated with multi-disciplinary teams of software engineers,
-					designers, and product owners daily to design and develop e-commerce
-					products.
-				</li>
-			</ul>
-		</div>
-		<div>
-			<p class="job-title">
-				Software Engineer Trainee @
-				<a
-					class="highlight-link"
-					target="_blank"
-					href="https://www.linkedin.com/company/trabeya/"
-				>
-					Trabeya
-				</a> (acquired by
-				<a class="highlight-link" target="_blank" href="https://surge.global/">
-					Surge Global
-				</a>
-				) 🇱🇰
-			</p>
-			<ul>
-				<li>
-					Worked with the team of developers and ML engineers to develop a
-					Virtual Concierge system for the Lake Nona region. I developed the bot
-					and admin dashboard interface, wrote an excel sheet reader, and
-					integrated a profanity checker using <span
-						>Java, SpringBoot, Python and MongoDB.
-					</span>
-				</li>
-				<li>
-					Implemented a Document Ingester to search PDFs and textual images
-					using Ingest Attachment Plugin of <span>Elasticsearch.</span>
-				</li>
-				<li>
-					Maintained the application by fixing bugs and being on-call during the
-					critical User Acceptance Testing (UAT) period.
-				</li>
-				<li>
-					Worked regularly with UI/UX designers, developers, and ML engineers to
-					improve product accessibility.
-				</li>
-			</ul>
-		</div>
+		{
+			jobs.map(job => (
+				<div>
+					<p class="job-title">
+						{job.role} @
+						<a
+							class="highlight-link"
+							target="_blank"
+							href={job.companyUrl}
+						>
+							{job.company}
+						</a>
+						{job.companySuffix && <Fragment set:html={job.companySuffix} />} {job.location}
+					</p>
+					<ul>
+						{
+							job.bullets.map(bullet => (
+								<li set:html={bullet} />
+							))
+						}
+					</ul>
+				</div>
+			))
+		}
 	</div>
 </section>
 

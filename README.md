@@ -45,7 +45,7 @@ All commands are run from the root of the project, from a terminal:
 
 | Font         | Link                                                        |
 | :----------- | :---------------------------------------------------------- |
-| `Inter`      | [Google Font](https://fonts.google.com/specimen/Inter)      |
+| `Syne`      | [Google Font](https://fonts.google.com/specimen/Syne)      |
 | `Space Mono` | [Google Font](https://fonts.google.com/specimen/Space+Mono) |
 
 | Color           | Hex     |
