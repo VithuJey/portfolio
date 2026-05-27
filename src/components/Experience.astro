@@ -18,8 +18,12 @@ const { heading, jobs } = portfolioData.experience;
 						>
 							{job.company}
 						</a>
-						{job.companySuffix && <Fragment set:html={job.companySuffix} />} {job.location}
+						{job.companySuffix && <Fragment set:html={job.companySuffix} />}
 					</p>
+					<div class="job-meta">
+						<span class="job-duration">{job.duration}</span>
+						<span class="job-location">{job.location}</span>
+					</div>
 					<ul>
 						{
 							job.bullets.map(bullet => (
@@ -36,6 +40,7 @@ const { heading, jobs } = portfolioData.experience;
 <style>
 	ul {
 		list-style: none;
+		padding-left: 20px;
 	}
 	li {
 		font-family: var(--font-sans);
@@ -54,8 +59,25 @@ const { heading, jobs } = portfolioData.experience;
 	.job-title {
 		font-size: var(--font-lg);
 		line-height: var(--line-height-lg);
+		margin-bottom: 5px;
 	}
 	.highlight-link {
 		background-color: var(--active-color);
+	}
+	.job-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 15px;
+		font-family: var(--font-mono);
+		font-size: var(--font-sm);
+		color: var(--tertiary-color);
+		margin-bottom: 15px;
+		margin-top: 5px;
+	}
+	.job-duration::before {
+		content: "📅 ";
+	}
+	.job-location::before {
+		content: "📍 ";
 	}
 </style>

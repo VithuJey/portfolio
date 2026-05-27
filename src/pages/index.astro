@@ -3,18 +3,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
+import Education from "../components/Education.astro";
 import Projects from "../components/Projects.astro";
 import Insights from "../components/Insights.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import portfolioData from "../data/portfolio.json";
 
-// todo: add blogs + webinar section
-// todo: rewrite content according to the new ATS resume
-// todo: change the about-me pic
 // todo: improve style
 // todo: improve nav bar UI & UX
-// todo: update new resume
 
 const title = "Vithushan";
 
@@ -27,6 +24,7 @@ const isVisible = (label: string) =>
 	<Hero />
 	{isVisible("About") && <About />}
 	{isVisible("Experience") && <Experience />}
+	{isVisible("Education") && <Education />}
 	{isVisible("Projects") && <Projects />}
 	{isVisible("Insights") && <Insights />}
 	{isVisible("Contact") && <Contact />}
