@@ -4,19 +4,19 @@ This portfolio uses a **feature-based** layout on top of Astro’s file-based ro
 
 ## Folder roles
 
-| Path | Purpose |
-|------|---------|
-| `src/pages/` | Routes only — thin wrappers |
-| `src/features/` | Page-specific UI (`home`, `certificate`) |
-| `src/components/layout/` | Global shell (header, rails, theme) |
-| `src/components/ui/` | Small reusable UI primitives |
-| `src/components/seo/` | SEO `<head>` metadata |
-| `src/layouts/` | HTML document wrapper |
-| `src/content/` | Content collection entries (certificates) |
-| `src/data/` | JSON content (`portfolio.json`, `site.json`) |
-| `src/lib/` | Validated data loaders and helpers |
-| `src/schemas/` | Zod schemas for JSON validation |
-| `src/styles/tokens/` | Design tokens (CSS variables) |
+| Path                     | Purpose                                      |
+| ------------------------ | -------------------------------------------- |
+| `src/pages/`             | Routes only — thin wrappers                  |
+| `src/features/`          | Page-specific UI (`home`, `certificate`)     |
+| `src/components/layout/` | Global shell (header, rails, theme)          |
+| `src/components/ui/`     | Small reusable UI primitives                 |
+| `src/components/seo/`    | SEO `<head>` metadata                        |
+| `src/layouts/`           | HTML document wrapper                        |
+| `src/content/`           | Content collection entries (certificates)    |
+| `src/data/`              | JSON content (`portfolio.json`, `site.json`) |
+| `src/lib/`               | Validated data loaders and helpers           |
+| `src/schemas/`           | Zod schemas for JSON validation              |
+| `src/styles/tokens/`     | Design tokens (CSS variables)                |
 
 ## Data flow
 

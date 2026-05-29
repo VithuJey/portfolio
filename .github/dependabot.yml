@@ -8,7 +8,7 @@ updates:
     schedule:
       interval: weekly
       day: monday
-      time: "09:00"
+      time: '09:00'
       timezone: UTC
     open-pull-requests-limit: 10
     commit-message:
@@ -19,15 +19,15 @@ updates:
       astro:
         patterns:
           - astro
-          - "@astrojs/*"
+          - '@astrojs/*'
         update-types:
           - minor
           - patch
       lint-format:
         patterns:
           - eslint*
-          - "@eslint/*"
-          - "@typescript-eslint/*"
+          - '@eslint/*'
+          - '@typescript-eslint/*'
           - prettier*
           - globals
         update-types:

@@ -57,27 +57,27 @@ A mostly static personal site: home page sections driven by validated JSON, cert
 
 ## Content
 
-| Source | Used for |
-|--------|----------|
-| `portfolio.json` | Hero, about, experience, education, projects, **insights** (JSON links), contact, nav, socials |
-| `site.json` | Default title, SEO meta |
-| `content/certs/*.md` | Certificate pages at `/cert/<id>/` |
+| Source               | Used for                                                                                       |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| `portfolio.json`     | Hero, about, experience, education, projects, **insights** (JSON links), contact, nav, socials |
+| `site.json`          | Default title, SEO meta                                                                        |
+| `content/certs/*.md` | Certificate pages at `/cert/<id>/`                                                             |
 
 **Insights** stay in JSON (external Medium/YouTube links), not markdown posts.
 
 ## Commands
 
-| Command | Action |
-|---------|--------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Dev server (`http://localhost:4321`) |
-| `npm run build` | Production build → `dist/` |
-| `npm run preview` | Preview production build |
-| `npm run check` | Astro + TypeScript checks |
-| `npm run lint` | ESLint |
-| `npm run lint:fix` | ESLint with auto-fix |
-| `npm run format` | Prettier write |
-| `npm run format:check` | Prettier check (CI-friendly) |
+| Command                | Action                               |
+| ---------------------- | ------------------------------------ |
+| `npm install`          | Install dependencies                 |
+| `npm run dev`          | Dev server (`http://localhost:4321`) |
+| `npm run build`        | Production build → `dist/`           |
+| `npm run preview`      | Preview production build             |
+| `npm run check`        | Astro + TypeScript checks            |
+| `npm run lint`         | ESLint                               |
+| `npm run lint:fix`     | ESLint with auto-fix                 |
+| `npm run format`       | Prettier write                       |
+| `npm run format:check` | Prettier check (CI-friendly)         |
 
 **Node.js:** `>=22.12.0` (see `.nvmrc`).
 
