@@ -1,352 +1,340 @@
 {
-  "email": "vithushjeytharma@gmail.com",
-  "nav": {
-    "logo": "/icons/fa-v.svg",
-    "links": [
-      {
-        "label": "About",
-        "url": "/#about",
-        "visible": true
-      },
-      {
-        "label": "Experience",
-        "url": "/#experience",
-        "visible": true
-      },
-      {
-        "label": "Education",
-        "url": "/#education",
-        "visible": false
-      },
-      {
-        "label": "Projects",
-        "url": "/#projects",
-        "visible": false
-      },
-      {
-        "label": "Insights",
-        "url": "/#insights",
-        "visible": true
-      },
-      {
-        "label": "Contact",
-        "url": "/#contact",
-        "visible": true
-      }
-    ]
-  },
-  "hero": {
-    "welcome": "Welcome, I'm",
-    "name": "Vithushan",
-    "subtitle": "Associate Technical Lead",
-    "description": "Software Engineer specializing in building performant, scalable and secure web & mobile applications.",
-    "resumeUrl": "/docs/Vithushan Jeyasothy.pdf",
-    "resumeLabel": "Get Resume"
-  },
-  "about": {
-    "heading": "About Me",
-    "paragraphs": [
-      "I'm a Software Engineer with rich experience delivering complex, cross-platform mobile applications and large-scale web platforms. I bring strong expertise in JavaScript, TypeScript, and Python, alongside proficiency in React, Next.js, React Native, and Node.js, building performant, scalable, and secure applications.",
-      "I make impactful contributions across the Software Development Life Cycle, from analysis and design to testing and deployment. As an engaged Agile collaborator, I thrive in fast-paced environments, mentoring junior engineers, and aligning stakeholders to drive progress."
-    ],
-    "skillHeading": "Here are the few technologies I have been working with recently:",
-    "skills": [
-      "TypeScript",
-      "JavaScript ES6+",
-      "React",
-      "Next.js",
-      "React Native",
-      "Astro",
-      "Node.js",
-      "Python",
-      "MongoDB",
-      "MySQL",
-      "Docker",
-      "Git"
-    ],
-    "avatar": {
-      "src": "/images/vithu.jpg",
-      "alt": "avatar"
-    }
-  },
-  "experience": {
-    "heading": "Experience",
-    "jobs": [
-      {
-        "role": "Associate Technical Lead",
-        "company": "Creative Software",
-        "companyUrl": "https://www.creativesoftware.com",
-        "location": "Colombo, Sri Lanka",
-        "duration": "Mar. 2025 - Present",
-        "bullets": [
-          "Drafted and documented <span>front-end architectural designs</span> and presented them to the Technical Design Authority and Technical Design Board, including Principal Software Engineers, Tech Leads, Software Architects, and Team Managers, to provide technical solutions that addressed technical requirements.",
-          "Cultivated a collaborative environment within the team by mentoring Junior Engineers through active <span>code reviews</span> and <span>pair programming</span>, facilitating knowledge-sharing and improving the quality of output.",
-          "Developed a styled shared component library as an npm package following <span>Atomic Design methodology</span> and <span>SOLID principles</span>, and utilized <span>Storybook</span> to document and visualize components, increasing team efficiency by boosting reusability and reducing code redundancy.",
-          "Instituted standard coding practices that significantly boosted code readability, ensured its maintainability, and boosted team efficiency by leveraging industry-established guidelines and collaboration tools in the process.",
-          "Collaborated within a cross-functional team employing <span>Agile practices</span>, including daily stand-up meetings and weekly sprints, to effectively deliver software under tight deadlines."
-        ]
-      },
-      {
-        "role": "Senior Software Engineer",
-        "company": "Creative Software",
-        "companyUrl": "https://www.creativesoftware.com",
-        "location": "Colombo, Sri Lanka",
-        "duration": "Mar. 2023 - Mar. 2025",
-        "bullets": [
-          "Optimized the web application's load time by applying lazy loading, browser caching, virtualizing large lists, rendering strategies, code splitting, memoization, and leveraging <span>Vite, Web Workers, and React Query</span>, achieving a page load time of under 10 ms.",
-          "Initiated a thorough revamp of the Explori Web Application, using <span>React</span> for the front-end, integrating state management with <span>MobX</span>, employing <span>Scss</span> for advanced styling solutions while developing forms, tables, data filtration mechanisms, and custom charts with <span>Apache ECharts</span>, all contributing to an improved user experience.",
-          "Implemented the <span>Strategy Pattern</span> with <span>React Hook Form</span> to increase validation flexibility, reduce code duplication, and enhance code reusability and scalability in a React application, streamlining dynamic styling through the modular stylesheets.",
-          "Crafted and implemented a secure user authentication system using the <span>Microsoft Identity Platform</span>, employing <span>OAuth 2.0 Authorization Code Flow</span> and <span>JWT</span> for effective token-based authentication to safeguard user data privacy.",
-          "Evaluated solutions by deploying unit tests, integration tests, and end-to-end tests using frameworks such as <span>Jest, Vitest, React Testing Library, and Cypress</span>, achieving a code coverage of 80%.",
-          "Deployed using <span>Docker</span> and <span>Git hooks</span>, and gained familiarity with <span>Jenkins</span>, achieving a more efficient deployment process.",
-          "Maintained and enhanced the software by implementing periodic updates and optimizations, utilizing <span>Git</span> for source code management and <span>Prometheus</span> for real-time performance monitoring, ensuring continuous system efficiency."
-        ]
-      },
-      {
-        "role": "Software Engineer",
-        "company": "Flatline Agency",
-        "companyUrl": "https://www.flatlineagency.com/",
-        "location": "Amsterdam, Netherlands",
-        "duration": "Aug. 2020 - Feb. 2023",
-        "bullets": [
-          "Led a mobile development team of 5 to create cross-platform applications, completing successful Proof of Concepts and played a pivotal role in the technical effort by leading development teams and enhancing application performance across web and mobile platforms, by improving user experience, and optimizing application efficiencies.",
-          "Collaborated with UI/UX teams and cross-functional teams, employing <span>Microsoft Fluent Design System</span>, to design and develop web applications and e-commerce products for the Netherlands Government, enhancing user engagement and functionality.",
-          "Refined and sustained the job portal web application by integrating <span>React</span> with advanced practices such as custom hooks, lazy loading images, and memoizing components; combined with Server-Side Rendering using <span>Next.js</span> and employing component composition, modularization, and code smells removal, which led to reducing the load time from 12 seconds to 3 seconds.",
-          "Transitioned 2,000 active users to the “365 Meditaties” mobile app, developed using <span>React Native</span>, and optimized user engagement by adhering to <span>Material Design</span> and <span>Human Interface Guidelines</span>, while implementing responsive design, intuitive navigation, accessibility, and <span>TypeScript</span> to ensure type safety and modular coding, thereby achieving cross-platform compatibility on Android and iOS.",
-          "Developed cutting-edge features such as notifications, chat, concurrent meditation, and in-app subscriptions using <span>MobX-State-Tree</span> and <span>Emotion</span> with <span>Moti</span>, improving immutable data structures, change detection, debugging, module reloading, and refining tweening algorithms and hardware acceleration to ensure a fluid user experience.",
-          "Implemented <span>Sentry</span> and <span>Firebase</span> to optimize app performance and monitor user engagement analytics by integrating error tracking, performance monitoring, real-time database, and user authentication, while <span>RevenueCat</span> managed subscription lifecycle and payment processing, boosting user retention rates."
-        ]
-      },
-      {
-        "role": "Software Engineer Trainee",
-        "company": "Trabeya",
-        "companyUrl": "https://www.linkedin.com/company/trabeya/",
-        "companySuffix": " (acquired by <a class=\"highlight-link\" target=\"_blank\" href=\"https://surge.global/\">Surge Global</a>)",
-        "location": "Colombo, Sri Lanka",
-        "duration": "Sep. 2018 - Mar. 2019",
-        "bullets": [
-          "Developed an Excel sheet reader to streamline the bot maintenance team's manual work for the Virtual Concierge project and participated in <span>Scrum</span> and <span>Agile</span> ceremonies, enhancing team productivity, ensuring timely project delivery, and improving overall management.",
-          "Built the Virtual Concierge Dashboard application using <span>Java</span> and <span>SpringBoot</span>, integrating dependency injection and microservices architecture alongside <span>Python</span> and <span>MongoDB</span>, streamlining data processing and user experience with indexing and replication.",
-          "Conducted a document reader that searches both text and textual images within PDF files using the Ingest Attachment Plugin of <span>Elasticsearch</span>, integrating full-text search capabilities and data indexing to improve the system's information retrieval efficiency by reducing processing time.",
-          "Resolved critical issues in the application during the User Acceptance Testing period by managing <span>JIRA</span> tickets and providing on-call support, which improved system stability by reducing downtime."
-        ]
-      }
-    ]
-  },
-  "education": {
-    "heading": "Education",
-    "school": "Sri Lanka Institute of Information Technology (SLIIT)",
-    "location": "Malabe, Sri Lanka",
-    "degree": "Bachelor of Science (Hons) in Information Technology",
-    "duration": "Jun. 2016 - Jan. 2021",
-    "description": "Developed and integrated a plant disease detection system using Deep Learning, training ResNet50 and Inception-v3 models and converting them into TensorFlow Lite for use in a Flutter mobile app, leading a 4-member team."
-  },
-  "projects": {
-    "heading": "Fun Projects",
-    "list": [
-      {
-        "id": "svelte-gradient-animation",
-        "title": "Gradient Animator",
-        "type": "one",
-        "image": {
-          "src": "/images/ss-gradient-animation.png",
-          "alt": "gradient-img"
-        },
-        "description": "Created the web app to learn the new JS framework Svelte. I really loved the opinionated approaches in Svelte. Also a nice way to spend time for a React developer 😉",
-        "technologies": [
-          "Svelte",
-          "Vite"
-        ],
-        "links": [
-          {
-            "id": "github",
-            "url": "https://github.com/VithuJey/svelte-gradient-animation",
-            "icon": "/icons/fa-github.svg",
-            "alt": "github-icon"
-          },
-          {
-            "id": "gradient-wineview-website",
-            "url": "https://gradient-animation.netlify.app/",
-            "icon": "/icons/fa-link.svg",
-            "alt": "link-icon"
-          }
-        ]
-      },
-      {
-        "id": "wine-view-dashboard",
-        "title": "Wine View Dashboard",
-        "type": "two",
-        "image": {
-          "src": "/images/ss-wine-view.png",
-          "alt": "gradient-img"
-        },
-        "description": "Designed & developed this web dashboard to manage the wine distribution for a distributor. This is the demo app of a finished one.",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "Ant Design",
-          "Figma"
-        ],
-        "links": [
-          {
-            "id": "github",
-            "url": "https://github.com/VithuJey/wine-view-dashboard",
-            "icon": "/icons/fa-github.svg",
-            "alt": "github-icon"
-          },
-          {
-            "id": "figma",
-            "url": "https://www.figma.com/file/xorRRWzTJKH9spnWKbMEa5/WineView-Dashboard-(Desktop-%26-Mobile)?node-id=43%3A4442",
-            "icon": "/icons/fa-figma.svg",
-            "alt": "figma-icon",
-            "class": "figma-icon"
-          },
-          {
-            "id": "wineview-website",
-            "url": "https://wineview.netlify.app/",
-            "icon": "/icons/fa-link.svg",
-            "alt": "link-icon"
-          }
-        ]
-      },
-      {
-        "id": "web-worker",
-        "title": "Web Worker in React",
-        "type": "one",
-        "image": {
-          "src": "/images/ss-web-worker.png",
-          "alt": "gradient-img"
-        },
-        "description": "Developed web worker interface to test and run web worker for a Medium article. By the way Web worker is fascinating!",
-        "technologies": [
-          "React",
-          "TypeScript",
-          "Web Worker"
-        ],
-        "links": [
-          {
-            "id": "github",
-            "url": "https://github.com/VithuJey/web-worker",
-            "icon": "/icons/fa-github.svg",
-            "alt": "github-icon"
-          },
-          {
-            "id": "gradient-wineview-website",
-            "url": "https://medium.com/javascript-in-plain-english/how-to-use-web-workers-in-react-9de15a006e89",
-            "icon": "/icons/fa-medium.svg",
-            "alt": "link-icon"
-          },
-          {
-            "id": "gradient-wineview-website",
-            "url": "https://react-web-workers.netlify.app/",
-            "icon": "/icons/fa-link.svg",
-            "alt": "link-icon"
-          }
-        ]
-      }
-    ]
-  },
-  "insights": {
-    "heading": "Insights",
-    "list": [
-      {
-        "link": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
-        "title": "Next.js Performance Optimization Techniques",
-        "desc": "fine-tune the applications for maximum speed and efficiency",
-        "thumbnail": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
-        "type": "video"
-      },
-      {
-        "link": "https://medium.com/geekculture/embracing-bugs-and-learning-from-fixing-228c653dc885",
-        "title": "Embracing Bugs and Learning from Fixing",
-        "desc": "A reflection on my personal experience",
-        "thumbnail": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*VLy4um3-GCs9fx6xPJ1AoQ.jpeg",
-        "type": "article"
-      },
-      {
-        "link": "https://javascript.plainenglish.io/how-to-use-web-workers-in-react-9de15a006e89",
-        "title": "How to Use Web Workers in React",
-        "desc": "An introduction to web workers in React ecosystem",
-        "thumbnail": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9M2o1CnQbNj9Oj5IeME8pQ.png",
-        "type": "article"
-      },
-      {
-        "link": "https://javascript.plainenglish.io/do-you-know-the-5-types-of-states-in-react-8734a04a5ffb",
-        "title": "Do You Know the 5 Types of States in React?",
-        "desc": "The helping guide to know your states in React better",
-        "thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*QCtnQp-bLTksAFHJ050zZQ.png",
-        "type": "article"
-      },
-      {
-        "link": "https://javascript.plainenglish.io/react-vs-other-frameworks-a-comparison-in-3-aspects-756ab84b8d95",
-        "title": "React vs. Other Frameworks: A Comparison in 3 Aspects",
-        "desc": "State Management, Routing, and Client-Server Communication",
-        "thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NS3xzv05RcOcYllRVyfZxA.png",
-        "type": "article"
-      },
-      {
-        "link": "https://javascript.plainenglish.io/trending-storage-options-for-react-native-developers-8671fbffb686",
-        "title": "Storage Options for React Native Apps",
-        "desc": "Detailed View on Different ways to Store Data in React Native Ecosystem",
-        "thumbnail": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*4L_oTx-TV7euxNgR-_8w9A.png",
-        "type": "article"
-      },
-      {
-        "link": "https://javascript.plainenglish.io/5-useful-user-interface-libraries-for-react-native-developers-d74e99f67da1",
-        "title": "5 Useful User Interface Libraries for React Native Developers",
-        "desc": "The unique UI libraries to leverage the user experience",
-        "thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*CcWMiJHpCoxXOjirooriMQ.png",
-        "type": "article"
-      },
-      {
-        "link": "https://javascript.plainenglish.io/how-to-choose-the-best-library-for-your-next-react-native-project-in-2021-44a12ef4ca17",
-        "title": "How to Choose the Best Library for Your Next React Native Project",
-        "desc": "A guide to your search for the best React Native library.",
-        "thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/0*FEwtZeU00aqfmg0k",
-        "type": "article"
-      }
-    ]
-  },
-  "contact": {
-    "heading": "Get In Touch",
-    "description": "I like to meet new people and exchange ideas. Let's grab a coffee!",
-    "buttonUrl": "mailto:vithushjeytharma@gmail.com",
-    "buttonText": "Say Hello"
-  },
-  "socials": [
-    {
-      "id": "medium",
-      "url": "https://medium.com/@vithushjeytharma",
-      "icon": "/icons/fa-medium.svg",
-      "alt": "medium-icon",
-      "visible": true
-    },
-    {
-      "id": "github",
-      "url": "https://github.com/vithujey",
-      "icon": "/icons/fa-github.svg",
-      "alt": "github-icon",
-      "visible": true
-    },
-    {
-      "id": "linkedin",
-      "url": "https://www.linkedin.com/in/vithujey/",
-      "icon": "/icons/fa-linkedin.svg",
-      "alt": "linkedin-icon",
-      "visible": true
-    },
-    {
-      "id": "twitter",
-      "url": "https://twitter.com/jeyvithu",
-      "icon": "/icons/fa-twitter.svg",
-      "alt": "twitter-icon",
-      "visible": false
-    }
-  ],
-  "footer": {
-    "builtWithText": "Built with",
-    "builtWithUrl": "https://astro.build/",
-    "builtWithLogo": "/icons/astro.svg",
-    "builtWithAlt": "astro-logo"
-  }
+	"email": "vithushjeytharma@gmail.com",
+	"nav": {
+		"logo": "/icons/fa-v.svg",
+		"links": [
+			{
+				"label": "About",
+				"url": "/#about",
+				"visible": true
+			},
+			{
+				"label": "Experience",
+				"url": "/#experience",
+				"visible": true
+			},
+			{
+				"label": "Education",
+				"url": "/#education",
+				"visible": false
+			},
+			{
+				"label": "Projects",
+				"url": "/#projects",
+				"visible": false
+			},
+			{
+				"label": "Insights",
+				"url": "/#insights",
+				"visible": true
+			},
+			{
+				"label": "Contact",
+				"url": "/#contact",
+				"visible": true
+			}
+		]
+	},
+	"hero": {
+		"welcome": "Welcome, I'm",
+		"name": "Vithushan",
+		"subtitle": "Associate Technical Lead",
+		"description": "Software Engineer specializing in building performant, scalable and secure web & mobile applications.",
+		"resumeUrl": "/docs/Vithushan Jeyasothy.pdf",
+		"resumeLabel": "Get Resume"
+	},
+	"about": {
+		"heading": "About Me",
+		"paragraphs": [
+			"I'm a Software Engineer with rich experience delivering complex, cross-platform mobile applications and large-scale web platforms. I bring strong expertise in JavaScript, TypeScript, and Python, alongside proficiency in React, Next.js, React Native, and Node.js, building performant, scalable, and secure applications.",
+			"I make impactful contributions across the Software Development Life Cycle, from analysis and design to testing and deployment. As an engaged Agile collaborator, I thrive in fast-paced environments, mentoring junior engineers, and aligning stakeholders to drive progress."
+		],
+		"skillHeading": "Here are the few technologies I have been working with recently:",
+		"skills": [
+			"TypeScript",
+			"JavaScript ES6+",
+			"React",
+			"Next.js",
+			"React Native",
+			"Astro",
+			"Node.js",
+			"Python",
+			"MongoDB",
+			"MySQL",
+			"Docker",
+			"Git"
+		],
+		"avatar": {
+			"src": "/images/vithu.jpg",
+			"alt": "avatar"
+		}
+	},
+	"experience": {
+		"heading": "Experience",
+		"jobs": [
+			{
+				"role": "Associate Technical Lead",
+				"company": "Creative Software",
+				"companyUrl": "https://www.creativesoftware.com",
+				"location": "Colombo, Sri Lanka",
+				"duration": "Mar. 2025 - Present",
+				"bullets": [
+					"Drafted and documented <span>front-end architectural designs</span> and presented them to the Technical Design Authority and Technical Design Board, including Principal Software Engineers, Tech Leads, Software Architects, and Team Managers, to provide technical solutions that addressed technical requirements.",
+					"Cultivated a collaborative environment within the team by mentoring Junior Engineers through active <span>code reviews</span> and <span>pair programming</span>, facilitating knowledge-sharing and improving the quality of output.",
+					"Developed a styled shared component library as an npm package following <span>Atomic Design methodology</span> and <span>SOLID principles</span>, and utilized <span>Storybook</span> to document and visualize components, increasing team efficiency by boosting reusability and reducing code redundancy.",
+					"Instituted standard coding practices that significantly boosted code readability, ensured its maintainability, and boosted team efficiency by leveraging industry-established guidelines and collaboration tools in the process.",
+					"Collaborated within a cross-functional team employing <span>Agile practices</span>, including daily stand-up meetings and weekly sprints, to effectively deliver software under tight deadlines."
+				]
+			},
+			{
+				"role": "Senior Software Engineer",
+				"company": "Creative Software",
+				"companyUrl": "https://www.creativesoftware.com",
+				"location": "Colombo, Sri Lanka",
+				"duration": "Mar. 2023 - Mar. 2025",
+				"bullets": [
+					"Optimized the web application's load time by applying lazy loading, browser caching, virtualizing large lists, rendering strategies, code splitting, memoization, and leveraging <span>Vite, Web Workers, and React Query</span>, achieving a page load time of under 10 ms.",
+					"Initiated a thorough revamp of the Explori Web Application, using <span>React</span> for the front-end, integrating state management with <span>MobX</span>, employing <span>Scss</span> for advanced styling solutions while developing forms, tables, data filtration mechanisms, and custom charts with <span>Apache ECharts</span>, all contributing to an improved user experience.",
+					"Implemented the <span>Strategy Pattern</span> with <span>React Hook Form</span> to increase validation flexibility, reduce code duplication, and enhance code reusability and scalability in a React application, streamlining dynamic styling through the modular stylesheets.",
+					"Crafted and implemented a secure user authentication system using the <span>Microsoft Identity Platform</span>, employing <span>OAuth 2.0 Authorization Code Flow</span> and <span>JWT</span> for effective token-based authentication to safeguard user data privacy.",
+					"Evaluated solutions by deploying unit tests, integration tests, and end-to-end tests using frameworks such as <span>Jest, Vitest, React Testing Library, and Cypress</span>, achieving a code coverage of 80%.",
+					"Deployed using <span>Docker</span> and <span>Git hooks</span>, and gained familiarity with <span>Jenkins</span>, achieving a more efficient deployment process.",
+					"Maintained and enhanced the software by implementing periodic updates and optimizations, utilizing <span>Git</span> for source code management and <span>Prometheus</span> for real-time performance monitoring, ensuring continuous system efficiency."
+				]
+			},
+			{
+				"role": "Software Engineer",
+				"company": "Flatline Agency",
+				"companyUrl": "https://www.flatlineagency.com/",
+				"location": "Amsterdam, Netherlands",
+				"duration": "Aug. 2020 - Feb. 2023",
+				"bullets": [
+					"Led a mobile development team of 5 to create cross-platform applications, completing successful Proof of Concepts and played a pivotal role in the technical effort by leading development teams and enhancing application performance across web and mobile platforms, by improving user experience, and optimizing application efficiencies.",
+					"Collaborated with UI/UX teams and cross-functional teams, employing <span>Microsoft Fluent Design System</span>, to design and develop web applications and e-commerce products for the Netherlands Government, enhancing user engagement and functionality.",
+					"Refined and sustained the job portal web application by integrating <span>React</span> with advanced practices such as custom hooks, lazy loading images, and memoizing components; combined with Server-Side Rendering using <span>Next.js</span> and employing component composition, modularization, and code smells removal, which led to reducing the load time from 12 seconds to 3 seconds.",
+					"Transitioned 2,000 active users to the “365 Meditaties” mobile app, developed using <span>React Native</span>, and optimized user engagement by adhering to <span>Material Design</span> and <span>Human Interface Guidelines</span>, while implementing responsive design, intuitive navigation, accessibility, and <span>TypeScript</span> to ensure type safety and modular coding, thereby achieving cross-platform compatibility on Android and iOS.",
+					"Developed cutting-edge features such as notifications, chat, concurrent meditation, and in-app subscriptions using <span>MobX-State-Tree</span> and <span>Emotion</span> with <span>Moti</span>, improving immutable data structures, change detection, debugging, module reloading, and refining tweening algorithms and hardware acceleration to ensure a fluid user experience.",
+					"Implemented <span>Sentry</span> and <span>Firebase</span> to optimize app performance and monitor user engagement analytics by integrating error tracking, performance monitoring, real-time database, and user authentication, while <span>RevenueCat</span> managed subscription lifecycle and payment processing, boosting user retention rates."
+				]
+			},
+			{
+				"role": "Software Engineer Trainee",
+				"company": "Trabeya",
+				"companyUrl": "https://www.linkedin.com/company/trabeya/",
+				"companySuffix": " (acquired by <a class=\"highlight-link\" target=\"_blank\" href=\"https://surge.global/\">Surge Global</a>)",
+				"location": "Colombo, Sri Lanka",
+				"duration": "Sep. 2018 - Mar. 2019",
+				"bullets": [
+					"Developed an Excel sheet reader to streamline the bot maintenance team's manual work for the Virtual Concierge project and participated in <span>Scrum</span> and <span>Agile</span> ceremonies, enhancing team productivity, ensuring timely project delivery, and improving overall management.",
+					"Built the Virtual Concierge Dashboard application using <span>Java</span> and <span>SpringBoot</span>, integrating dependency injection and microservices architecture alongside <span>Python</span> and <span>MongoDB</span>, streamlining data processing and user experience with indexing and replication.",
+					"Conducted a document reader that searches both text and textual images within PDF files using the Ingest Attachment Plugin of <span>Elasticsearch</span>, integrating full-text search capabilities and data indexing to improve the system's information retrieval efficiency by reducing processing time.",
+					"Resolved critical issues in the application during the User Acceptance Testing period by managing <span>JIRA</span> tickets and providing on-call support, which improved system stability by reducing downtime."
+				]
+			}
+		]
+	},
+	"education": {
+		"heading": "Education",
+		"school": "Sri Lanka Institute of Information Technology (SLIIT)",
+		"location": "Malabe, Sri Lanka",
+		"degree": "Bachelor of Science (Hons) in Information Technology",
+		"duration": "Jun. 2016 - Jan. 2021",
+		"description": "Developed and integrated a plant disease detection system using Deep Learning, training ResNet50 and Inception-v3 models and converting them into TensorFlow Lite for use in a Flutter mobile app, leading a 4-member team."
+	},
+	"projects": {
+		"heading": "Fun Projects",
+		"list": [
+			{
+				"id": "svelte-gradient-animation",
+				"title": "Gradient Animator",
+				"type": "one",
+				"image": {
+					"src": "/images/ss-gradient-animation.png",
+					"alt": "gradient-img"
+				},
+				"description": "Created the web app to learn the new JS framework Svelte. I really loved the opinionated approaches in Svelte. Also a nice way to spend time for a React developer 😉",
+				"technologies": ["Svelte", "Vite"],
+				"links": [
+					{
+						"id": "github",
+						"url": "https://github.com/VithuJey/svelte-gradient-animation",
+						"icon": "/icons/fa-github.svg",
+						"alt": "github-icon"
+					},
+					{
+						"id": "gradient-wineview-website",
+						"url": "https://gradient-animation.netlify.app/",
+						"icon": "/icons/fa-link.svg",
+						"alt": "link-icon"
+					}
+				]
+			},
+			{
+				"id": "wine-view-dashboard",
+				"title": "Wine View Dashboard",
+				"type": "two",
+				"image": {
+					"src": "/images/ss-wine-view.png",
+					"alt": "gradient-img"
+				},
+				"description": "Designed & developed this web dashboard to manage the wine distribution for a distributor. This is the demo app of a finished one.",
+				"technologies": ["React", "TypeScript", "Ant Design", "Figma"],
+				"links": [
+					{
+						"id": "github",
+						"url": "https://github.com/VithuJey/wine-view-dashboard",
+						"icon": "/icons/fa-github.svg",
+						"alt": "github-icon"
+					},
+					{
+						"id": "figma",
+						"url": "https://www.figma.com/file/xorRRWzTJKH9spnWKbMEa5/WineView-Dashboard-(Desktop-%26-Mobile)?node-id=43%3A4442",
+						"icon": "/icons/fa-figma.svg",
+						"alt": "figma-icon",
+						"class": "figma-icon"
+					},
+					{
+						"id": "wineview-website",
+						"url": "https://wineview.netlify.app/",
+						"icon": "/icons/fa-link.svg",
+						"alt": "link-icon"
+					}
+				]
+			},
+			{
+				"id": "web-worker",
+				"title": "Web Worker in React",
+				"type": "one",
+				"image": {
+					"src": "/images/ss-web-worker.png",
+					"alt": "gradient-img"
+				},
+				"description": "Developed web worker interface to test and run web worker for a Medium article. By the way Web worker is fascinating!",
+				"technologies": ["React", "TypeScript", "Web Worker"],
+				"links": [
+					{
+						"id": "github",
+						"url": "https://github.com/VithuJey/web-worker",
+						"icon": "/icons/fa-github.svg",
+						"alt": "github-icon"
+					},
+					{
+						"id": "gradient-wineview-website",
+						"url": "https://medium.com/javascript-in-plain-english/how-to-use-web-workers-in-react-9de15a006e89",
+						"icon": "/icons/fa-medium.svg",
+						"alt": "link-icon"
+					},
+					{
+						"id": "gradient-wineview-website",
+						"url": "https://react-web-workers.netlify.app/",
+						"icon": "/icons/fa-link.svg",
+						"alt": "link-icon"
+					}
+				]
+			}
+		]
+	},
+	"insights": {
+		"heading": "Insights",
+		"list": [
+			{
+				"link": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
+				"title": "Next.js Performance Optimization Techniques",
+				"desc": "fine-tune the applications for maximum speed and efficiency",
+				"thumbnail": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
+				"type": "video"
+			},
+			{
+				"link": "https://medium.com/geekculture/embracing-bugs-and-learning-from-fixing-228c653dc885",
+				"title": "Embracing Bugs and Learning from Fixing",
+				"desc": "A reflection on my personal experience",
+				"thumbnail": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*VLy4um3-GCs9fx6xPJ1AoQ.jpeg",
+				"type": "article"
+			},
+			{
+				"link": "https://javascript.plainenglish.io/how-to-use-web-workers-in-react-9de15a006e89",
+				"title": "How to Use Web Workers in React",
+				"desc": "An introduction to web workers in React ecosystem",
+				"thumbnail": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9M2o1CnQbNj9Oj5IeME8pQ.png",
+				"type": "article"
+			},
+			{
+				"link": "https://javascript.plainenglish.io/do-you-know-the-5-types-of-states-in-react-8734a04a5ffb",
+				"title": "Do You Know the 5 Types of States in React?",
+				"desc": "The helping guide to know your states in React better",
+				"thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*QCtnQp-bLTksAFHJ050zZQ.png",
+				"type": "article"
+			},
+			{
+				"link": "https://javascript.plainenglish.io/react-vs-other-frameworks-a-comparison-in-3-aspects-756ab84b8d95",
+				"title": "React vs. Other Frameworks: A Comparison in 3 Aspects",
+				"desc": "State Management, Routing, and Client-Server Communication",
+				"thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*NS3xzv05RcOcYllRVyfZxA.png",
+				"type": "article"
+			},
+			{
+				"link": "https://javascript.plainenglish.io/trending-storage-options-for-react-native-developers-8671fbffb686",
+				"title": "Storage Options for React Native Apps",
+				"desc": "Detailed View on Different ways to Store Data in React Native Ecosystem",
+				"thumbnail": "https://miro.medium.com/v2/resize:fit:4800/format:webp/1*4L_oTx-TV7euxNgR-_8w9A.png",
+				"type": "article"
+			},
+			{
+				"link": "https://javascript.plainenglish.io/5-useful-user-interface-libraries-for-react-native-developers-d74e99f67da1",
+				"title": "5 Useful User Interface Libraries for React Native Developers",
+				"desc": "The unique UI libraries to leverage the user experience",
+				"thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*CcWMiJHpCoxXOjirooriMQ.png",
+				"type": "article"
+			},
+			{
+				"link": "https://javascript.plainenglish.io/how-to-choose-the-best-library-for-your-next-react-native-project-in-2021-44a12ef4ca17",
+				"title": "How to Choose the Best Library for Your Next React Native Project",
+				"desc": "A guide to your search for the best React Native library.",
+				"thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/0*FEwtZeU00aqfmg0k",
+				"type": "article"
+			}
+		]
+	},
+	"contact": {
+		"heading": "Get In Touch",
+		"description": "I like to meet new people and exchange ideas. Let's grab a coffee!",
+		"buttonUrl": "mailto:vithushjeytharma@gmail.com",
+		"buttonText": "Say Hello"
+	},
+	"socials": [
+		{
+			"id": "medium",
+			"url": "https://medium.com/@vithushjeytharma",
+			"icon": "/icons/fa-medium.svg",
+			"alt": "medium-icon",
+			"visible": true
+		},
+		{
+			"id": "github",
+			"url": "https://github.com/vithujey",
+			"icon": "/icons/fa-github.svg",
+			"alt": "github-icon",
+			"visible": true
+		},
+		{
+			"id": "linkedin",
+			"url": "https://www.linkedin.com/in/vithujey/",
+			"icon": "/icons/fa-linkedin.svg",
+			"alt": "linkedin-icon",
+			"visible": true
+		},
+		{
+			"id": "twitter",
+			"url": "https://twitter.com/jeyvithu",
+			"icon": "/icons/fa-twitter.svg",
+			"alt": "twitter-icon",
+			"visible": false
+		}
+	],
+	"footer": {
+		"builtWithText": "Built with",
+		"builtWithUrl": "https://astro.build/",
+		"builtWithLogo": "/icons/astro.svg",
+		"builtWithAlt": "astro-logo"
+	}
 }

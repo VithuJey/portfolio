@@ -1,9 +1,10 @@
 ---
-import portfolioData from "../data/portfolio.json";
-const { email } = portfolioData;
+import { portfolio } from '@/lib/portfolio'
+
+const { email } = portfolio
 ---
 
-<div class="name">
+<div class='name'>
 	<a href={`mailto:${email}`}>{email}</a>
 </div>
 
@@ -26,30 +27,28 @@ const { email } = portfolioData;
 		letter-spacing: 0.1em;
 		color: var(--primary-color);
 		display: inline-block;
-		transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1), color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+		transition:
+			transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1),
+			color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 	}
 	.name::after {
-		content: "";
+		content: '';
 		display: block;
 		width: 1px;
 		height: 90px;
 		background-color: var(--primary-color);
-		/* margin: 0px auto; */
 	}
 
-	/* Medium devices (landscape tablets, 768px and up) */
 	@media only screen and (max-width: 768px) {
 		.name {
 			display: none;
 		}
 	}
-	/* Large devices (laptops/desktops, 992px and up) */
 	@media only screen and (min-width: 992px) {
 		.name {
 			right: 30px;
 		}
 	}
-	/* Extra large devices (large laptops and desktops, 1200px and up) */
 	@media only screen and (min-width: 1200px) {
 		.name {
 			right: 50px;

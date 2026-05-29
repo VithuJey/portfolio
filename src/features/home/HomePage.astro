@@ -1,0 +1,20 @@
+---
+import { isHomeSectionVisible } from '@/lib/nav'
+import About from '@/features/home/sections/About.astro'
+import Contact from '@/features/home/sections/Contact.astro'
+import Education from '@/features/home/sections/Education.astro'
+import Experience from '@/features/home/sections/Experience.astro'
+import Footer from '@/features/home/sections/Footer.astro'
+import Hero from '@/features/home/sections/Hero.astro'
+import Insights from '@/features/home/sections/Insights.astro'
+import Projects from '@/features/home/sections/Projects.astro'
+---
+
+<Hero />
+{isHomeSectionVisible('About') && <About />}
+{isHomeSectionVisible('Experience') && <Experience />}
+{isHomeSectionVisible('Education') && <Education />}
+{isHomeSectionVisible('Projects') && <Projects />}
+{isHomeSectionVisible('Insights') && <Insights />}
+{isHomeSectionVisible('Contact') && <Contact />}
+<Footer />

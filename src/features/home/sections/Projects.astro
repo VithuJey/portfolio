@@ -1,80 +1,84 @@
 ---
-import portfolioData from "../data/portfolio.json";
-const { heading, list } = portfolioData.projects;
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { heading, list } = portfolio.projects
 ---
 
-<section id="projects">
-	<h3 class="content-heading">{heading}</h3>
+<section id='projects'>
+	<SectionHeading title={heading} />
 
-	<div class="project-list">
+	<div class='project-list'>
 		{
-			list.map(project => (
-				project.type === "one" ? (
-					<div class="project-type-one">
-						<div class="left">
+			list.map((project) =>
+				project.type === 'one' ? (
+					<div class='project-type-one'>
+						<div class='left'>
 							<img
-								class="project-img"
+								class='project-img'
 								src={project.image.src}
 								alt={project.image.alt}
 							/>
 						</div>
-						<div class="right">
-							<p class="title">{project.title}</p>
-							<div class="card">
-								<p class="desc">{project.description}</p>
+						<div class='right'>
+							<p class='title'>{project.title}</p>
+							<div class='card'>
+								<p class='desc'>{project.description}</p>
 							</div>
 							<ul>
-								{project.technologies.map(tech => <li>{tech}</li>)}
+								{project.technologies.map((tech) => (
+									<li>{tech}</li>
+								))}
 							</ul>
 							<ul>
-								{
-									project.links.map(link => (
-										<a
-											id={link.id}
-											target="_blank"
-											href={link.url}
-										>
-											<img src={link.icon} alt={link.alt} class={link.class} height="22px" />
-										</a>
-									))
-								}
+								{project.links.map((link) => (
+									<a id={link.id} target='_blank' href={link.url}>
+										<img
+											src={link.icon}
+											alt={link.alt}
+											class={link.class}
+											height='22px'
+										/>
+									</a>
+								))}
 							</ul>
 						</div>
 					</div>
 				) : (
-					<div class="project-type-two">
-						<div class="left">
-							<p class="title">{project.title}</p>
-							<div class="card">
-								<p class="desc">{project.description}</p>
+					<div class='project-type-two'>
+						<div class='left'>
+							<p class='title'>{project.title}</p>
+							<div class='card'>
+								<p class='desc'>{project.description}</p>
 							</div>
 							<ul>
-								{project.technologies.map(tech => <li>{tech}</li>)}
+								{project.technologies.map((tech) => (
+									<li>{tech}</li>
+								))}
 							</ul>
 							<ul>
-								{
-									project.links.map(link => (
-										<a
-											id={link.id}
-											target="_blank"
-											href={link.url}
-										>
-											<img src={link.icon} alt={link.alt} class={link.class} height="22px" />
-										</a>
-									))
-								}
+								{project.links.map((link) => (
+									<a id={link.id} target='_blank' href={link.url}>
+										<img
+											src={link.icon}
+											alt={link.alt}
+											class={link.class}
+											height='22px'
+										/>
+									</a>
+								))}
 							</ul>
 						</div>
-						<div class="right">
+						<div class='right'>
 							<img
-								class="project-img"
+								class='project-img'
 								src={project.image.src}
 								alt={project.image.alt}
 							/>
 						</div>
 					</div>
 				)
-			))
+			)
 		}
 	</div>
 </section>
@@ -144,7 +148,7 @@ const { heading, list } = portfolioData.projects;
 	.left .project-img {
 		width: 100%;
 		border-radius: 10px;
-		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+		box-shadow: var(--card-shadow);
 	}
 	.title {
 		font-size: var(--font-2xl);
@@ -160,7 +164,7 @@ const { heading, list } = portfolioData.projects;
 		border-radius: 10px;
 		padding: 10px 20px;
 		background-color: var(--card-color);
-		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+		box-shadow: var(--card-shadow);
 	}
 	.right .card {
 		right: 40px;
@@ -196,7 +200,7 @@ const { heading, list } = portfolioData.projects;
 	.right .project-img {
 		width: 100%;
 		border-radius: 10px;
-		box-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+		box-shadow: var(--card-shadow);
 	}
 	.left ul {
 		display: flex;

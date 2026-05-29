@@ -2,14 +2,35 @@
 	"name": "portfolio",
 	"version": "0.1.0",
 	"private": true,
+	"type": "module",
+	"engines": {
+		"node": ">=22.12.0"
+	},
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview"
+		"preview": "astro preview",
+		"astro": "astro",
+		"check": "astro check",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
 	},
 	"devDependencies": {
-		"astro": "^3.5.2",
-		"prettier-plugin-astro": "^0.1.1"
+		"@astrojs/check": "^0.9.9",
+		"@astrojs/sitemap": "^3.7.3",
+		"@eslint/js": "^9.39.4",
+		"@typescript-eslint/parser": "^8.60.0",
+		"astro": "^6.3.8",
+		"eslint": "^9.39.4",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-astro": "^1.7.0",
+		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"globals": "^17.6.0",
+		"prettier": "^3.8.3",
+		"prettier-plugin-astro": "^0.14.1",
+		"typescript": "^5.9.3"
 	}
 }

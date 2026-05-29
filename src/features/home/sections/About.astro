@@ -1,29 +1,32 @@
 ---
-import portfolioData from "../data/portfolio.json";
-const { heading, paragraphs, skillHeading, skills, avatar } =
-	portfolioData.about;
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
 ---
 
-<section id="about">
-	<h3 class="content-heading">{heading}</h3>
-	<div class="content-section">
-		<div class="left">
-			{paragraphs.map((paragraph, index) => (
-				<>
-					<p>{paragraph}</p>
-					{index < paragraphs.length - 1 && <br />}
-				</>
-			))}
-			<p class="skill-top">
+<section id='about'>
+	<SectionHeading title={heading} />
+	<div class='content-section'>
+		<div class='left'>
+			{
+				paragraphs.map((paragraph, index) => (
+					<>
+						<p>{paragraph}</p>
+						{index < paragraphs.length - 1 && <br />}
+					</>
+				))
+			}
+			<p class='skill-top'>
 				{skillHeading}
 			</p>
-			<ul class="skill-list">
+			<ul class='skill-list'>
 				{skills.map((skill) => <li>{skill}</li>)}
 			</ul>
 		</div>
-		<div class="right">
-			<div class="wrapper">
-				<img src={avatar.src} alt={avatar.alt} width="300" height="300" />
+		<div class='right'>
+			<div class='wrapper'>
+				<img src={avatar.src} alt={avatar.alt} width='300' height='300' />
 			</div>
 		</div>
 	</div>
@@ -45,16 +48,18 @@ const { heading, paragraphs, skillHeading, skills, avatar } =
 	.right .wrapper {
 		display: flex;
 		width: 320px;
-		height: 340px;
+		height: 320px;
 		max-width: 100%;
 		border-radius: 8px;
-		box-shadow: var(--bg-color) 20px 20px 0px -3px,
+		box-shadow:
+			var(--bg-color) 20px 20px 0px -3px,
 			var(--tertiary-color) 20px 20px;
 		transition: box-shadow 0.5s;
 		overflow: hidden;
 	}
 	.right .wrapper:hover {
-		box-shadow: var(--bg-color) 14px 14px 0px -3px,
+		box-shadow:
+			var(--bg-color) 14px 14px 0px -3px,
 			var(--secondary-color) 14px 14px;
 	}
 	.right img {
@@ -63,7 +68,8 @@ const { heading, paragraphs, skillHeading, skills, avatar } =
 		object-fit: cover;
 		border-radius: 8px;
 		filter: grayscale(100%) opacity(0.5) blur(0.5px);
-		transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+		transition:
+			transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
 			filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.right .wrapper:hover img {
@@ -95,7 +101,7 @@ const { heading, paragraphs, skillHeading, skills, avatar } =
 		margin: 0 10px 10px 0;
 	}
 	.skill-list li::before {
-		content: "▹ ";
+		content: '▹ ';
 		position: relative;
 		color: var(--secondary-color);
 	}
@@ -110,7 +116,7 @@ const { heading, paragraphs, skillHeading, skills, avatar } =
 		display: inline-block;
 	}
 	.highlight-link:after {
-		content: "";
+		content: '';
 		position: absolute;
 		width: 100%;
 		transform: scaleX(0);

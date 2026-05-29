@@ -1,60 +1,90 @@
 <div align="center">
   <img alt="Logo" src="https://github.com/VithuJey/portfolio/blob/master/public/icons/fa-v.svg" width="100" />
 </div>
+
 <h1 align="center">
   <a href="https://vithushan.me" target="_blank">vithushan.me</a>
 </h1>
+
 <p align="center">
-  The site was purely developed using  <a href="https://astro.build" target="_blank">Astro.build</a>. As a half trained Astronaut I would say Astro is promising 😉
+  My personal portfolio — built with <a href="https://astro.build" target="_blank">Astro 6</a>.
 </p>
 
-## 🚀 Project Structure
+## About this repo
 
-Inside of your Astro project, you'll see the following folders and files:
+A mostly static personal site: home page sections driven by validated JSON, certificates via content collections, dark/light theme, and CI tooling. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how folders fit together.
+
+## Tech stack
+
+- [Astro 6](https://docs.astro.build/) (static output)
+- TypeScript + `@astrojs/check`
+- Zod validation (`astro/zod`) for JSON data
+- ESLint + Prettier
+- `@astrojs/sitemap`
+
+## Project structure
 
 ```
 /
-├── public/
-│   └── favicon.ico
+├── public/                      # Static assets (icons, images, resume PDF)
 ├── src/
 │   ├── components/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   │   ├── layout/              # SiteHeader, SocialRail, EmailRail, theme
+│   │   ├── seo/                 # SeoHead
+│   │   └── ui/                  # SectionHeading, etc.
+│   ├── features/
+│   │   ├── home/
+│   │   │   ├── sections/        # Hero, About, Experience, …
+│   │   │   ├── HomePage.astro
+│   │   │   └── home.config.ts   # Section ↔ nav visibility mapping
+│   │   └── certificate/
+│   │       └── CertificateView.astro
+│   ├── content/certs/           # Certificate markdown entries
+│   ├── content.config.ts
+│   ├── data/
+│   │   ├── portfolio.json       # Main copy, nav, jobs, insights, …
+│   │   └── site.json            # SEO & site metadata
+│   ├── layouts/SiteLayout.astro
+│   ├── lib/                     # portfolio, site, nav helpers
+│   ├── pages/                   # Thin route files only
+│   ├── schemas/                 # Zod schemas
+│   └── styles/
+│       ├── tokens/theme.css
+│       └── global.css
+├── docs/ARCHITECTURE.md
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
+| Source | Used for |
+|--------|----------|
+| `portfolio.json` | Hero, about, experience, education, projects, **insights** (JSON links), contact, nav, socials |
+| `site.json` | Default title, SEO meta |
+| `content/certs/*.md` | Certificate pages at `/cert/<id>/` |
 
-Any static assets, like images, can be placed in the `public/` directory.
+**Insights** stay in JSON (external Medium/YouTube links), not markdown posts.
 
-## 🧞 Commands
+## Commands
 
-All commands are run from the root of the project, from a terminal:
+| Command | Action |
+|---------|--------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Dev server (`http://localhost:4321`) |
+| `npm run build` | Production build → `dist/` |
+| `npm run preview` | Preview production build |
+| `npm run check` | Astro + TypeScript checks |
+| `npm run lint` | ESLint |
+| `npm run lint:fix` | ESLint with auto-fix |
+| `npm run format` | Prettier write |
+| `npm run format:check` | Prettier check (CI-friendly) |
 
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3000`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
+**Node.js:** `>=22.12.0` (see `.nvmrc`).
 
-## ⚡ Style Configuration
+## CI and dependency updates
 
-| Font         | Link                                                        |
-| :----------- | :---------------------------------------------------------- |
-| `Syne`      | [Google Font](https://fonts.google.com/specimen/Syne)      |
-| `Space Mono` | [Google Font](https://fonts.google.com/specimen/Space+Mono) |
+GitHub Actions runs `check` → `lint` → `format:check` → `build` on push/PR. Dependabot opens weekly dependency PRs.
 
-| Color           | Hex     |
-| :-------------- | :------ |
-| `White`         | #fff    |
-| `Blue Cola`     | #0693e3 |
-| `Crayola`       | #a3a8c3 |
-| `Chinese Black` | #120e26 |
+## Path aliases
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Imports use `@/` → `src/` (e.g. `@/lib/portfolio`, `@/features/home/HomePage.astro`).

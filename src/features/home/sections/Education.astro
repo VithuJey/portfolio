@@ -1,27 +1,26 @@
 ---
-import portfolioData from "../data/portfolio.json";
-const { heading, school, location, degree, duration, description } = portfolioData.education;
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { heading, school, location, degree, duration, description } =
+	portfolio.education
 ---
 
-<section id="education">
-	<h3 class="content-heading">{heading}</h3>
-	<div class="education-content">
-		<div class="education-item">
-			<p class="school-title">
+<section id='education'>
+	<SectionHeading title={heading} />
+	<div class='education-content'>
+		<div class='education-item'>
+			<p class='school-title'>
 				{school}
 			</p>
-			<p class="degree-title">
+			<p class='degree-title'>
 				{degree}
 			</p>
-			<div class="education-meta">
-				<span class="education-duration">{duration}</span>
-				<span class="education-location">{location}</span>
+			<div class='education-meta'>
+				<span class='education-duration'>{duration}</span>
+				<span class='education-location'>{location}</span>
 			</div>
-			{description && (
-				<p class="education-description">
-					{description}
-				</p>
-			)}
+			{description && <p class='education-description'>{description}</p>}
 		</div>
 	</div>
 </section>
@@ -56,10 +55,10 @@ const { heading, school, location, degree, duration, description } = portfolioDa
 		margin-top: 5px;
 	}
 	.education-duration::before {
-		content: "📅 ";
+		content: '📅 ';
 	}
 	.education-location::before {
-		content: "📍 ";
+		content: '📍 ';
 	}
 	.education-description {
 		font-family: var(--font-sans);
@@ -69,7 +68,7 @@ const { heading, school, location, degree, duration, description } = portfolioDa
 		margin: 0;
 	}
 	.education-description::before {
-		content: "▹ ";
+		content: '▹ ';
 		color: var(--secondary-color);
 		font-family: var(--font-sans);
 	}

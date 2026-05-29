@@ -1,0 +1,21 @@
+---
+import { getCollection, render } from 'astro:content'
+import CertificateView from '@/features/certificate/CertificateView.astro'
+import SiteLayout from '@/layouts/SiteLayout.astro'
+
+export async function getStaticPaths() {
+	const certs = await getCollection('certs')
+	return certs.map((cert) => ({
+		params: { id: cert.id },
+		props: { cert },
+	}))
+}
+
+const { cert } = Astro.props
+const { Content } = await render(cert)
+---
+
+<SiteLayout title={cert.data.title} contentClass='content--cert'>
+	<CertificateView imgSrc={cert.data.imgSrc} imgAlt={cert.data.imgAlt} />
+	<Content />
+</SiteLayout>

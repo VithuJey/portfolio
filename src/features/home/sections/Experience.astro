@@ -1,35 +1,31 @@
 ---
-import portfolioData from "../data/portfolio.json";
-const { heading, jobs } = portfolioData.experience;
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { heading, jobs } = portfolio.experience
 ---
 
-<section id="experience">
-	<h3 class="content-heading">{heading}</h3>
-	<div class="experience-list">
+<section id='experience'>
+	<SectionHeading title={heading} />
+	<div class='experience-list'>
 		{
-			jobs.map(job => (
+			jobs.map((job) => (
 				<div>
-					<p class="job-title">
+					<p class='job-title'>
 						{job.role} @
-						<a
-							class="highlight-link"
-							target="_blank"
-							href={job.companyUrl}
-						>
+						<a class='highlight-link' target='_blank' href={job.companyUrl}>
 							{job.company}
 						</a>
 						{job.companySuffix && <Fragment set:html={job.companySuffix} />}
 					</p>
-					<div class="job-meta">
-						<span class="job-duration">{job.duration}</span>
-						<span class="job-location">{job.location}</span>
+					<div class='job-meta'>
+						<span class='job-duration'>{job.duration}</span>
+						<span class='job-location'>{job.location}</span>
 					</div>
 					<ul>
-						{
-							job.bullets.map(bullet => (
-								<li set:html={bullet} />
-							))
-						}
+						{job.bullets.map((bullet) => (
+							<li set:html={bullet} />
+						))}
 					</ul>
 				</div>
 			))
@@ -51,7 +47,7 @@ const { heading, jobs } = portfolioData.experience;
 		margin-bottom: 10px;
 	}
 	li::before {
-		content: "▹ ";
+		content: '▹ ';
 		position: relative;
 		right: 5px;
 		color: var(--secondary-color);
@@ -75,9 +71,9 @@ const { heading, jobs } = portfolioData.experience;
 		margin-top: 5px;
 	}
 	.job-duration::before {
-		content: "📅 ";
+		content: '📅 ';
 	}
 	.job-location::before {
-		content: "📍 ";
+		content: '📍 ';
 	}
 </style>

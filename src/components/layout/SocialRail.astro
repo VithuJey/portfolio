@@ -1,19 +1,18 @@
 ---
-import portfolioData from "../data/portfolio.json";
-const { socials } = portfolioData;
+import { portfolio } from '@/lib/portfolio'
+
+const { socials } = portfolio
 ---
 
-<div class="social-list">
+<div class='social-list'>
 	{
-		socials.filter(social => social.visible).map(social => (
-			<a
-				href={social.url}
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<img src={social.icon} alt={social.alt} height="22px" />
-			</a>
-		))
+		socials
+			.filter((social) => social.visible)
+			.map((social) => (
+				<a href={social.url} target='_blank' rel='noopener noreferrer'>
+					<img src={social.icon} alt={social.alt} height='22px' />
+				</a>
+			))
 	}
 </div>
 
@@ -35,7 +34,7 @@ const { socials } = portfolioData;
 		transform: translateY(-3px);
 	}
 	.social-list::after {
-		content: "";
+		content: '';
 		display: block;
 		width: 1px;
 		height: 90px;
@@ -43,26 +42,23 @@ const { socials } = portfolioData;
 		background-color: var(--primary-color);
 	}
 	img {
-		filter: brightness(0) invert(1) opacity(0.85);
+		filter: var(--social-icon-filter);
 		transition: filter 0.25s ease;
 	}
 	a:hover img {
 		filter: none;
 	}
 
-	/* Medium devices (landscape tablets, 768px and up) */
 	@media only screen and (max-width: 768px) {
 		.social-list {
 			display: none;
 		}
 	}
-	/* Large devices (laptops/desktops, 992px and up) */
 	@media only screen and (min-width: 992px) {
 		.social-list {
 			left: 30px;
 		}
 	}
-	/* Extra large devices (large laptops and desktops, 1200px and up) */
 	@media only screen and (min-width: 1200px) {
 		.social-list {
 			left: 50px;

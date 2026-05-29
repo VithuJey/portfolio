@@ -1,16 +1,17 @@
 ---
-import portfolioData from "../data/portfolio.json";
-const { welcome, name, subtitle, description, resumeUrl, resumeLabel } = portfolioData.hero;
+import { portfolio } from '@/lib/portfolio'
+const { welcome, name, subtitle, description, resumeUrl, resumeLabel } =
+	portfolio.hero
 ---
 
-<div class="hero">
-	<div class="glow-bg"></div>
-	<div class="hero-content">
+<div class='hero'>
+	<div class='glow-bg'></div>
+	<div class='hero-content'>
 		<h6>{welcome}</h6>
 		<h1>{name}</h1>
 		<h2>{subtitle}</h2>
 		<p>{description}</p>
-		<a href={resumeUrl} target="_blank" class="resume-button">
+		<a href={resumeUrl} target='_blank' class='resume-button'>
 			{resumeLabel}
 		</a>
 	</div>
@@ -95,7 +96,10 @@ const { welcome, name, subtitle, description, resumeUrl, resumeLabel } = portfol
 		padding: 0.5rem 1.5rem;
 		margin: 30px 0;
 		display: inline-block;
-		transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+		transition:
+			background-color 0.25s ease,
+			transform 0.25s ease,
+			box-shadow 0.25s ease;
 	}
 	.resume-button:hover {
 		background-color: var(--active-color);

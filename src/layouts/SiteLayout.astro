@@ -1,0 +1,66 @@
+---
+import EmailRail from '@/components/layout/EmailRail.astro'
+import SiteHeader from '@/components/layout/SiteHeader.astro'
+import SocialRail from '@/components/layout/SocialRail.astro'
+import SeoHead from '@/components/seo/SeoHead.astro'
+import '@/styles/global.css'
+
+interface Props {
+	title: string
+	contentClass?: string
+}
+
+const { title, contentClass } = Astro.props
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<SeoHead title={title} />
+	</head>
+	<body>
+		<SiteHeader />
+		<main id='content' class:list={contentClass}>
+			<slot />
+		</main>
+		<SocialRail />
+		<EmailRail />
+		<style>
+			#content {
+				margin: auto;
+				padding: 0 25px;
+				max-width: 1600px;
+				min-height: 100vh;
+			}
+			@media only screen and (min-width: 768px) {
+				#content {
+					padding: 0 50px;
+				}
+			}
+			@media only screen and (min-width: 992px) {
+				#content {
+					padding: 0 130px;
+				}
+				#content.content--cert {
+					padding: 0 80px;
+				}
+			}
+			@media only screen and (min-width: 1440px) {
+				#content {
+					padding: 0 250px;
+				}
+			}
+			@media only screen and (min-width: 1920px) {
+				#content {
+					padding: 0 450px;
+				}
+			}
+			@media only screen and (min-width: 2560px) {
+				#content {
+					padding: 0 650px;
+					max-width: 1200px;
+				}
+			}
+		</style>
+	</body>
+</html>
