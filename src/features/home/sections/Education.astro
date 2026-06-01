@@ -1,0 +1,54 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { heading, school, degree, description } = portfolio.education
+---
+
+<section id='education'>
+	<SectionHeading title={heading} />
+	<div class='education-content'>
+		<div class='education-item'>
+			<p class='school-title'>
+				{school}
+			</p>
+			<p class='degree-title'>
+				{degree}
+			</p>
+			{description && <p class='education-description'>{description}</p>}
+		</div>
+	</div>
+</section>
+
+<style>
+	.education-content {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.school-title {
+		font-size: var(--font-lg);
+		line-height: var(--line-height-lg);
+		font-weight: 600;
+		color: var(--primary-color);
+		margin: 0 0 5px 0;
+	}
+	.degree-title {
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--secondary-color);
+		margin: 0 0 15px 0;
+	}
+	.education-description {
+		font-family: var(--font-sans);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--tertiary-color);
+		margin: 0;
+	}
+	.education-description::before {
+		content: '▹ ';
+		color: var(--secondary-color);
+		font-family: var(--font-sans);
+	}
+</style>

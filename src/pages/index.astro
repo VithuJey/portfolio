@@ -1,20 +1,16 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-
-const title = "Vithushan";
+import HomePage from '@/features/home/HomePage.astro'
+import SiteLayout from '@/layouts/SiteLayout.astro'
+import { site } from '@/lib/site'
 ---
 
-<BaseLayout title={title}>
-	<Hero />
-	<About />
-	<Experience />
-	<!-- <Projects /> -->
-	<Contact />
-	<Footer />
-</BaseLayout>
+<!-- 
+	todo: improve style
+	todo: improve nav bar UI & UX
+	todo: summarize the experience - shorten it
+	todo: change the site logo (maybe small size picture of me?)
+	todo: is it ok to move insights above experience or also above about 
+-->
+<SiteLayout title={site.defaultTitle}>
+	<HomePage />
+</SiteLayout>

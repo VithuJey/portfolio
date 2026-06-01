@@ -1,0 +1,59 @@
+---
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { heading, jobs } = portfolio.experience
+---
+
+<section id='experience'>
+	<SectionHeading title={heading} />
+	<div class='experience-list'>
+		{
+			jobs.map((job) => (
+				<div>
+					<p class='job-title'>
+						{job.role} @
+						<a class='highlight-link' target='_blank' href={job.companyUrl}>
+							{job.company}
+						</a>
+						{job.companySuffix && <Fragment set:html={job.companySuffix} />}
+					</p>
+					<ul>
+						{job.bullets.map((bullet) => (
+							<li set:html={bullet} />
+						))}
+					</ul>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	ul {
+		list-style: none;
+		padding-left: 20px;
+	}
+	li {
+		font-family: var(--font-sans);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--tertiary-color);
+		text-decoration: none;
+		margin-bottom: 10px;
+	}
+	li::before {
+		content: '▹ ';
+		position: relative;
+		right: 5px;
+		color: var(--secondary-color);
+	}
+	.job-title {
+		font-size: var(--font-lg);
+		line-height: var(--line-height-lg);
+		margin-bottom: 15px;
+	}
+	.highlight-link {
+		background-color: var(--active-color);
+	}
+</style>

@@ -1,0 +1,91 @@
+---
+import { portfolio } from '@/lib/portfolio'
+const { heading, description, buttonUrl, buttonText } = portfolio.contact
+---
+
+<section id='contact'>
+	<div class='content'>
+		<h2>{heading}</h2>
+		<p>{description}</p>
+		<a class='contact-button' href={buttonUrl}>
+			{buttonText}
+			<span class='hi-emoji'>👋</span>
+		</a>
+	</div>
+</section>
+
+<style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.content > * {
+		margin-bottom: 10px;
+	}
+	h2 {
+		font-family: var(--font-sans);
+		font-size: clamp(40px, 5vw, 60px);
+		color: var(--primary-color);
+	}
+	.content p {
+		text-align: center;
+	}
+	.contact-button {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--secondary-color);
+		background-color: transparent;
+		border-radius: 50px;
+		border: 2px solid var(--secondary-color);
+		padding: 0.5rem 1.5rem;
+		margin: 30px 0;
+		text-decoration: none;
+		display: inline-block;
+		transition:
+			background-color 0.25s ease,
+			transform 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+	.contact-button:hover {
+		background-color: var(--active-color);
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(6, 147, 227, 0.25);
+	}
+	.hi-emoji {
+		display: inline-block;
+		transform-origin: 70% 70%;
+		transition: transform 0.3s ease;
+	}
+	.contact-button:hover .hi-emoji {
+		animation: wave-animation 1.2s infinite;
+	}
+
+	@keyframes wave-animation {
+		0% {
+			transform: rotate(0deg);
+		}
+		10% {
+			transform: rotate(14deg);
+		}
+		20% {
+			transform: rotate(-8deg);
+		}
+		30% {
+			transform: rotate(14deg);
+		}
+		40% {
+			transform: rotate(-4deg);
+		}
+		50% {
+			transform: rotate(10deg);
+		}
+		60% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+</style>

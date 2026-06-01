@@ -1,0 +1,14 @@
+---
+interface Props {
+	imgSrc: string
+	imgAlt: string
+}
+
+const { imgSrc, imgAlt } = Astro.props
+---
+
+<section id='certificate'>
+	<div class='wrapper'>
+		<img src={imgSrc} alt={imgAlt} width='85%' />
+	</div>
+</section>

@@ -1,0 +1,386 @@
+---
+import ThemeToggle from '@/components/layout/ThemeToggle.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { logo, links } = portfolio.nav
+const navLinks = links
+
+const navSectionIds = navLinks
+	.filter((link) => link.visible && link.url.includes('#'))
+	.map((link) => link.url.split('#').pop()!)
+---
+
+<header id='header'>
+	<nav class='nav'>
+		<div class='logo'>
+			<a href='/'>
+				<img class='logo-img' src={logo} alt='logo' height='40px' />
+			</a>
+		</div>
+		<div class='h-links'>
+			{
+				navLinks
+					.filter((link) => link.visible)
+					.map((link) => {
+						const sectionId = link.url.includes('#')
+							? link.url.split('#').pop()
+							: undefined
+						return (
+							<a
+								class:list={[
+									link.highlight && 'highlight-link',
+									sectionId && 'nav-link',
+								]}
+								data-nav-section={sectionId}
+								href={link.url}
+								target={link.external ? '_blank' : undefined}
+							>
+								{link.label}
+							</a>
+						)
+					})
+			}
+		</div>
+		<div class='nav-actions'>
+			<ThemeToggle />
+		</div>
+		<div class='menu'>
+			<input class='checkbox' type='checkbox' id='checkbox' name='checkbox' />
+			<div class='hamburger-lines'>
+				<span class='line line1'></span>
+				<span class='line line2'></span>
+				<span class='line line3'></span>
+			</div>
+
+			<aside id='side'>
+				<div class='v-links'>
+					{
+						navLinks
+							.filter((link) => link.visible)
+							.map((link) => {
+								const sectionId = link.url.includes('#')
+									? link.url.split('#').pop()
+									: undefined
+								return (
+									<a
+										class:list={[sectionId && 'nav-link']}
+										data-nav-section={sectionId}
+										href={link.url}
+										target={link.external ? '_blank' : undefined}
+										onclick={
+											!link.external
+												? "document.getElementById('checkbox').checked = false; content.classList.remove('blurred');"
+												: undefined
+										}
+									>
+										{link.label}
+									</a>
+								)
+							})
+					}
+				</div>
+			</aside>
+		</div>
+	</nav>
+</header>
+
+<script define:vars={{ navSectionIds }}>
+	function initNavScrollSpy() {
+		const checkbox = document.getElementById('checkbox')
+		const content = document.getElementById('content')
+		const header = document.getElementById('header')
+
+		function getNavLinks() {
+			return document.querySelectorAll('[data-nav-section]')
+		}
+
+		function isHomePage() {
+			const path = window.location.pathname.replace(/\/$/, '') || '/'
+			return path === '/'
+		}
+
+		function sectionTop(section) {
+			return section.getBoundingClientRect().top + window.scrollY
+		}
+
+		function setActiveNavSection(sectionId) {
+			getNavLinks().forEach((link) => {
+				const id = link.getAttribute('data-nav-section')
+				const active = id === sectionId
+				link.classList.toggle('nav-link--active', active)
+				if (active) {
+					link.setAttribute('aria-current', 'location')
+				} else {
+					link.removeAttribute('aria-current')
+				}
+			})
+		}
+
+		function updateHash(sectionId) {
+			if (!isHomePage()) {
+				return
+			}
+
+			const nextUrl = sectionId ? `/#${sectionId}` : '/'
+			const currentUrl = `${window.location.pathname}${window.location.hash}`
+
+			if (currentUrl !== nextUrl) {
+				history.replaceState(null, '', nextUrl)
+			}
+		}
+
+		function updateActiveNavSection() {
+			if (!isHomePage()) {
+				return
+			}
+
+			const sections = navSectionIds
+				.map((id) => document.getElementById(id))
+				.filter(Boolean)
+				.sort((a, b) => sectionTop(a) - sectionTop(b))
+
+			if (sections.length === 0) {
+				return
+			}
+
+			const scrollLine =
+				window.scrollY + (header ? header.offsetHeight : 80) + 1
+			const atPageBottom =
+				window.scrollY + window.innerHeight >=
+				document.documentElement.scrollHeight - 50
+			let activeId = ''
+
+			if (atPageBottom) {
+				activeId = sections[sections.length - 1].id
+			} else {
+				for (const section of sections) {
+					if (scrollLine >= sectionTop(section)) {
+						activeId = section.id
+					}
+				}
+			}
+
+			setActiveNavSection(activeId)
+			updateHash(activeId)
+		}
+
+		function onScroll() {
+			updateActiveNavSection()
+
+			const w = window.innerWidth
+			const menuOpen = checkbox && checkbox.checked
+
+			if (w < 600 && menuOpen) {
+				return
+			}
+
+			if (checkbox) {
+				checkbox.checked = false
+			}
+		}
+
+		function initActiveFromHash() {
+			const hashId = window.location.hash.replace('#', '')
+			if (hashId && navSectionIds.includes(hashId)) {
+				setActiveNavSection(hashId)
+				return
+			}
+			updateActiveNavSection()
+		}
+
+		window.addEventListener('scroll', onScroll, { passive: true })
+		window.addEventListener('hashchange', initActiveFromHash)
+		window.addEventListener('resize', updateActiveNavSection, { passive: true })
+		initActiveFromHash()
+		requestAnimationFrame(updateActiveNavSection)
+
+		if (checkbox) {
+			checkbox.addEventListener('change', () => {
+				if (content) {
+					content.classList.toggle('blurred', checkbox.checked)
+				}
+			})
+		}
+	}
+
+	initNavScrollSpy()
+</script>
+
+<style>
+	#header {
+		box-sizing: border-box;
+		padding: 0 4em;
+		min-width: 100%;
+		height: 5em;
+		display: flex;
+		align-items: center;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 10;
+		background: var(--nav-glass-bg);
+		/* backdrop-filter: blur(var(--nav-glass-blur)) saturate(1.4);
+		-webkit-backdrop-filter: blur(var(--nav-glass-blur)) saturate(1.4); */
+		/* border-bottom: 1px solid var(--nav-glass-border); */
+		/* box-shadow: var(--nav-glass-shadow); */
+	}
+
+	#header::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		/* background: linear-gradient(
+			180deg,
+			var(--nav-glass-shine) 0%,
+			transparent 55%
+		); */
+		pointer-events: none;
+	}
+	.nav {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+	}
+	.logo-img {
+		height: 35px;
+	}
+	.h-links a,
+	.v-links a {
+		text-decoration: none;
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--primary-color);
+		transition: color 0.2s;
+		margin-left: 3rem;
+	}
+	.h-links a:hover,
+	.v-links a:hover {
+		color: var(--secondary-color);
+	}
+
+	.h-links a.nav-link--active,
+	.v-links a.nav-link--active {
+		color: var(--secondary-color);
+	}
+	.nav-actions {
+		display: flex;
+		align-items: center;
+		margin-left: 1rem;
+	}
+	.menu {
+		display: none;
+	}
+
+	.menu .checkbox {
+		position: absolute;
+		display: block;
+		height: 26px;
+		width: 32px;
+		z-index: 5;
+		opacity: 0;
+		cursor: pointer;
+	}
+	.menu .hamburger-lines {
+		display: block;
+		height: 26px;
+		width: 32px;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.menu .hamburger-lines .line {
+		display: block;
+		height: 4px;
+		width: 100%;
+		border-radius: 10px;
+		background: var(--primary-color);
+	}
+	.menu .hamburger-lines .line1 {
+		transform-origin: 0% 0%;
+		transition: transform 0.4s ease-in-out;
+	}
+	.menu .hamburger-lines .line2 {
+		transition: transform 0.2s ease-in-out;
+	}
+	.menu .hamburger-lines .line3 {
+		transform-origin: 0% 100%;
+		transition: transform 0.4s ease-in-out;
+	}
+	.menu input[type='checkbox']:checked ~ aside {
+		transform: translateX(0);
+		overflow: hidden;
+	}
+	.menu input[type='checkbox']:checked ~ .hamburger-lines .line1 {
+		transform: rotate(45deg);
+	}
+	.menu input[type='checkbox']:checked ~ .hamburger-lines .line2 {
+		transform: scaleY(0);
+	}
+	.menu input[type='checkbox']:checked ~ .hamburger-lines .line3 {
+		transform: rotate(-45deg);
+	}
+
+	@media only screen and (max-width: 768px) {
+		#header {
+			padding: 0 2rem;
+		}
+		.h-links {
+			display: none;
+		}
+		.menu {
+			display: flex;
+		}
+		aside {
+			display: flex;
+			height: 100%;
+			width: 50%;
+			background: var(--nav-glass-bg);
+			backdrop-filter: blur(var(--nav-glass-blur)) saturate(1.4);
+			-webkit-backdrop-filter: blur(var(--nav-glass-blur)) saturate(1.4);
+			border-left: 1px solid var(--nav-glass-border);
+			box-shadow: var(--nav-glass-shadow);
+			position: fixed;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			transform: translateX(100%);
+			transition: transform 0.5s ease-in-out;
+		}
+
+		aside::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(
+				135deg,
+				var(--nav-glass-shine) 0%,
+				transparent 45%
+			);
+			pointer-events: none;
+		}
+		.v-links {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+		}
+		.v-links a {
+			margin: 40px 0;
+		}
+	}
+
+	@media only screen and (max-width: 425px) {
+		aside {
+			width: 100%;
+		}
+	}
+</style>

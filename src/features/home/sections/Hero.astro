@@ -1,0 +1,110 @@
+---
+import { portfolio } from '@/lib/portfolio'
+const { welcome, name, subtitle, description, resumeUrl, resumeLabel } =
+	portfolio.hero
+---
+
+<div class='hero'>
+	<div class='glow-bg'></div>
+	<div class='hero-content'>
+		<h6>{welcome}</h6>
+		<h1>{name}</h1>
+		<h2>{subtitle}</h2>
+		<p>{description}</p>
+		<a href={resumeUrl} target='_blank' class='resume-button'>
+			{resumeLabel}
+		</a>
+	</div>
+</div>
+
+<style>
+	.hero {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: calc(100vh - calc(var(--header-height) * 2));
+		min-height: 100vh;
+		position: relative;
+	}
+	.glow-bg {
+		position: absolute;
+		top: 25%;
+		left: 15%;
+		width: 400px;
+		height: 400px;
+		background: radial-gradient(
+			circle,
+			rgba(99, 102, 241, 0.15) 0%,
+			rgba(6, 147, 227, 0.05) 50%,
+			rgba(0, 0, 0, 0) 70%
+		);
+		filter: blur(60px);
+		z-index: 1;
+		pointer-events: none;
+		animation: pulse-glow 8s infinite alternate ease-in-out;
+	}
+	.hero-content {
+		position: relative;
+		z-index: 2;
+	}
+	@keyframes pulse-glow {
+		0% {
+			transform: scale(1) translate(0, 0);
+			opacity: 0.8;
+		}
+		100% {
+			transform: scale(1.15) translate(5%, 5%);
+			opacity: 1;
+		}
+	}
+	h6 {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--secondary-color);
+	}
+	h1,
+	h2 {
+		font-family: var(--font-sans);
+		font-size: clamp(40px, 8vw, 80px);
+		font-weight: 550;
+		line-height: 0.9;
+		color: var(--primary-color);
+		margin: 0;
+	}
+	h1 {
+		color: var(--primary-color);
+		font-weight: 600;
+	}
+	h2 {
+		color: var(--secondary-color);
+		margin: 30px 0;
+	}
+	p {
+		margin: 20px 0;
+		max-width: 500px;
+	}
+	.resume-button {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		line-height: var(--line-height-md);
+		color: var(--secondary-color);
+		text-decoration: none;
+		background-color: transparent;
+		border-radius: 50px;
+		border: 2px solid var(--secondary-color);
+		padding: 0.5rem 1.5rem;
+		margin: 30px 0;
+		display: inline-block;
+		transition:
+			background-color 0.25s ease,
+			transform 0.25s ease,
+			box-shadow 0.25s ease;
+	}
+	.resume-button:hover {
+		background-color: var(--active-color);
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(6, 147, 227, 0.25);
+	}
+</style>

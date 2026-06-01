@@ -1,0 +1,56 @@
+:root,
+[data-theme='dark'] {
+	color-scheme: dark;
+	--primary-color: #ffffff;
+	--secondary-color: #0693e3;
+	--tertiary-color: #98a2c6;
+	--bg-color: #0a0f1e;
+	--bg-light-color: #0a0f1eec;
+	--active-color: #0692e31d;
+	--card-color: #151d35;
+	--grid-line-color: rgba(255, 255, 255, 0.02);
+	--scrollbar-thumb: rgba(255, 255, 255, 0.12);
+	--card-shadow: rgb(2 12 27 / 70%) 0px 10px 30px -10px;
+	--card-shadow-hover: rgb(2 12 27 / 90%) 0px 20px 30px -10px;
+	--social-icon-filter: brightness(0) invert(1) opacity(0.85);
+	--nav-glass-bg: rgba(10, 15, 30, 0.45);
+	--nav-glass-border: rgba(255, 255, 255, 0.1);
+	--nav-glass-shine: rgba(255, 255, 255, 0.07);
+	--nav-glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+	--nav-glass-blur: 16px;
+	--font-sans: 'Syne', sans-serif;
+	--font-mono: 'Space Mono', monospace;
+	--font-xs: 0.75rem;
+	--font-sm: 0.875rem;
+	--font-md: 1rem;
+	--font-lg: 1.125rem;
+	--font-xl: 1.25rem;
+	--font-2xl: 1.5rem;
+	--line-height-xs: 1rem;
+	--line-height-sm: 1.25rem;
+	--line-height-md: 1.5rem;
+	--line-height-lg: 1.75rem;
+	--line-height-xl: 1.75rem;
+	--line-height-2xl: 1.75rem;
+}
+
+[data-theme='light'] {
+	color-scheme: light;
+	--primary-color: #0a0f1e;
+	--secondary-color: #0570b8;
+	--tertiary-color: #4a5568;
+	--bg-color: #f4f7fc;
+	--bg-light-color: #f4f7fcec;
+	--active-color: #0692e31d;
+	--card-color: #ffffff;
+	--grid-line-color: rgba(10, 15, 30, 0.06);
+	--scrollbar-thumb: rgba(10, 15, 30, 0.18);
+	--card-shadow: rgb(10 15 30 / 8%) 0px 10px 30px -10px;
+	--card-shadow-hover: rgb(10 15 30 / 14%) 0px 20px 30px -10px;
+	--social-icon-filter: brightness(0) opacity(0.72);
+	--nav-glass-bg: rgba(244, 247, 252, 0.55);
+	--nav-glass-border: rgba(10, 15, 30, 0.08);
+	--nav-glass-shine: rgba(255, 255, 255, 0.65);
+	--nav-glass-shadow: 0 4px 24px rgba(10, 15, 30, 0.1);
+	--nav-glass-blur: 16px;
+}

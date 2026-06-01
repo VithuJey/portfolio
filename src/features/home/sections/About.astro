@@ -1,35 +1,33 @@
-<section id="about">
-	<h3 class="content-heading">About Me</h3>
-	<div class="content-section">
-		<div class="left">
-			<p>
-				I'm a software developer based in Colombo, Sri Lanka 🇱🇰. I have a
-				passion for building things that people love to use in their daily life.
-				My fascination with computers, computer games, and the evolution of the
-				Internet inspired me to learn software engineering.
+---
+import { Image } from 'astro:assets'
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { portfolio } from '@/lib/portfolio'
+
+const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
+---
+
+<section id='about'>
+	<SectionHeading title={heading} />
+	<div class='content-section'>
+		<div class='left'>
+			{
+				paragraphs.map((paragraph, index) => (
+					<>
+						<p>{paragraph}</p>
+						{index < paragraphs.length - 1 && <br />}
+					</>
+				))
+			}
+			<p class='skill-top'>
+				{skillHeading}
 			</p>
-			<br />
-			<p>
-				Fast forward to today, I've successfully delivered freelance projects,
-				completed internship with an AI start-up, launched web and mobile apps
-				at a digital agency in Amsterdam 🇳🇱, and currently developing an online
-				survey platform for an event company in London 🇬🇧.
-			</p>
-			<p class="skill-top">
-				Here are the few technologies I have been working with recently:
-			</p>
-			<ul class="skill-list">
-				<li>JavaScript</li>
-				<li>TypeScript</li>
-				<li>React</li>
-				<li>Next.js</li>
-				<li>React Native</li>
-				<li>Node</li>
+			<ul class='skill-list'>
+				{skills.map((skill) => <li>{skill}</li>)}
 			</ul>
 		</div>
-		<div class="right">
-			<div class="wrapper">
-				<img src="/images/vithu.jpg" alt="avatar" />
+		<div class='right'>
+			<div class='wrapper'>
+				<Image src={avatar.src} alt={avatar.alt} width='300' height='300' />
 			</div>
 		</div>
 	</div>
@@ -50,25 +48,33 @@
 	}
 	.right .wrapper {
 		display: flex;
+		width: 320px;
+		height: 320px;
+		max-width: 100%;
 		border-radius: 8px;
-		box-shadow: var(--bg-color) 20px 20px 0px -3px,
+		box-shadow:
+			var(--bg-color) 20px 20px 0px -3px,
 			var(--tertiary-color) 20px 20px;
 		transition: box-shadow 0.5s;
+		overflow: hidden;
 	}
 	.right .wrapper:hover {
-		box-shadow: var(--bg-color) 14px 14px 0px -3px,
+		box-shadow:
+			var(--bg-color) 14px 14px 0px -3px,
 			var(--secondary-color) 14px 14px;
 	}
 	.right img {
-		min-width: 100%;
-		max-width: 100%;
-		min-height: 100%;
-		max-height: 100%;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 		border-radius: 8px;
 		filter: grayscale(100%) opacity(0.5) blur(0.5px);
-		transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+		transition:
+			transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+			filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 	}
-	.right img:hover {
+	.right .wrapper:hover img {
+		transform: scale(1.02);
 		filter: blur(0.2px);
 	}
 	p {
@@ -96,7 +102,7 @@
 		margin: 0 10px 10px 0;
 	}
 	.skill-list li::before {
-		content: "▹ ";
+		content: '▹ ';
 		position: relative;
 		color: var(--secondary-color);
 	}
@@ -111,7 +117,7 @@
 		display: inline-block;
 	}
 	.highlight-link:after {
-		content: "";
+		content: '';
 		position: absolute;
 		width: 100%;
 		transform: scaleX(0);
