@@ -4,42 +4,11 @@ import { portfolio } from '@/lib/portfolio'
 
 const { logo, links } = portfolio.nav
 const navLinks = links
+
+const navSectionIds = navLinks
+	.filter((link) => link.visible && link.url.includes('#'))
+	.map((link) => link.url.split('#').pop()!)
 ---
-
-<script>
-	const header = document.getElementById('header')
-	const checkbox = document.getElementById(
-		'checkbox'
-	) as HTMLInputElement | null
-	const content = document.getElementById('content')
-
-	let prevScrollpos = window.pageYOffset
-
-	window.onscroll = function () {
-		const w = window.innerWidth
-		const currentScrollPos = window.pageYOffset
-		const menuOpen = checkbox?.checked ?? false
-
-		if (w < 600 && menuOpen) {
-			return
-		}
-
-		if (header) {
-			header.style.top = prevScrollpos > currentScrollPos ? '0' : '-6em'
-		}
-		if (checkbox) {
-			checkbox.checked = false
-		}
-
-		prevScrollpos = currentScrollPos
-	}
-
-	checkbox?.addEventListener('change', () => {
-		if (content) {
-			content.classList.toggle('blurred', checkbox.checked)
-		}
-	})
-</script>
 
 <header id='header'>
 	<nav class='nav'>
@@ -52,15 +21,24 @@ const navLinks = links
 			{
 				navLinks
 					.filter((link) => link.visible)
-					.map((link) => (
-						<a
-							class={link.highlight ? 'highlight-link' : ''}
-							href={link.url}
-							target={link.external ? '_blank' : undefined}
-						>
-							{link.label}
-						</a>
-					))
+					.map((link) => {
+						const sectionId = link.url.includes('#')
+							? link.url.split('#').pop()
+							: undefined
+						return (
+							<a
+								class:list={[
+									link.highlight && 'highlight-link',
+									sectionId && 'nav-link',
+								]}
+								data-nav-section={sectionId}
+								href={link.url}
+								target={link.external ? '_blank' : undefined}
+							>
+								{link.label}
+							</a>
+						)
+					})
 			}
 		</div>
 		<div class='nav-actions'>
@@ -79,25 +57,154 @@ const navLinks = links
 					{
 						navLinks
 							.filter((link) => link.visible)
-							.map((link) => (
-								<a
-									href={link.url}
-									target={link.external ? '_blank' : undefined}
-									onclick={
-										!link.external
-											? "document.getElementById('checkbox').checked = false; content.classList.remove('blurred');"
-											: undefined
-									}
-								>
-									{link.label}
-								</a>
-							))
+							.map((link) => {
+								const sectionId = link.url.includes('#')
+									? link.url.split('#').pop()
+									: undefined
+								return (
+									<a
+										class:list={[sectionId && 'nav-link']}
+										data-nav-section={sectionId}
+										href={link.url}
+										target={link.external ? '_blank' : undefined}
+										onclick={
+											!link.external
+												? "document.getElementById('checkbox').checked = false; content.classList.remove('blurred');"
+												: undefined
+										}
+									>
+										{link.label}
+									</a>
+								)
+							})
 					}
 				</div>
 			</aside>
 		</div>
 	</nav>
 </header>
+
+<script define:vars={{ navSectionIds }}>
+	function initNavScrollSpy() {
+		const checkbox = document.getElementById('checkbox')
+		const content = document.getElementById('content')
+		const header = document.getElementById('header')
+
+		function getNavLinks() {
+			return document.querySelectorAll('[data-nav-section]')
+		}
+
+		function isHomePage() {
+			const path = window.location.pathname.replace(/\/$/, '') || '/'
+			return path === '/'
+		}
+
+		function sectionTop(section) {
+			return section.getBoundingClientRect().top + window.scrollY
+		}
+
+		function setActiveNavSection(sectionId) {
+			getNavLinks().forEach((link) => {
+				const id = link.getAttribute('data-nav-section')
+				const active = id === sectionId
+				link.classList.toggle('nav-link--active', active)
+				if (active) {
+					link.setAttribute('aria-current', 'location')
+				} else {
+					link.removeAttribute('aria-current')
+				}
+			})
+		}
+
+		function updateHash(sectionId) {
+			if (!isHomePage()) {
+				return
+			}
+
+			const nextUrl = sectionId ? `/#${sectionId}` : '/'
+			const currentUrl = `${window.location.pathname}${window.location.hash}`
+
+			if (currentUrl !== nextUrl) {
+				history.replaceState(null, '', nextUrl)
+			}
+		}
+
+		function updateActiveNavSection() {
+			if (!isHomePage()) {
+				return
+			}
+
+			const sections = navSectionIds
+				.map((id) => document.getElementById(id))
+				.filter(Boolean)
+				.sort((a, b) => sectionTop(a) - sectionTop(b))
+
+			if (sections.length === 0) {
+				return
+			}
+
+			const scrollLine =
+				window.scrollY + (header ? header.offsetHeight : 80) + 1
+			const atPageBottom =
+				window.scrollY + window.innerHeight >=
+				document.documentElement.scrollHeight - 50
+			let activeId = ''
+
+			if (atPageBottom) {
+				activeId = sections[sections.length - 1].id
+			} else {
+				for (const section of sections) {
+					if (scrollLine >= sectionTop(section)) {
+						activeId = section.id
+					}
+				}
+			}
+
+			setActiveNavSection(activeId)
+			updateHash(activeId)
+		}
+
+		function onScroll() {
+			updateActiveNavSection()
+
+			const w = window.innerWidth
+			const menuOpen = checkbox && checkbox.checked
+
+			if (w < 600 && menuOpen) {
+				return
+			}
+
+			if (checkbox) {
+				checkbox.checked = false
+			}
+		}
+
+		function initActiveFromHash() {
+			const hashId = window.location.hash.replace('#', '')
+			if (hashId && navSectionIds.includes(hashId)) {
+				setActiveNavSection(hashId)
+				return
+			}
+			updateActiveNavSection()
+		}
+
+		window.addEventListener('scroll', onScroll, { passive: true })
+		window.addEventListener('hashchange', initActiveFromHash)
+		window.addEventListener('resize', updateActiveNavSection, { passive: true })
+		initActiveFromHash()
+		requestAnimationFrame(updateActiveNavSection)
+
+		if (checkbox) {
+			checkbox.addEventListener('change', () => {
+				if (content) {
+					content.classList.toggle('blurred', checkbox.checked)
+				}
+			})
+		}
+	}
+
+	initNavScrollSpy()
+</script>
 
 <style>
 	#header {
@@ -117,7 +224,6 @@ const navLinks = links
 		-webkit-backdrop-filter: blur(var(--nav-glass-blur)) saturate(1.4); */
 		/* border-bottom: 1px solid var(--nav-glass-border); */
 		/* box-shadow: var(--nav-glass-shadow); */
-		transition: top 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
 	}
 
 	#header::before {
@@ -152,7 +258,13 @@ const navLinks = links
 		transition: color 0.2s;
 		margin-left: 3rem;
 	}
-	.h-links a:hover {
+	.h-links a:hover,
+	.v-links a:hover {
+		color: var(--secondary-color);
+	}
+
+	.h-links a.nav-link--active,
+	.v-links a.nav-link--active {
 		color: var(--secondary-color);
 	}
 	.nav-actions {

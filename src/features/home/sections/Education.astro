@@ -2,8 +2,7 @@
 import SectionHeading from '@/components/ui/SectionHeading.astro'
 import { portfolio } from '@/lib/portfolio'
 
-const { heading, school, location, degree, duration, description } =
-	portfolio.education
+const { heading, school, degree, description } = portfolio.education
 ---
 
 <section id='education'>
@@ -16,10 +15,6 @@ const { heading, school, location, degree, duration, description } =
 			<p class='degree-title'>
 				{degree}
 			</p>
-			<div class='education-meta'>
-				<span class='education-duration'>{duration}</span>
-				<span class='education-location'>{location}</span>
-			</div>
 			{description && <p class='education-description'>{description}</p>}
 		</div>
 	</div>
@@ -42,23 +37,7 @@ const { heading, school, location, degree, duration, description } =
 		font-size: var(--font-md);
 		line-height: var(--line-height-md);
 		color: var(--secondary-color);
-		margin: 0 0 5px 0;
-	}
-	.education-meta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 15px;
-		font-family: var(--font-mono);
-		font-size: var(--font-sm);
-		color: var(--tertiary-color);
-		margin-bottom: 15px;
-		margin-top: 5px;
-	}
-	.education-duration::before {
-		content: '📅 ';
-	}
-	.education-location::before {
-		content: '📍 ';
+		margin: 0 0 15px 0;
 	}
 	.education-description {
 		font-family: var(--font-sans);

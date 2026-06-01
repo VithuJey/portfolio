@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import SectionHeading from '@/components/ui/SectionHeading.astro'
 import { portfolio } from '@/lib/portfolio'
 
@@ -26,7 +27,7 @@ const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
 		</div>
 		<div class='right'>
 			<div class='wrapper'>
-				<img src={avatar.src} alt={avatar.alt} width='300' height='300' />
+				<Image src={avatar.src} alt={avatar.alt} width='300' height='300' />
 			</div>
 		</div>
 	</div>

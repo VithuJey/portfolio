@@ -42,8 +42,6 @@ const jobSchema = z.object({
 	company: z.string(),
 	companyUrl: z.string(),
 	companySuffix: z.string().optional(),
-	location: z.string(),
-	duration: z.string(),
 	bullets: z.array(z.string()),
 })
 
@@ -86,9 +84,7 @@ export const portfolioSchema = z.object({
 	education: z.object({
 		heading: z.string(),
 		school: z.string(),
-		location: z.string(),
 		degree: z.string(),
-		duration: z.string(),
 		description: z.string(),
 	}),
 	projects: z.object({

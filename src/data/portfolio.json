@@ -46,7 +46,7 @@
 	"about": {
 		"heading": "About Me",
 		"paragraphs": [
-			"I'm a Software Engineer with rich experience delivering complex, cross-platform mobile applications and large-scale web platforms. I bring strong expertise in JavaScript, TypeScript, and Python, alongside proficiency in React, Next.js, React Native, and Node.js, building performant, scalable, and secure applications.",
+			"I'm a Software Engineer with rich experience delivering complex, cross-platform mobile applications and large-scale web platforms.  I have a passion for building things that people love to use in their daily life.",
 			"I make impactful contributions across the Software Development Life Cycle, from analysis and design to testing and deployment. As an engaged Agile collaborator, I thrive in fast-paced environments, mentoring junior engineers, and aligning stakeholders to drive progress."
 		],
 		"skillHeading": "Here are the few technologies I have been working with recently:",
@@ -79,11 +79,11 @@
 				"location": "Colombo, Sri Lanka",
 				"duration": "Mar. 2025 - Present",
 				"bullets": [
-					"Drafted and documented <span>front-end architectural designs</span> and presented them to the Technical Design Authority and Technical Design Board, including Principal Software Engineers, Tech Leads, Software Architects, and Team Managers, to provide technical solutions that addressed technical requirements.",
-					"Cultivated a collaborative environment within the team by mentoring Junior Engineers through active <span>code reviews</span> and <span>pair programming</span>, facilitating knowledge-sharing and improving the quality of output.",
-					"Developed a styled shared component library as an npm package following <span>Atomic Design methodology</span> and <span>SOLID principles</span>, and utilized <span>Storybook</span> to document and visualize components, increasing team efficiency by boosting reusability and reducing code redundancy.",
-					"Instituted standard coding practices that significantly boosted code readability, ensured its maintainability, and boosted team efficiency by leveraging industry-established guidelines and collaboration tools in the process.",
-					"Collaborated within a cross-functional team employing <span>Agile practices</span>, including daily stand-up meetings and weekly sprints, to effectively deliver software under tight deadlines."
+					"Authored frontend architectural designs and defended technical solutions before the <span>Technical Design Board</span>.",
+					"Led the team to develop and deliver <span>micro-frontend</span> applications using <span>Next.js</span>, <span>React</span>, and <span>TypeScript</span>.",
+					"Built a shared component library using <span>Atomic Design</span> and <span>SOLID principles</span> to ease app development.",
+					"Fostered code quality and team upskilling through regular <span>code reviews</span> and <span>pair programming</span> with junior devs.",
+					"Standardized coding guidelines and championed <span>Agile practices</span> for cross-functional sprint deliveries."
 				]
 			},
 			{
@@ -93,13 +93,12 @@
 				"location": "Colombo, Sri Lanka",
 				"duration": "Mar. 2023 - Mar. 2025",
 				"bullets": [
-					"Optimized the web application's load time by applying lazy loading, browser caching, virtualizing large lists, rendering strategies, code splitting, memoization, and leveraging <span>Vite, Web Workers, and React Query</span>, achieving a page load time of under 10 ms.",
-					"Initiated a thorough revamp of the Explori Web Application, using <span>React</span> for the front-end, integrating state management with <span>MobX</span>, employing <span>Scss</span> for advanced styling solutions while developing forms, tables, data filtration mechanisms, and custom charts with <span>Apache ECharts</span>, all contributing to an improved user experience.",
-					"Implemented the <span>Strategy Pattern</span> with <span>React Hook Form</span> to increase validation flexibility, reduce code duplication, and enhance code reusability and scalability in a React application, streamlining dynamic styling through the modular stylesheets.",
-					"Crafted and implemented a secure user authentication system using the <span>Microsoft Identity Platform</span>, employing <span>OAuth 2.0 Authorization Code Flow</span> and <span>JWT</span> for effective token-based authentication to safeguard user data privacy.",
-					"Evaluated solutions by deploying unit tests, integration tests, and end-to-end tests using frameworks such as <span>Jest, Vitest, React Testing Library, and Cypress</span>, achieving a code coverage of 80%.",
-					"Deployed using <span>Docker</span> and <span>Git hooks</span>, and gained familiarity with <span>Jenkins</span>, achieving a more efficient deployment process.",
-					"Maintained and enhanced the software by implementing periodic updates and optimizations, utilizing <span>Git</span> for source code management and <span>Prometheus</span> for real-time performance monitoring, ensuring continuous system efficiency."
+					"Slashed page load times to <span>under 10ms</span> utilizing <span>code splitting</span>, <span>lazy loading</span>, <span>virtualization</span>, <span>memoization</span> and <span>Web Workers</span>.",
+					"Developed Explori app using <span>React</span>, handling state management with <span>MobX</span> and building complex data dashboards via <span>Apache ECharts</span>.",
+					"Applied the <span>Strategy Pattern</span> with <span>React Hook Form</span> to build highly scalable, dynamically styled, and reusable form validations.",
+					"Engineered secure token-based user authentication using <span>OAuth 2.0</span> Authorization Code Flow and <span>JWT</span> via Microsoft Identity Platform.",
+					"Maintained more than <span>80% code coverage</span> using <span>Vitest</span>, <span>Cypress</span>, <span>Jest</span>, and <span>React Testing Library</span>.",
+					"Streamlined deployment pipelines and infrastructure using <span>Docker</span>, <span>Jenkins</span>, and <span>Git hooks</span>."
 				]
 			},
 			{
@@ -109,12 +108,11 @@
 				"location": "Amsterdam, Netherlands",
 				"duration": "Aug. 2020 - Feb. 2023",
 				"bullets": [
-					"Led a mobile development team of 5 to create cross-platform applications, completing successful Proof of Concepts and played a pivotal role in the technical effort by leading development teams and enhancing application performance across web and mobile platforms, by improving user experience, and optimizing application efficiencies.",
-					"Collaborated with UI/UX teams and cross-functional teams, employing <span>Microsoft Fluent Design System</span>, to design and develop web applications and e-commerce products for the Netherlands Government, enhancing user engagement and functionality.",
-					"Refined and sustained the job portal web application by integrating <span>React</span> with advanced practices such as custom hooks, lazy loading images, and memoizing components; combined with Server-Side Rendering using <span>Next.js</span> and employing component composition, modularization, and code smells removal, which led to reducing the load time from 12 seconds to 3 seconds.",
-					"Transitioned 2,000 active users to the “365 Meditaties” mobile app, developed using <span>React Native</span>, and optimized user engagement by adhering to <span>Material Design</span> and <span>Human Interface Guidelines</span>, while implementing responsive design, intuitive navigation, accessibility, and <span>TypeScript</span> to ensure type safety and modular coding, thereby achieving cross-platform compatibility on Android and iOS.",
-					"Developed cutting-edge features such as notifications, chat, concurrent meditation, and in-app subscriptions using <span>MobX-State-Tree</span> and <span>Emotion</span> with <span>Moti</span>, improving immutable data structures, change detection, debugging, module reloading, and refining tweening algorithms and hardware acceleration to ensure a fluid user experience.",
-					"Implemented <span>Sentry</span> and <span>Firebase</span> to optimize app performance and monitor user engagement analytics by integrating error tracking, performance monitoring, real-time database, and user authentication, while <span>RevenueCat</span> managed subscription lifecycle and payment processing, boosting user retention rates."
+					"Re-engineered a job portal web app using <span>Next.js (SSR)</span> and custom hooks, dropping page load speeds from 12 seconds to 3 seconds.",
+					"Shipped the <span>365 Meditaties</span> app to 2,000+ users via <span>React Native & TypeScript</span>, following Material Design and Human Interface Guidelines.",
+					"Developed real-time chat, background sync, and animations using <span>MobX-State-Tree, Moti, and Emotion</span>.",
+					"Implemented <span>Sentry</span> and <span>Firebase</span> for performance and analytics tracking, alongside <span>RevenueCat</span> for in-app subscription Lifecycles.",
+					"Collaborated with UI/UX teams using the <span>Microsoft Fluent Design System</span> to build web apps for the Netherlands Government."
 				]
 			},
 			{
@@ -125,10 +123,10 @@
 				"location": "Colombo, Sri Lanka",
 				"duration": "Sep. 2018 - Mar. 2019",
 				"bullets": [
-					"Developed an Excel sheet reader to streamline the bot maintenance team's manual work for the Virtual Concierge project and participated in <span>Scrum</span> and <span>Agile</span> ceremonies, enhancing team productivity, ensuring timely project delivery, and improving overall management.",
-					"Built the Virtual Concierge Dashboard application using <span>Java</span> and <span>SpringBoot</span>, integrating dependency injection and microservices architecture alongside <span>Python</span> and <span>MongoDB</span>, streamlining data processing and user experience with indexing and replication.",
-					"Conducted a document reader that searches both text and textual images within PDF files using the Ingest Attachment Plugin of <span>Elasticsearch</span>, integrating full-text search capabilities and data indexing to improve the system's information retrieval efficiency by reducing processing time.",
-					"Resolved critical issues in the application during the User Acceptance Testing period by managing <span>JIRA</span> tickets and providing on-call support, which improved system stability by reducing downtime."
+					"Built a Virtual Concierge Dashboard using <span>Java, Spring Boot (Microservices), Python, and MongoDB</span>.",
+					"Created a PDF text/image search engine using <span>Elasticsearch (Ingest Attachment Plugin)</span>, radically lowering query processing times.",
+					"Programmed an automated Excel sheet parser to eliminate manual verification work for the bot maintenance team.",
+					"Resolved critical system issues during UAT by managing <span>Jira</span> tickets and providing on-call support."
 				]
 			}
 		]
@@ -139,7 +137,7 @@
 		"location": "Malabe, Sri Lanka",
 		"degree": "Bachelor of Science (Hons) in Information Technology",
 		"duration": "Jun. 2016 - Jan. 2021",
-		"description": "Developed and integrated a plant disease detection system using Deep Learning, training ResNet50 and Inception-v3 models and converting them into TensorFlow Lite for use in a Flutter mobile app, leading a 4-member team."
+		"description": "Led my team to complete the final year project Plant disease detection system using <span>Deep Learning</span> — trained ResNet50 and Inception-v3 models, converted to TensorFlow Lite, deployed in a Flutter mobile app."
 	},
 	"projects": {
 		"heading": "Fun Projects",
@@ -240,7 +238,7 @@
 			{
 				"link": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
 				"title": "Next.js Performance Optimization Techniques",
-				"desc": "fine-tune the applications for maximum speed and efficiency",
+				"desc": "Fine-tune the applications for maximum speed and efficiency",
 				"thumbnail": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
 				"type": "video"
 			},
@@ -261,7 +259,7 @@
 			{
 				"link": "https://javascript.plainenglish.io/do-you-know-the-5-types-of-states-in-react-8734a04a5ffb",
 				"title": "Do You Know the 5 Types of States in React?",
-				"desc": "The helping guide to know your states in React better",
+				"desc": "A helping guide to know your states in React better",
 				"thumbnail": "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*QCtnQp-bLTksAFHJ050zZQ.png",
 				"type": "article"
 			},
