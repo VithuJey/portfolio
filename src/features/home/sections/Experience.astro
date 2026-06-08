@@ -3,57 +3,370 @@ import SectionHeading from '@/components/ui/SectionHeading.astro'
 import { portfolio } from '@/lib/portfolio'
 
 const { heading, jobs } = portfolio.experience
+
+interface GroupedJob {
+	company: string
+	companyUrl: string
+	roles: {
+		role: string
+		duration: string
+		location: string
+		bullets: string[]
+		companySuffix?: string
+	}[]
+}
+
+const groupedJobs = jobs.reduce((acc, job) => {
+	const existing = acc.find((item) => item.company === job.company)
+	if (existing) {
+		existing.roles.push({
+			role: job.role,
+			duration: job.duration,
+			location: job.location,
+			bullets: job.bullets,
+			companySuffix: job.companySuffix,
+		})
+	} else {
+		acc.push({
+			company: job.company,
+			companyUrl: job.companyUrl,
+			roles: [
+				{
+					role: job.role,
+					duration: job.duration,
+					location: job.location,
+					bullets: job.bullets,
+					companySuffix: job.companySuffix,
+				},
+			],
+		})
+	}
+	return acc
+}, [] as GroupedJob[])
 ---
 
 <section id='experience'>
 	<SectionHeading title={heading} />
-	<div class='experience-list'>
-		{
-			jobs.map((job) => (
-				<div>
-					<p class='job-title'>
-						{job.role} @
-						<a class='highlight-link' target='_blank' href={job.companyUrl}>
-							{job.company}
-						</a>
-						{job.companySuffix && <Fragment set:html={job.companySuffix} />}
-					</p>
-					<ul>
-						{job.bullets.map((bullet) => (
-							<li set:html={bullet} />
+	<div class='tabs-container'>
+		<div role='tablist' aria-label='Job history' class='tab-list'>
+			{
+				groupedJobs.map((group, index) => (
+					<button
+						role='tab'
+						aria-selected={index === 0 ? 'true' : 'false'}
+						aria-controls={`panel-${index}`}
+						id={`tab-${index}`}
+						class:list={['tab-button', index === 0 && 'tab-button--active']}
+						data-index={index}
+					>
+						<span>{group.company}</span>
+					</button>
+				))
+			}
+			<div class='tab-highlight'></div>
+		</div>
+
+		<div class='tab-panels'>
+			{
+				groupedJobs.map((group, index) => (
+					<div
+						role='tabpanel'
+						id={`panel-${index}`}
+						aria-labelledby={`tab-${index}`}
+						class:list={['tab-panel', index === 0 && 'tab-panel--active']}
+						hidden={index !== 0}
+					>
+						{group.roles.map((role) => (
+							<div class='job-role-info'>
+								<h4 class='job-title'>
+									<span>{role.role}</span>
+									{role.companySuffix && (
+										<span class='company-suffix'>
+											<Fragment set:html={role.companySuffix} />
+										</span>
+									)}
+								</h4>
+								<p class='job-duration-location'>
+									<span class='job-location'>{role.location}</span>
+									<span class='job-separator'>&bull;</span>
+									<span class='job-duration'>{role.duration}</span>
+								</p>
+								<ul>
+									{role.bullets.map((bullet) => (
+										<li set:html={bullet} />
+									))}
+								</ul>
+							</div>
 						))}
-					</ul>
-				</div>
-			))
-		}
+					</div>
+				))
+			}
+		</div>
 	</div>
 </section>
 
+<script>
+	function initTabs() {
+		const tabButtons = document.querySelectorAll('.tab-button')
+		const tabPanels = document.querySelectorAll('.tab-panel')
+		const highlight = document.querySelector(
+			'.tab-highlight'
+		) as HTMLElement | null
+
+		function updateHighlight(activeButton: HTMLElement) {
+			if (!highlight || !activeButton) return
+
+			const isMobile = window.innerWidth < 768
+			if (isMobile) {
+				highlight.style.transform = `translateX(${activeButton.offsetLeft}px)`
+				highlight.style.width = `${activeButton.clientWidth}px`
+				highlight.style.height = `2px`
+				highlight.style.top = `auto`
+				highlight.style.bottom = `0px`
+				highlight.style.left = `0px`
+			} else {
+				highlight.style.transform = `translateY(${activeButton.offsetTop}px)`
+				highlight.style.height = `${activeButton.clientHeight}px`
+				highlight.style.width = `2px`
+				highlight.style.top = `0px`
+				highlight.style.bottom = `auto`
+				highlight.style.left = `-2px`
+			}
+		}
+
+		tabButtons.forEach((button) => {
+			button.addEventListener('click', (e) => {
+				const target = e.currentTarget as HTMLElement
+				const index = target.getAttribute('data-index')
+
+				tabButtons.forEach((btn) => {
+					btn.classList.remove('tab-button--active')
+					btn.setAttribute('aria-selected', 'false')
+				})
+				target.classList.add('tab-button--active')
+				target.setAttribute('aria-selected', 'true')
+
+				tabPanels.forEach((panel) => {
+					panel.classList.remove('tab-panel--active')
+					panel.setAttribute('hidden', 'true')
+				})
+				const activePanel = document.getElementById(`panel-${index}`)
+				if (activePanel) {
+					activePanel.classList.add('tab-panel--active')
+					activePanel.removeAttribute('hidden')
+				}
+
+				updateHighlight(target)
+			})
+		})
+
+		// Initialize position
+		const activeBtn = document.querySelector(
+			'.tab-button--active'
+		) as HTMLElement | null
+		if (activeBtn) {
+			setTimeout(() => updateHighlight(activeBtn), 50)
+		}
+
+		window.addEventListener('resize', () => {
+			const currentActive = document.querySelector(
+				'.tab-button--active'
+			) as HTMLElement | null
+			if (currentActive) {
+				updateHighlight(currentActive)
+			}
+		})
+	}
+
+	initTabs()
+</script>
+
 <style>
+	.tabs-container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin-top: 40px;
+	}
+
+	@media only screen and (min-width: 768px) {
+		.tabs-container {
+			flex-direction: row;
+			align-items: flex-start;
+		}
+	}
+
+	.tab-list {
+		position: relative;
+		display: flex;
+		overflow-x: auto;
+		margin-bottom: 30px;
+		border-bottom: 2px solid var(--grid-line-color);
+		/* Hide scrollbar */
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	@media only screen and (min-width: 768px) {
+		.tab-list {
+			flex-direction: column;
+			margin-bottom: 0;
+			margin-right: 40px;
+			border-bottom: none;
+			border-left: 2px solid var(--grid-line-color);
+			overflow-x: visible;
+			min-width: 200px;
+			flex-shrink: 0;
+		}
+	}
+
+	.tab-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 24px;
+		height: 48px;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		white-space: nowrap;
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		color: var(--tertiary-color);
+		transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+		width: auto;
+		text-align: center;
+		flex-shrink: 0;
+	}
+
+	.tab-button:hover {
+		color: var(--secondary-color);
+		background-color: var(--active-color);
+	}
+
+	.tab-button--active {
+		color: var(--secondary-color);
+		background-color: var(--active-color);
+	}
+
+	@media only screen and (min-width: 768px) {
+		.tab-button {
+			justify-content: flex-start;
+			padding: 0 24px;
+			/* width: 80%; */
+			text-align: left;
+		}
+	}
+
+	.tab-highlight {
+		position: absolute;
+		z-index: 2;
+		background-color: var(--secondary-color);
+		transition:
+			transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1),
+			width 0.25s cubic-bezier(0.645, 0.045, 0.355, 1),
+			height 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+		pointer-events: none;
+	}
+
+	.tab-panels {
+		flex-grow: 1;
+		min-width: 0;
+	}
+
+	.tab-panel {
+		display: none;
+		animation: fadeIn 0.3s ease-in-out forwards;
+	}
+
+	.tab-panel--active {
+		display: block;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	.job-role-info {
+		margin-bottom: 40px;
+	}
+
+	.job-role-info:last-child {
+		margin-bottom: 0;
+	}
+
+	.job-title {
+		font-size: var(--font-lg);
+		line-height: var(--line-height-lg);
+		font-weight: 550;
+		margin-top: 0;
+		margin-bottom: 8px;
+		color: var(--primary-color);
+		font-family: var(--font-sans);
+	}
+
+	.company-connector {
+		color: var(--secondary-color);
+	}
+
+	/* .company-suffix {
+		font-family: var(--font-sans);
+		font-size: var(--font-md);
+		font-weight: normal;
+		color: var(--tertiary-color);
+	}
+
+	.highlight-link,
+	.job-title :global(.highlight-link) {
+		background-color: var(--active-color);
+		padding: 2px 6px;
+		border-radius: 4px;
+	} */
+
+	.job-duration-location {
+		font-family: var(--font-mono);
+		font-size: var(--font-sm);
+		color: var(--tertiary-color);
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+
+	.job-separator {
+		margin: 0 10px;
+		color: var(--secondary-color);
+	}
+
 	ul {
 		list-style: none;
-		padding-left: 20px;
+		padding-left: 0;
+		margin-top: 15px;
 	}
+
 	li {
 		font-family: var(--font-sans);
 		font-size: var(--font-md);
 		line-height: var(--line-height-md);
 		color: var(--tertiary-color);
-		text-decoration: none;
-		margin-bottom: 10px;
-	}
-	li::before {
-		content: '▹ ';
+		margin-bottom: 12px;
 		position: relative;
-		right: 5px;
+		padding-left: 20px;
+	}
+
+	li::before {
+		content: '▹';
+		position: absolute;
+		left: 0;
+		top: 0;
 		color: var(--secondary-color);
-	}
-	.job-title {
-		font-size: var(--font-lg);
-		line-height: var(--line-height-lg);
-		margin-bottom: 15px;
-	}
-	.highlight-link {
-		background-color: var(--active-color);
 	}
 </style>
