@@ -15,7 +15,11 @@ const { cert } = Astro.props
 const { Content } = await render(cert)
 ---
 
-<SiteLayout title={cert.data.title} contentClass='content--cert'>
+<SiteLayout
+	title={cert.data.title}
+	contentClass='content--cert'
+	showHeader={false}
+>
 	<CertificateView imgSrc={cert.data.imgSrc} imgAlt={cert.data.imgAlt} />
 	<Content />
 </SiteLayout>

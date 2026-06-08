@@ -42,6 +42,8 @@ const jobSchema = z.object({
 	company: z.string(),
 	companyUrl: z.string(),
 	companySuffix: z.string().optional(),
+	location: z.string(),
+	duration: z.string(),
 	bullets: z.array(z.string()),
 })
 

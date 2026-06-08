@@ -8,9 +8,10 @@ import '@/styles/global.css'
 interface Props {
 	title: string
 	contentClass?: string
+	showHeader?: boolean
 }
 
-const { title, contentClass } = Astro.props
+const { title, contentClass, showHeader = true } = Astro.props
 ---
 
 <!doctype html>
@@ -19,7 +20,7 @@ const { title, contentClass } = Astro.props
 		<SeoHead title={title} />
 	</head>
 	<body>
-		<SiteHeader />
+		{showHeader && <SiteHeader />}
 		<main id='content' class:list={contentClass}>
 			<slot />
 		</main>

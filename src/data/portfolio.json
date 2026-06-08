@@ -77,7 +77,7 @@
 				"company": "Creative Software",
 				"companyUrl": "https://www.creativesoftware.com",
 				"location": "Colombo, Sri Lanka",
-				"duration": "Mar. 2025 - Present",
+				"duration": "Mar 2025 - Present",
 				"bullets": [
 					"Authored frontend architectural designs and defended technical solutions before the <span>Technical Design Board</span>.",
 					"Led the team to develop and deliver <span>micro-frontend</span> applications using <span>Next.js</span>, <span>React</span>, and <span>TypeScript</span>.",
@@ -91,7 +91,7 @@
 				"company": "Creative Software",
 				"companyUrl": "https://www.creativesoftware.com",
 				"location": "Colombo, Sri Lanka",
-				"duration": "Mar. 2023 - Mar. 2025",
+				"duration": "Mar 2023 - Mar 2025",
 				"bullets": [
 					"Slashed page load times to <span>under 10ms</span> utilizing <span>code splitting</span>, <span>lazy loading</span>, <span>virtualization</span>, <span>memoization</span> and <span>Web Workers</span>.",
 					"Developed Explori app using <span>React</span>, handling state management with <span>MobX</span> and building complex data dashboards via <span>Apache ECharts</span>.",
@@ -106,7 +106,7 @@
 				"company": "Flatline Agency",
 				"companyUrl": "https://www.flatlineagency.com/",
 				"location": "Amsterdam, Netherlands",
-				"duration": "Aug. 2020 - Feb. 2023",
+				"duration": "Aug 2020 - Feb 2023",
 				"bullets": [
 					"Re-engineered a job portal web app using <span>Next.js (SSR)</span> and custom hooks, dropping page load speeds from 12 seconds to 3 seconds.",
 					"Shipped the <span>365 Meditaties</span> app to 2,000+ users via <span>React Native & TypeScript</span>, following Material Design and Human Interface Guidelines.",
@@ -121,7 +121,7 @@
 				"companyUrl": "https://www.linkedin.com/company/trabeya/",
 				"companySuffix": " (acquired by <a class=\"highlight-link\" target=\"_blank\" href=\"https://surge.global/\">Surge Global</a>)",
 				"location": "Colombo, Sri Lanka",
-				"duration": "Sep. 2018 - Mar. 2019",
+				"duration": "Sep 2018 - Mar 2019",
 				"bullets": [
 					"Built a Virtual Concierge Dashboard using <span>Java, Spring Boot (Microservices), Python, and MongoDB</span>.",
 					"Created a PDF text/image search engine using <span>Elasticsearch (Ingest Attachment Plugin)</span>, radically lowering query processing times.",
