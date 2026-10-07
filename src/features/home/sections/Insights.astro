@@ -44,6 +44,7 @@ const getYoutubeThumbnail = (url: string) => {
 							<span class='type-badge' title={icon.label}>
 								<Fragment set:html={icon.svg} />
 							</span>
+							<span class='type-label'>{icon.label}</span>
 						</div>
 						<div class='tile-content'>
 							<p class='tile-title'>{item.title}</p>
@@ -55,6 +56,17 @@ const getYoutubeThumbnail = (url: string) => {
 		}
 	</div>
 </section>
+
+<script>
+	// Hide broken thumbnails so the placeholder background shows through.
+	document
+		.querySelectorAll<HTMLImageElement>('.tile-thumbnail img')
+		.forEach((img) => {
+			const hide = () => (img.style.display = 'none')
+			if (img.complete && img.naturalWidth === 0) hide()
+			img.addEventListener('error', hide)
+		})
+</script>
 
 <style>
 	.insights-grid {
@@ -85,6 +97,7 @@ const getYoutubeThumbnail = (url: string) => {
 		height: 180px;
 		overflow: hidden;
 		position: relative;
+		background: linear-gradient(135deg, var(--active-color), var(--card-color));
 	}
 
 	.tile-thumbnail img {
@@ -113,6 +126,21 @@ const getYoutubeThumbnail = (url: string) => {
 		color: var(--secondary-color);
 	}
 
+	.type-label {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		padding: 4px 10px;
+		border-radius: 6px;
+		background-color: rgba(10, 15, 30, 0.85);
+		color: #ffffff;
+		font-family: var(--font-mono);
+		font-size: var(--font-xs);
+		line-height: var(--line-height-xs);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
 	.tile-content {
 		padding: 20px;
 	}
@@ -134,14 +162,14 @@ const getYoutubeThumbnail = (url: string) => {
 		margin: 0;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 599px) {
 		.insights-grid {
 			grid-template-columns: 1fr;
 			gap: 20px;
 		}
 	}
 
-	@media only screen and (min-width: 769px) and (max-width: 1024px) {
+	@media only screen and (min-width: 600px) and (max-width: 1024px) {
 		.insights-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}

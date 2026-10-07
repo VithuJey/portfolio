@@ -4,13 +4,6 @@ import SiteLayout from '@/layouts/SiteLayout.astro'
 import { site } from '@/lib/site'
 ---
 
-<!-- 
-	todo: improve style
-	todo: improve nav bar UI & UX
-	todo: summarize the experience - shorten it
-	todo: change the site logo (maybe small size picture of me?)
-	todo: is it ok to move insights above experience or also above about 
--->
-<SiteLayout title={site.defaultTitle}>
+<SiteLayout title={site.defaultTitle} personSchema>
 	<HomePage />
 </SiteLayout>

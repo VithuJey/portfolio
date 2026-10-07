@@ -38,3 +38,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Smoke test (SEO tags, required files, internal links)
+        run: npm test

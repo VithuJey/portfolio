@@ -9,6 +9,11 @@ export const siteSchema = z.object({
 	author: z.string(),
 	siteName: z.string(),
 	ogImage: z.string(),
+	ogImageAlt: z.string(),
+	locale: z.string(),
+	twitterHandle: z.string(),
+	jobTitle: z.string(),
+	themeColor: z.string(),
 	url: z.url(),
 })
 

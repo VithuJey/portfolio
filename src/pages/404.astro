@@ -1,0 +1,50 @@
+---
+import SiteLayout from '@/layouts/SiteLayout.astro'
+---
+
+<SiteLayout title='Page not found | Vithushan' noindex>
+	<section class='not-found'>
+		<p class='code'>404</p>
+		<h1>Page not found</h1>
+		<p>The page you are looking for doesn't exist or has moved.</p>
+		<a class='home-link' href='/'>Back to home</a>
+	</section>
+</SiteLayout>
+
+<style>
+	.not-found {
+		min-height: calc(100vh - 5em);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.code {
+		font-family: var(--font-mono);
+		font-size: var(--font-xl);
+		color: var(--secondary-color);
+		margin: 0;
+	}
+	h1 {
+		font-family: var(--font-sans);
+		font-size: clamp(40px, 5vw, 60px);
+		color: var(--primary-color);
+		margin: 0.5rem 0;
+	}
+	.home-link {
+		font-family: var(--font-mono);
+		font-size: var(--font-md);
+		color: var(--secondary-color);
+		border: 2px solid var(--secondary-color);
+		border-radius: 50px;
+		padding: 0.5rem 1.5rem;
+		margin-top: 1.5rem;
+		text-decoration: none;
+		transition: background-color 0.25s ease;
+	}
+	.home-link:hover,
+	.home-link:focus-visible {
+		background-color: var(--active-color);
+	}
+</style>
