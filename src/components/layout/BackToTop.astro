@@ -1,0 +1,81 @@
+---
+
+---
+
+<button
+	type='button'
+	class='back-to-top'
+	id='back-to-top'
+	aria-label='Back to top'
+	title='Back to top'
+	hidden
+>
+	<svg
+		xmlns='http://www.w3.org/2000/svg'
+		width='20'
+		height='20'
+		viewBox='0 0 24 24'
+		fill='none'
+		stroke='currentColor'
+		stroke-width='2'
+		stroke-linecap='round'
+		stroke-linejoin='round'
+		aria-hidden='true'
+	>
+		<path d='m18 15-6-6-6 6'></path>
+	</svg>
+</button>
+
+<script>
+	const button = document.getElementById('back-to-top')
+
+	function update() {
+		if (!button) return
+		button.hidden = window.scrollY < 600
+	}
+
+	button?.addEventListener('click', () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	})
+	window.addEventListener('scroll', update, { passive: true })
+	update()
+</script>
+
+<style>
+	.back-to-top {
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+		z-index: 900;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		border: 1px solid var(--nav-glass-border);
+		border-radius: 50%;
+		background: var(--nav-glass-bg);
+		-webkit-backdrop-filter: blur(var(--nav-glass-blur));
+		backdrop-filter: blur(var(--nav-glass-blur));
+		color: var(--primary-color);
+		cursor: pointer;
+		box-shadow: var(--nav-glass-shadow);
+		transition:
+			color 0.2s ease,
+			transform 0.2s ease;
+	}
+	.back-to-top[hidden] {
+		display: none;
+	}
+	.back-to-top:hover,
+	.back-to-top:focus-visible {
+		color: var(--secondary-color);
+		transform: translateY(-2px);
+	}
+	@media only screen and (min-width: 992px) {
+		.back-to-top {
+			right: 100px;
+		}
+	}
+</style>

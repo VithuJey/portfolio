@@ -68,9 +68,12 @@ export const portfolioSchema = z.object({
 		description: z.string(),
 		resumeUrl: z.string(),
 		resumeLabel: z.string(),
+		currently: z.object({ label: z.string(), text: z.string() }),
+		scrollLabel: z.string(),
 	}),
 	about: z.object({
 		heading: z.string(),
+		intro: z.string(),
 		paragraphs: z.array(z.string()),
 		skillHeading: z.string(),
 		skills: z.array(z.string()),
@@ -102,6 +105,8 @@ export const portfolioSchema = z.object({
 		description: z.string(),
 		buttonUrl: z.string(),
 		buttonText: z.string(),
+		copyLabel: z.string(),
+		copiedLabel: z.string(),
 	}),
 	socials: z.array(socialSchema),
 	footer: z.object({

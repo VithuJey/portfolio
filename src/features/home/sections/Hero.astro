@@ -1,7 +1,15 @@
 ---
 import { portfolio } from '@/lib/portfolio'
-const { welcome, name, subtitle, description, resumeUrl, resumeLabel } =
-	portfolio.hero
+const {
+	welcome,
+	name,
+	subtitle,
+	description,
+	resumeUrl,
+	resumeLabel,
+	currently,
+	scrollLabel,
+} = portfolio.hero
 ---
 
 <div class='hero'>
@@ -11,10 +19,38 @@ const { welcome, name, subtitle, description, resumeUrl, resumeLabel } =
 		<h1>{name}</h1>
 		<h2>{subtitle}</h2>
 		<p>{description}</p>
-		<a href={resumeUrl} target='_blank' class='resume-button'>
+		<a
+			href={resumeUrl}
+			target='_blank'
+			class='resume-button'
+			data-track='resume-download'
+		>
 			{resumeLabel}
 		</a>
+		<p class='currently'>
+			<span class='currently-dot' aria-hidden='true'></span>
+			<span class='currently-label'>{currently.label}:</span>
+			{currently.text}
+		</p>
 	</div>
+	<a class='scroll-cue' href='#about' aria-label={scrollLabel}>
+		<span class='scroll-cue-text'>{scrollLabel}</span>
+		<svg
+			class='scroll-cue-icon'
+			xmlns='http://www.w3.org/2000/svg'
+			width='20'
+			height='20'
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			aria-hidden='true'
+		>
+			<path d='m6 9 6 6 6-6'></path>
+		</svg>
+	</a>
 </div>
 
 <style>
@@ -101,6 +137,77 @@ const { welcome, name, subtitle, description, resumeUrl, resumeLabel } =
 			background-color 0.25s ease,
 			transform 0.25s ease,
 			box-shadow 0.25s ease;
+	}
+	.currently {
+		display: flex;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 0 8px;
+		margin: 0;
+		max-width: 520px;
+		font-size: var(--font-sm);
+		line-height: var(--line-height-sm);
+	}
+	.currently-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background-color: #22c55e;
+		align-self: center;
+		flex-shrink: 0;
+		animation: dot-pulse 2s infinite ease-in-out;
+	}
+	.currently-label {
+		font-family: var(--font-mono);
+		font-size: var(--font-sm);
+		color: var(--primary-color);
+	}
+	@keyframes dot-pulse {
+		0%,
+		100% {
+			box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+		}
+		50% {
+			box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+		}
+	}
+	.scroll-cue {
+		position: absolute;
+		bottom: 28px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+		color: var(--tertiary-color);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+	.scroll-cue:hover,
+	.scroll-cue:focus-visible {
+		color: var(--secondary-color);
+	}
+	.scroll-cue-text {
+		font-family: var(--font-mono);
+		font-size: var(--font-xs);
+		line-height: var(--line-height-xs);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: inherit;
+	}
+	.scroll-cue-icon {
+		animation: cue-bounce 1.8s infinite ease-in-out;
+	}
+	@keyframes cue-bounce {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(6px);
+		}
 	}
 	.resume-button:hover {
 		background-color: var(--active-color);

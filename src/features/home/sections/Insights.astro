@@ -110,6 +110,16 @@ const getYoutubeThumbnail = (url: string) => {
 			box-shadow 0.25s ease;
 	}
 
+	.insight-tile:focus-visible {
+		outline: 2px solid var(--secondary-color);
+		outline-offset: 3px;
+	}
+
+	.insight-tile:hover .tile-title,
+	.insight-tile:focus-visible .tile-title {
+		color: var(--secondary-color);
+	}
+
 	.insight-tile:hover {
 		transform: translateY(-5px);
 		box-shadow: var(--card-shadow-hover);

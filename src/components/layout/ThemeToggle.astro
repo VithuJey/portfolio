@@ -1,48 +1,54 @@
+---
+
+---
+
 <button
 	type='button'
 	class='theme-toggle'
 	id='theme-toggle'
-	aria-label='Toggle color theme'
-	title='Toggle color theme'
+	aria-label='Switch to light mode'
+	title='Switch to light mode'
 >
-	<svg
-		class='icon icon-sun'
-		xmlns='http://www.w3.org/2000/svg'
-		width='20'
-		height='20'
-		viewBox='0 0 24 24'
-		fill='none'
-		stroke='currentColor'
-		stroke-width='2'
-		stroke-linecap='round'
-		stroke-linejoin='round'
-		aria-hidden='true'
-	>
-		<circle cx='12' cy='12' r='4'></circle>
-		<path d='M12 2v2'></path>
-		<path d='M12 20v2'></path>
-		<path d='m4.93 4.93 1.41 1.41'></path>
-		<path d='m17.66 17.66 1.41 1.41'></path>
-		<path d='M2 12h2'></path>
-		<path d='M20 12h2'></path>
-		<path d='m6.34 17.66-1.41 1.41'></path>
-		<path d='m19.07 4.93-1.41 1.41'></path>
-	</svg>
-	<svg
-		class='icon icon-moon'
-		xmlns='http://www.w3.org/2000/svg'
-		width='20'
-		height='20'
-		viewBox='0 0 24 24'
-		fill='none'
-		stroke='currentColor'
-		stroke-width='2'
-		stroke-linecap='round'
-		stroke-linejoin='round'
-		aria-hidden='true'
-	>
-		<path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'></path>
-	</svg>
+	<span class='icons' aria-hidden='true'>
+		<svg
+			class='icon icon-sun'
+			xmlns='http://www.w3.org/2000/svg'
+			width='18'
+			height='18'
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'
+		>
+			<circle cx='12' cy='12' r='4'></circle>
+			<path d='M12 2v2'></path>
+			<path d='M12 20v2'></path>
+			<path d='m4.93 4.93 1.41 1.41'></path>
+			<path d='m17.66 17.66 1.41 1.41'></path>
+			<path d='M2 12h2'></path>
+			<path d='M20 12h2'></path>
+			<path d='m6.34 17.66-1.41 1.41'></path>
+			<path d='m19.07 4.93-1.41 1.41'></path>
+		</svg>
+		<svg
+			class='icon icon-moon'
+			xmlns='http://www.w3.org/2000/svg'
+			width='18'
+			height='18'
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'
+		>
+			<path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'></path>
+		</svg>
+	</span>
+	<span class='label label-light' aria-hidden='true'>Light</span>
+	<span class='label label-dark' aria-hidden='true'>Dark</span>
 </button>
 
 <script>
@@ -52,8 +58,15 @@
 
 	function applyTheme(theme: 'light' | 'dark') {
 		root.setAttribute('data-theme', theme)
-		localStorage.setItem(STORAGE_KEY, theme)
+		try {
+			localStorage.setItem(STORAGE_KEY, theme)
+		} catch {
+			// storage unavailable; the theme still applies for this visit
+		}
 		toggle?.setAttribute('data-active-theme', theme)
+		const next = theme === 'light' ? 'dark' : 'light'
+		toggle?.setAttribute('aria-label', `Switch to ${next} mode`)
+		toggle?.setAttribute('title', `Switch to ${next} mode`)
 	}
 
 	function getTheme(): 'light' | 'dark' {
@@ -69,15 +82,13 @@
 
 <style>
 	.theme-toggle {
-		position: relative;
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 2.5rem;
+		gap: 8px;
 		height: 2.5rem;
-		padding: 0;
-		border: 1px solid transparent;
-		border-radius: 8px;
+		padding: 0 0.7rem;
+		border: 1px solid var(--nav-glass-border);
+		border-radius: 999px;
 		background: transparent;
 		color: var(--primary-color);
 		cursor: pointer;
@@ -89,7 +100,7 @@
 
 	.theme-toggle:hover {
 		color: var(--secondary-color);
-		border-color: var(--active-color);
+		border-color: var(--secondary-color);
 		background-color: var(--active-color);
 	}
 
@@ -98,30 +109,54 @@
 		outline-offset: 2px;
 	}
 
+	.icons {
+		position: relative;
+		width: 18px;
+		height: 18px;
+	}
+
 	.icon {
 		position: absolute;
+		inset: 0;
 		transition:
 			opacity 0.2s ease,
 			transform 0.2s ease;
 	}
 
+	/* The icon shows the mode you will switch to. */
 	.icon-sun {
+		opacity: 1;
+		transform: rotate(0deg) scale(1);
+	}
+
+	.icon-moon {
+		opacity: 0;
+		transform: rotate(30deg) scale(0.85);
+	}
+
+	.theme-toggle[data-active-theme='light'] .icon-sun {
 		opacity: 0;
 		transform: rotate(-30deg) scale(0.85);
 	}
 
-	.icon-moon {
-		opacity: 1;
-		transform: rotate(0deg) scale(1);
-	}
-
-	.theme-toggle[data-active-theme='light'] .icon-sun {
-		opacity: 1;
-		transform: rotate(0deg) scale(1);
-	}
-
 	.theme-toggle[data-active-theme='light'] .icon-moon {
-		opacity: 0;
-		transform: rotate(30deg) scale(0.85);
+		opacity: 1;
+		transform: rotate(0deg) scale(1);
+	}
+
+	.label {
+		display: none;
+		font-family: var(--font-mono);
+		font-size: var(--font-xs);
+		line-height: var(--line-height-xs);
+		color: inherit;
+		letter-spacing: 0.04em;
+	}
+
+	@media only screen and (min-width: 600px) {
+		.theme-toggle:not([data-active-theme='light']) .label-light,
+		.theme-toggle[data-active-theme='light'] .label-dark {
+			display: inline;
+		}
 	}
 </style>
