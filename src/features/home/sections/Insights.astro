@@ -14,20 +14,6 @@ const typeIcons: Record<string, { svg: string; label: string }> = {
 	},
 }
 
-const getYoutubeId = (url: string) =>
-	url.match(
-		/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([^&\n?#]+)/
-	)?.[1]
-
-// YouTube auto-generates three extra frames per video (about 25%, 50% and 75% in)
-const getYoutubeFrames = (url: string) => {
-	const id = getYoutubeId(url)
-
-	return id
-		? [1, 2, 3].map((n) => `https://img.youtube.com/vi/${id}/hq${n}.jpg`)
-		: []
-}
-
 const getYoutubeThumbnail = (url: string) => {
 	const match = url.match(
 		/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([^&\n?#]+)/
@@ -55,14 +41,21 @@ const getYoutubeThumbnail = (url: string) => {
 						<div class='tile-thumbnail'>
 							{isShort ? (
 								<>
-									<div class='short-strip'>
-										{getYoutubeFrames(item.thumbnail).map((frame) => (
-											<div class='short-frame'>
-												<img src={frame} alt='' loading='lazy' />
-											</div>
-										))}
+									<img
+										class='short-bg'
+										src={getYoutubeThumbnail(item.thumbnail)}
+										alt=''
+										aria-hidden='true'
+										loading='lazy'
+									/>
+									<span class='short-tint' aria-hidden='true' />
+									<div class='short-frame'>
+										<img
+											src={getYoutubeThumbnail(item.thumbnail)}
+											alt={item.title}
+											loading='lazy'
+										/>
 									</div>
-									<span class='short-tag'>Short</span>
 								</>
 							) : (
 								<img
@@ -141,26 +134,42 @@ const getYoutubeThumbnail = (url: string) => {
 		transform: scale(1.05);
 	}
 
-	/* Shorts are vertical: show three frames side by side instead of stretching one across the wide card */
+	/* Shorts are vertical: a zoomed, tinted copy of the thumbnail fills the wide card behind the real thumbnail */
 	.is-short .tile-thumbnail {
 		background: #0a0f1e;
 	}
 
-	.short-strip {
-		display: flex;
-		justify-content: center;
-		gap: 4px;
-		height: 100%;
+	/* the 4:3 thumbnail has the vertical video pillarboxed in the middle; the zoom crops the bars away and the blur hides the upscaling */
+	.tile-thumbnail .short-bg {
+		position: absolute;
+		inset: 0;
+		transform: scale(2.4);
+		filter: blur(4px);
+	}
+
+	.insight-tile:hover .tile-thumbnail .short-bg {
+		transform: scale(2.5);
+	}
+
+	.short-tint {
+		position: absolute;
+		inset: 0;
+		background: rgba(10, 15, 30, 0.55);
 	}
 
 	.short-frame {
-		position: relative;
-		flex: 0 1 101px;
-		min-width: 0;
+		position: absolute;
+		top: 12px;
+		bottom: 12px;
+		left: 50%;
+		width: 85px;
+		transform: translateX(-50%);
 		overflow: hidden;
+		border-radius: 8px;
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 	}
 
-	/* each frame is 4:3 with the vertical video pillarboxed in the middle; the narrow frame crops the bars away */
+	/* crop the pillarbox bars so only the vertical video shows */
 	.tile-thumbnail .short-frame img {
 		position: absolute;
 		left: 50%;
@@ -171,20 +180,6 @@ const getYoutubeThumbnail = (url: string) => {
 
 	.insight-tile:hover .tile-thumbnail .short-frame img {
 		transform: translateX(-50%) scale(1.05);
-	}
-
-	.short-tag {
-		position: absolute;
-		right: 10px;
-		bottom: 10px;
-		padding: 3px 8px;
-		border-radius: 4px;
-		background: rgba(0, 0, 0, 0.55);
-		color: #fff;
-		font-family: var(--font-sans);
-		font-size: 11px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
 	}
 
 	.type-badge {
