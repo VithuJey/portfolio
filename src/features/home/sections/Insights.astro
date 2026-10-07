@@ -41,6 +41,14 @@ const getYoutubeThumbnail = (url: string) => {
 						<div class='tile-thumbnail'>
 							{isShort ? (
 								<>
+									<img
+										class='short-bg'
+										src={getYoutubeThumbnail(item.thumbnail)}
+										alt=''
+										aria-hidden='true'
+										loading='lazy'
+									/>
+									<span class='short-tint' aria-hidden='true' />
 									<div class='short-frame'>
 										<img
 											src={getYoutubeThumbnail(item.thumbnail)}
@@ -48,17 +56,6 @@ const getYoutubeThumbnail = (url: string) => {
 											loading='lazy'
 										/>
 									</div>
-									<span class='short-play' aria-hidden='true'>
-										<svg
-											width='14'
-											height='14'
-											viewBox='0 0 24 24'
-											fill='currentColor'
-										>
-											<polygon points='6 3 20 12 6 21' />
-										</svg>
-									</span>
-									<span class='short-tag'>Short</span>
 								</>
 							) : (
 								<img
@@ -137,24 +134,42 @@ const getYoutubeThumbnail = (url: string) => {
 		transform: scale(1.05);
 	}
 
-	/* Shorts are vertical: show the video frame centered on a gradient instead of stretching it across the wide card */
+	/* Shorts are vertical: a zoomed, tinted copy of the thumbnail fills the wide card behind the real thumbnail */
 	.is-short .tile-thumbnail {
-		background: linear-gradient(135deg, var(--secondary-color) 0%, #151d35 70%);
+		background: #0a0f1e;
+	}
+
+	/* the 4:3 thumbnail has the vertical video pillarboxed in the middle; the zoom crops the bars away and the blur hides the upscaling */
+	.tile-thumbnail .short-bg {
+		position: absolute;
+		inset: 0;
+		transform: scale(2.4);
+		filter: blur(4px);
+	}
+
+	.insight-tile:hover .tile-thumbnail .short-bg {
+		transform: scale(2.5);
+	}
+
+	.short-tint {
+		position: absolute;
+		inset: 0;
+		background: rgba(10, 15, 30, 0.55);
 	}
 
 	.short-frame {
 		position: absolute;
-		top: 14px;
-		bottom: 14px;
+		top: 12px;
+		bottom: 12px;
 		left: 50%;
-		width: 79px;
+		width: 85px;
 		transform: translateX(-50%);
 		overflow: hidden;
 		border-radius: 8px;
-		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 	}
 
-	/* hqdefault is 4:3 with the vertical video pillarboxed in the middle; the narrow frame crops the bars away */
+	/* crop the pillarbox bars so only the vertical video shows */
 	.tile-thumbnail .short-frame img {
 		position: absolute;
 		left: 50%;
@@ -165,35 +180,6 @@ const getYoutubeThumbnail = (url: string) => {
 
 	.insight-tile:hover .tile-thumbnail .short-frame img {
 		transform: translateX(-50%) scale(1.05);
-	}
-
-	.short-play {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 34px;
-		height: 34px;
-		border-radius: 50%;
-		background: rgba(0, 0, 0, 0.55);
-		color: #fff;
-		transform: translate(-50%, -50%);
-	}
-
-	.short-tag {
-		position: absolute;
-		right: 10px;
-		bottom: 10px;
-		padding: 3px 8px;
-		border-radius: 4px;
-		background: rgba(0, 0, 0, 0.55);
-		color: #fff;
-		font-family: var(--font-sans);
-		font-size: 11px;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
 	}
 
 	.type-badge {
