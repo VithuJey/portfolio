@@ -237,8 +237,8 @@
 		"list": [
 			{
 				"link": "https://www.youtube.com/shorts/lsGmO0KjBCo",
-				"title": "AI Agent Orchestration",
-				"desc": "A quick look at how multiple AI agents are coordinated to work together",
+				"title": "The Evolution of AI Agent Orchestration",
+				"desc": "From LangChain to LangGraph and PydanticAI: how agents recover when things go wrong",
 				"thumbnail": "https://www.youtube.com/shorts/lsGmO0KjBCo",
 				"type": "video"
 			},
