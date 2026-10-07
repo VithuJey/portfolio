@@ -1,45 +1,81 @@
 ---
 import ThemeInit from '@/components/layout/ThemeInit.astro'
+import { portfolio } from '@/lib/portfolio'
 import { site } from '@/lib/site'
 
 interface Props {
 	title: string
+	noindex?: boolean
+	personSchema?: boolean
 }
 
-const { title } = Astro.props
+const { title, noindex = false, personSchema = false } = Astro.props
 const pageTitle = title || site.titleFallback
+const canonicalUrl = new URL(Astro.url.pathname, site.url).href
+const ogImageUrl = new URL(site.ogImage, site.url).href
+
+const personJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: site.author,
+	jobTitle: site.jobTitle,
+	description: site.description,
+	url: site.url,
+	image: new URL('/images/og-card.png', site.url).href,
+	email: `mailto:${portfolio.email}`,
+	sameAs: portfolio.socials
+		.filter((social) => social.visible)
+		.map((social) => social.url),
+}
 ---
 
 <meta charset='UTF-8' />
-<meta
-	name='viewport'
-	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
-/>
-<link rel='icon' type='image/x-icon' href='/favicon.ico' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<meta name='theme-color' content={site.themeColor} />
+
+<link rel='icon' type='image/svg+xml' href='/icons/fa-v.svg' />
+<link rel='icon' type='image/x-icon' href='/favicon.ico' sizes='48x48' />
+<link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+<link rel='manifest' href='/site.webmanifest' />
+<link rel='canonical' href={canonicalUrl} />
+{noindex && <meta name='robots' content='noindex, follow' />}
 
 <meta name='description' content={site.description} />
 <meta name='keywords' content={site.keywords} />
 <meta name='author' content={site.author} />
 
 <meta property='og:type' content='website' />
+<meta property='og:url' content={canonicalUrl} />
+<meta property='og:locale' content={site.locale} />
 <meta property='og:title' content={pageTitle} />
 <meta property='og:description' content={site.description} />
 <meta property='og:site_name' content={site.siteName} />
-<meta property='og:image' content={site.ogImage} />
+<meta property='og:image' content={ogImageUrl} />
+<meta property='og:image:width' content='1200' />
+<meta property='og:image:height' content='630' />
+<meta property='og:image:alt' content={site.ogImageAlt} />
 
 <meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:site' content={site.twitterHandle} />
+<meta name='twitter:creator' content={site.twitterHandle} />
 <meta name='twitter:title' content={pageTitle} />
 <meta name='twitter:description' content={site.description} />
-<meta name='twitter:image' content={site.ogImage} />
+<meta name='twitter:image' content={ogImageUrl} />
+<meta name='twitter:image:alt' content={site.ogImageAlt} />
+
+{
+	personSchema && (
+		<script
+			type='application/ld+json'
+			set:html={JSON.stringify(personJsonLd)}
+		/>
+	)
+}
 
 <link rel='preconnect' href='https://fonts.googleapis.com' />
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 <link
-	href='https://fonts.googleapis.com/css2?family=Space+Mono&display=swap'
-	rel='stylesheet'
-/>
-<link
-	href='https://fonts.googleapis.com/css2?family=Syne&display=swap'
+	href='https://fonts.googleapis.com/css2?family=Space+Mono&family=Syne&display=swap'
 	rel='stylesheet'
 />
 

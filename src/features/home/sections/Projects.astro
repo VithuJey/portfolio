@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets'
 import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { resolveImage } from '@/lib/images'
 import { portfolio } from '@/lib/portfolio'
 
 const { heading, list } = portfolio.projects
@@ -14,10 +16,12 @@ const { heading, list } = portfolio.projects
 				project.type === 'one' ? (
 					<div class='project-type-one'>
 						<div class='left'>
-							<img
+							<Image
 								class='project-img'
-								src={project.image.src}
+								src={resolveImage(project.image.src)}
 								alt={project.image.alt}
+								width={800}
+								loading='lazy'
 							/>
 						</div>
 						<div class='right'>
@@ -70,10 +74,12 @@ const { heading, list } = portfolio.projects
 							</ul>
 						</div>
 						<div class='right'>
-							<img
+							<Image
 								class='project-img'
-								src={project.image.src}
+								src={resolveImage(project.image.src)}
 								alt={project.image.alt}
+								width={800}
+								loading='lazy'
 							/>
 						</div>
 					</div>

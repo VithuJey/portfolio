@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets'
+import { resolveImage } from '@/lib/images'
+
 interface Props {
 	imgSrc: string
 	imgAlt: string
@@ -9,6 +12,6 @@ const { imgSrc, imgAlt } = Astro.props
 
 <section id='certificate'>
 	<div class='wrapper'>
-		<img src={imgSrc} alt={imgAlt} width='85%' />
+		<Image src={resolveImage(imgSrc)} alt={imgAlt} width={1600} />
 	</div>
 </section>

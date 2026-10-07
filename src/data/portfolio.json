@@ -40,7 +40,7 @@
 		"name": "Vithushan",
 		"subtitle": "Associate Technical Lead",
 		"description": "Software Engineer specializing in building performant, scalable and secure web & mobile applications.",
-		"resumeUrl": "/docs/Vithushan Jeyasothy.pdf",
+		"resumeUrl": "/docs/vithushan-jeyasothy-resume.pdf",
 		"resumeLabel": "Get Resume"
 	},
 	"about": {
@@ -65,8 +65,8 @@
 			"Git"
 		],
 		"avatar": {
-			"src": "/images/vithu.jpg",
-			"alt": "avatar"
+			"src": "/images/vithu.png",
+			"alt": "Portrait of Vithushan Jeyasothy"
 		}
 	},
 	"experience": {
@@ -148,7 +148,7 @@
 				"type": "one",
 				"image": {
 					"src": "/images/ss-gradient-animation.png",
-					"alt": "gradient-img"
+					"alt": "Screenshot of Gradient Animator"
 				},
 				"description": "Created the web app to learn the new JS framework Svelte. I really loved the opinionated approaches in Svelte. Also a nice way to spend time for a React developer 😉",
 				"technologies": ["Svelte", "Vite"],
@@ -157,13 +157,13 @@
 						"id": "github",
 						"url": "https://github.com/VithuJey/svelte-gradient-animation",
 						"icon": "/icons/fa-github.svg",
-						"alt": "github-icon"
+						"alt": "GitHub repository"
 					},
 					{
 						"id": "gradient-wineview-website",
 						"url": "https://gradient-animation.netlify.app/",
 						"icon": "/icons/fa-link.svg",
-						"alt": "link-icon"
+						"alt": "Live demo"
 					}
 				]
 			},
@@ -173,7 +173,7 @@
 				"type": "two",
 				"image": {
 					"src": "/images/ss-wine-view.png",
-					"alt": "gradient-img"
+					"alt": "Screenshot of Wine View Dashboard"
 				},
 				"description": "Designed & developed this web dashboard to manage the wine distribution for a distributor. This is the demo app of a finished one.",
 				"technologies": ["React", "TypeScript", "Ant Design", "Figma"],
@@ -182,20 +182,20 @@
 						"id": "github",
 						"url": "https://github.com/VithuJey/wine-view-dashboard",
 						"icon": "/icons/fa-github.svg",
-						"alt": "github-icon"
+						"alt": "GitHub repository"
 					},
 					{
 						"id": "figma",
 						"url": "https://www.figma.com/file/xorRRWzTJKH9spnWKbMEa5/WineView-Dashboard-(Desktop-%26-Mobile)?node-id=43%3A4442",
 						"icon": "/icons/fa-figma.svg",
-						"alt": "figma-icon",
+						"alt": "Figma design",
 						"class": "figma-icon"
 					},
 					{
 						"id": "wineview-website",
 						"url": "https://wineview.netlify.app/",
 						"icon": "/icons/fa-link.svg",
-						"alt": "link-icon"
+						"alt": "Live demo"
 					}
 				]
 			},
@@ -205,7 +205,7 @@
 				"type": "one",
 				"image": {
 					"src": "/images/ss-web-worker.png",
-					"alt": "gradient-img"
+					"alt": "Screenshot of Web Worker in React"
 				},
 				"description": "Developed web worker interface to test and run web worker for a Medium article. By the way Web worker is fascinating!",
 				"technologies": ["React", "TypeScript", "Web Worker"],
@@ -214,19 +214,19 @@
 						"id": "github",
 						"url": "https://github.com/VithuJey/web-worker",
 						"icon": "/icons/fa-github.svg",
-						"alt": "github-icon"
+						"alt": "GitHub repository"
 					},
 					{
 						"id": "gradient-wineview-website",
 						"url": "https://medium.com/javascript-in-plain-english/how-to-use-web-workers-in-react-9de15a006e89",
 						"icon": "/icons/fa-medium.svg",
-						"alt": "link-icon"
+						"alt": "Live demo"
 					},
 					{
 						"id": "gradient-wineview-website",
 						"url": "https://react-web-workers.netlify.app/",
 						"icon": "/icons/fa-link.svg",
-						"alt": "link-icon"
+						"alt": "Live demo"
 					}
 				]
 			}
@@ -239,7 +239,7 @@
 				"link": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
 				"title": "Next.js Performance Optimization Techniques",
 				"desc": "Fine-tune the applications for maximum speed and efficiency",
-				"thumbnail": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
+				"thumbnail": "https://img.youtube.com/vi/oSlOMEJ3xkc/hqdefault.jpg",
 				"type": "video"
 			},
 			{
@@ -304,28 +304,28 @@
 			"id": "medium",
 			"url": "https://medium.com/@vithushjeytharma",
 			"icon": "/icons/fa-medium.svg",
-			"alt": "medium-icon",
+			"alt": "Medium profile",
 			"visible": true
 		},
 		{
 			"id": "github",
 			"url": "https://github.com/vithujey",
 			"icon": "/icons/fa-github.svg",
-			"alt": "github-icon",
+			"alt": "GitHub profile",
 			"visible": true
 		},
 		{
 			"id": "linkedin",
 			"url": "https://www.linkedin.com/in/vithujey/",
 			"icon": "/icons/fa-linkedin.svg",
-			"alt": "linkedin-icon",
+			"alt": "LinkedIn profile",
 			"visible": true
 		},
 		{
 			"id": "twitter",
 			"url": "https://twitter.com/jeyvithu",
 			"icon": "/icons/fa-twitter.svg",
-			"alt": "twitter-icon",
+			"alt": "X (Twitter) profile",
 			"visible": false
 		}
 	],

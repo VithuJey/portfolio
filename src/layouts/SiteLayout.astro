@@ -9,17 +9,26 @@ interface Props {
 	title: string
 	contentClass?: string
 	showHeader?: boolean
+	noindex?: boolean
+	personSchema?: boolean
 }
 
-const { title, contentClass, showHeader = true } = Astro.props
+const {
+	title,
+	contentClass,
+	showHeader = true,
+	noindex = false,
+	personSchema = false,
+} = Astro.props
 ---
 
 <!doctype html>
 <html lang='en'>
 	<head>
-		<SeoHead title={title} />
+		<SeoHead title={title} noindex={noindex} personSchema={personSchema} />
 	</head>
 	<body>
+		<a class='skip-link' href='#content'>Skip to content</a>
 		{showHeader && <SiteHeader />}
 		<main id='content' class:list={contentClass}>
 			<slot />
@@ -27,6 +36,22 @@ const { title, contentClass, showHeader = true } = Astro.props
 		<SocialRail />
 		<EmailRail />
 		<style>
+			.skip-link {
+				position: fixed;
+				top: 8px;
+				left: 8px;
+				z-index: 1000;
+				padding: 0.5rem 1rem;
+				font-family: var(--font-mono);
+				color: var(--bg-color);
+				background-color: var(--secondary-color);
+				border-radius: 4px;
+				text-decoration: none;
+				transform: translateY(-200%);
+			}
+			.skip-link:focus {
+				transform: translateY(0);
+			}
 			#content {
 				margin: auto;
 				padding: 0 25px;
