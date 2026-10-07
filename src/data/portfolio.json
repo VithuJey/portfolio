@@ -236,6 +236,13 @@
 		"heading": "Insights",
 		"list": [
 			{
+				"link": "https://www.youtube.com/shorts/lsGmO0KjBCo",
+				"title": "AI Agent Orchestration",
+				"desc": "A quick look at how multiple AI agents are coordinated to work together",
+				"thumbnail": "https://www.youtube.com/shorts/lsGmO0KjBCo",
+				"type": "video"
+			},
+			{
 				"link": "https://www.youtube.com/watch?v=oSlOMEJ3xkc",
 				"title": "Next.js Performance Optimization Techniques",
 				"desc": "Fine-tune the applications for maximum speed and efficiency",
