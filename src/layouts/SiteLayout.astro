@@ -38,7 +38,7 @@ const {
 		<style>
 			.skip-link {
 				position: fixed;
-				top: 8px;
+				top: -100px;
 				left: 8px;
 				z-index: 1000;
 				padding: 0.5rem 1rem;
@@ -47,10 +47,9 @@ const {
 				background-color: var(--secondary-color);
 				border-radius: 4px;
 				text-decoration: none;
-				transform: translateY(-200%);
 			}
 			.skip-link:focus {
-				transform: translateY(0);
+				top: 8px;
 			}
 			#content {
 				margin: auto;

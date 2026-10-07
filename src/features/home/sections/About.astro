@@ -139,18 +139,9 @@ const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
 		transform: scaleX(1);
 		transform-origin: bottom left;
 	}
-	@media only screen and (max-width: 375px) {
+	@media only screen and (max-width: 480px) {
 		.skill-list {
-			display: grid;
-			grid-template-columns: repeat(3, minmax(130px, 130px));
-			list-style: none;
-		}
-	}
-	@media only screen and (max-width: 320px) {
-		.skill-list {
-			display: grid;
-			grid-template-columns: repeat(3, minmax(100px, 100px));
-			list-style: none;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 	@media only screen and (max-width: 768px) {
