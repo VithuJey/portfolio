@@ -239,7 +239,7 @@
 				"link": "https://www.youtube.com/shorts/lsGmO0KjBCo",
 				"title": "The Evolution of AI Agent Orchestration",
 				"desc": "From LangChain to LangGraph and beyond",
-				"thumbnail": "https://www.youtube.com/shorts/lsGmO0KjBCo",
+				"thumbnail": "/images/ai-agent-orchestration.svg",
 				"type": "video"
 			},
 			{
