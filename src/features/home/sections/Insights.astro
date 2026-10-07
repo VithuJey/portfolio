@@ -32,7 +32,10 @@ const getYoutubeThumbnail = (url: string) => {
 				const icon = typeIcons[item.type] || typeIcons.article
 				return (
 					<a
-						class='insight-tile'
+						class:list={[
+							'insight-tile',
+							{ 'is-short': item.link.includes('/shorts/') },
+						]}
 						href={item.link}
 						target='_blank'
 						rel='noopener noreferrer'
@@ -98,6 +101,15 @@ const getYoutubeThumbnail = (url: string) => {
 
 	.insight-tile:hover .tile-thumbnail img {
 		transform: scale(1.05);
+	}
+
+	/* Shorts thumbnails are vertical frames pillarboxed in a 4:3 image; zoom in on the video area to fill the wide card */
+	.is-short .tile-thumbnail img {
+		transform: scale(2.4);
+	}
+
+	.is-short:hover .tile-thumbnail img {
+		transform: scale(2.5);
 	}
 
 	.type-badge {
