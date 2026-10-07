@@ -41,6 +41,9 @@ const getYoutubeThumbnail = (url: string) => {
 								alt={item.title}
 								loading='lazy'
 							/>
+							<span class='thumb-placeholder' aria-hidden='true'>
+								<Fragment set:html={icon.svg} />
+							</span>
 							<span class='type-badge' title={icon.label}>
 								<Fragment set:html={icon.svg} />
 							</span>
@@ -55,6 +58,17 @@ const getYoutubeThumbnail = (url: string) => {
 		}
 	</div>
 </section>
+
+<script>
+	// Hide broken thumbnails so the placeholder background shows through.
+	document
+		.querySelectorAll<HTMLImageElement>('.tile-thumbnail img')
+		.forEach((img) => {
+			const hide = () => (img.style.display = 'none')
+			if (img.complete && img.naturalWidth === 0) hide()
+			img.addEventListener('error', hide)
+		})
+</script>
 
 <style>
 	.insights-grid {
@@ -85,9 +99,26 @@ const getYoutubeThumbnail = (url: string) => {
 		height: 180px;
 		overflow: hidden;
 		position: relative;
+		background: linear-gradient(135deg, var(--active-color), var(--card-color));
+	}
+
+	.thumb-placeholder {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--secondary-color);
+		opacity: 0.4;
+	}
+
+	.thumb-placeholder :global(svg) {
+		width: 48px;
+		height: 48px;
 	}
 
 	.tile-thumbnail img {
+		position: relative;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
