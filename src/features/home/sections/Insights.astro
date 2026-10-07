@@ -14,6 +14,20 @@ const typeIcons: Record<string, { svg: string; label: string }> = {
 	},
 }
 
+const getYoutubeId = (url: string) =>
+	url.match(
+		/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([^&\n?#]+)/
+	)?.[1]
+
+// YouTube auto-generates three extra frames per video (about 25%, 50% and 75% in)
+const getYoutubeFrames = (url: string) => {
+	const id = getYoutubeId(url)
+
+	return id
+		? [1, 2, 3].map((n) => `https://img.youtube.com/vi/${id}/hq${n}.jpg`)
+		: []
+}
+
 const getYoutubeThumbnail = (url: string) => {
 	const match = url.match(
 		/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([^&\n?#]+)/
@@ -30,19 +44,33 @@ const getYoutubeThumbnail = (url: string) => {
 		{
 			list.map((item) => {
 				const icon = typeIcons[item.type] || typeIcons.article
+				const isShort = item.link.includes('/shorts/')
 				return (
 					<a
-						class='insight-tile'
+						class:list={['insight-tile', { 'is-short': isShort }]}
 						href={item.link}
 						target='_blank'
 						rel='noopener noreferrer'
 					>
 						<div class='tile-thumbnail'>
-							<img
-								src={getYoutubeThumbnail(item.thumbnail)}
-								alt={item.title}
-								loading='lazy'
-							/>
+							{isShort ? (
+								<>
+									<div class='short-strip'>
+										{getYoutubeFrames(item.thumbnail).map((frame) => (
+											<div class='short-frame'>
+												<img src={frame} alt='' loading='lazy' />
+											</div>
+										))}
+									</div>
+									<span class='short-tag'>Short</span>
+								</>
+							) : (
+								<img
+									src={getYoutubeThumbnail(item.thumbnail)}
+									alt={item.title}
+									loading='lazy'
+								/>
+							)}
 							<span class='type-badge' title={icon.label}>
 								<Fragment set:html={icon.svg} />
 							</span>
@@ -111,6 +139,52 @@ const getYoutubeThumbnail = (url: string) => {
 
 	.insight-tile:hover .tile-thumbnail img {
 		transform: scale(1.05);
+	}
+
+	/* Shorts are vertical: show three frames side by side instead of stretching one across the wide card */
+	.is-short .tile-thumbnail {
+		background: #0a0f1e;
+	}
+
+	.short-strip {
+		display: flex;
+		justify-content: center;
+		gap: 4px;
+		height: 100%;
+	}
+
+	.short-frame {
+		position: relative;
+		flex: 0 1 101px;
+		min-width: 0;
+		overflow: hidden;
+	}
+
+	/* each frame is 4:3 with the vertical video pillarboxed in the middle; the narrow frame crops the bars away */
+	.tile-thumbnail .short-frame img {
+		position: absolute;
+		left: 50%;
+		width: auto;
+		max-width: none;
+		transform: translateX(-50%);
+	}
+
+	.insight-tile:hover .tile-thumbnail .short-frame img {
+		transform: translateX(-50%) scale(1.05);
+	}
+
+	.short-tag {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		padding: 3px 8px;
+		border-radius: 4px;
+		background: rgba(0, 0, 0, 0.55);
+		color: #fff;
+		font-family: var(--font-sans);
+		font-size: 11px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 	}
 
 	.type-badge {
