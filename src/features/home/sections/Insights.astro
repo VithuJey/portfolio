@@ -15,7 +15,9 @@ const typeIcons: Record<string, { svg: string; label: string }> = {
 }
 
 const getYoutubeThumbnail = (url: string) => {
-	const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/)
+	const match = url.match(
+		/(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)([^&\n?#]+)/
+	)
 
 	return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : url
 }
@@ -28,19 +30,43 @@ const getYoutubeThumbnail = (url: string) => {
 		{
 			list.map((item) => {
 				const icon = typeIcons[item.type] || typeIcons.article
+				const isShort = item.link.includes('/shorts/')
 				return (
 					<a
-						class='insight-tile'
+						class:list={['insight-tile', { 'is-short': isShort }]}
 						href={item.link}
 						target='_blank'
 						rel='noopener noreferrer'
 					>
 						<div class='tile-thumbnail'>
-							<img
-								src={getYoutubeThumbnail(item.thumbnail)}
-								alt={item.title}
-								loading='lazy'
-							/>
+							{isShort ? (
+								<>
+									<div class='short-frame'>
+										<img
+											src={getYoutubeThumbnail(item.thumbnail)}
+											alt={item.title}
+											loading='lazy'
+										/>
+									</div>
+									<span class='short-play' aria-hidden='true'>
+										<svg
+											width='14'
+											height='14'
+											viewBox='0 0 24 24'
+											fill='currentColor'
+										>
+											<polygon points='6 3 20 12 6 21' />
+										</svg>
+									</span>
+									<span class='short-tag'>Short</span>
+								</>
+							) : (
+								<img
+									src={getYoutubeThumbnail(item.thumbnail)}
+									alt={item.title}
+									loading='lazy'
+								/>
+							)}
 							<span class='type-badge' title={icon.label}>
 								<Fragment set:html={icon.svg} />
 							</span>
@@ -109,6 +135,65 @@ const getYoutubeThumbnail = (url: string) => {
 
 	.insight-tile:hover .tile-thumbnail img {
 		transform: scale(1.05);
+	}
+
+	/* Shorts are vertical: show the video frame centered on a gradient instead of stretching it across the wide card */
+	.is-short .tile-thumbnail {
+		background: linear-gradient(135deg, var(--secondary-color) 0%, #151d35 70%);
+	}
+
+	.short-frame {
+		position: absolute;
+		top: 14px;
+		bottom: 14px;
+		left: 50%;
+		width: 79px;
+		transform: translateX(-50%);
+		overflow: hidden;
+		border-radius: 8px;
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+	}
+
+	/* hqdefault is 4:3 with the vertical video pillarboxed in the middle; the narrow frame crops the bars away */
+	.tile-thumbnail .short-frame img {
+		position: absolute;
+		left: 50%;
+		width: auto;
+		max-width: none;
+		transform: translateX(-50%);
+	}
+
+	.insight-tile:hover .tile-thumbnail .short-frame img {
+		transform: translateX(-50%) scale(1.05);
+	}
+
+	.short-play {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		background: rgba(0, 0, 0, 0.55);
+		color: #fff;
+		transform: translate(-50%, -50%);
+	}
+
+	.short-tag {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		padding: 3px 8px;
+		border-radius: 4px;
+		background: rgba(0, 0, 0, 0.55);
+		color: #fff;
+		font-family: var(--font-sans);
+		font-size: 11px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 	}
 
 	.type-badge {
