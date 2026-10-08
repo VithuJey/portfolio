@@ -2,19 +2,191 @@
 import { portfolio } from '@/lib/portfolio'
 
 const { email } = portfolio
+const { copyLabel, copiedLabel } = portfolio.contact
 ---
 
-<div class='name'>
-	<a href={`mailto:${email}`}>{email}</a>
+<div class='rail'>
+	<button
+		type='button'
+		class='copy-btn'
+		id='copy-email'
+		data-email={email}
+		data-label={copyLabel}
+		data-copied-label={copiedLabel}
+		aria-label={copyLabel}
+		title={copyLabel}
+	>
+		<svg
+			class='icon icon-copy'
+			xmlns='http://www.w3.org/2000/svg'
+			width='16'
+			height='16'
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			aria-hidden='true'
+		>
+			<rect width='14' height='14' x='8' y='8' rx='2' ry='2'></rect>
+			<path d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'></path>
+		</svg>
+		<svg
+			class='icon icon-check'
+			xmlns='http://www.w3.org/2000/svg'
+			width='16'
+			height='16'
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			stroke-width='2'
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			aria-hidden='true'
+		>
+			<path d='M20 6 9 17l-5-5'></path>
+		</svg>
+		<span class='tooltip' aria-hidden='true'>{copiedLabel}</span>
+	</button>
+	<span class='sr-only' role='status' aria-live='polite' id='copy-status'
+	></span>
+	<div class='name'>
+		<a href={`mailto:${email}`}>{email}</a>
+	</div>
 </div>
 
+<script>
+	const button = document.getElementById(
+		'copy-email'
+	) as HTMLButtonElement | null
+	const status = document.getElementById('copy-status')
+
+	async function copyText(text: string) {
+		if (navigator.clipboard?.writeText) {
+			await navigator.clipboard.writeText(text)
+			return
+		}
+		const area = document.createElement('textarea')
+		area.value = text
+		area.setAttribute('readonly', '')
+		area.style.position = 'fixed'
+		area.style.opacity = '0'
+		document.body.appendChild(area)
+		area.select()
+		const ok = document.execCommand('copy')
+		area.remove()
+		if (!ok) throw new Error('copy failed')
+	}
+
+	let timer: number | undefined
+
+	button?.addEventListener('click', async () => {
+		const copied = button.dataset.copiedLabel ?? 'Copied!'
+		try {
+			await copyText(button.dataset.email ?? '')
+			button.classList.add('copy-btn--done')
+			if (status) status.textContent = copied
+		} catch {
+			if (status) status.textContent = 'Copy failed'
+		}
+		window.clearTimeout(timer)
+		timer = window.setTimeout(() => {
+			button.classList.remove('copy-btn--done')
+			if (status) status.textContent = ''
+		}, 2000)
+	})
+</script>
+
 <style>
-	.name {
-		display: flex;
-		align-items: center;
+	.rail {
 		position: fixed;
 		bottom: 0;
 		right: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.copy-btn {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		padding: 0;
+		border: 1px solid transparent;
+		border-radius: 8px;
+		background: transparent;
+		color: var(--primary-color);
+		cursor: pointer;
+		transition:
+			color 0.25s ease,
+			background-color 0.25s ease,
+			border-color 0.25s ease,
+			transform 0.25s ease;
+	}
+
+	.copy-btn:hover,
+	.copy-btn:focus-visible {
+		color: var(--secondary-color);
+		background-color: var(--active-color);
+		border-color: var(--secondary-color);
+		transform: translateY(-3px);
+	}
+
+	.icon {
+		position: absolute;
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.icon-check {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+
+	.copy-btn--done {
+		color: #22c55e;
+	}
+
+	.copy-btn--done .icon-copy {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+
+	.copy-btn--done .icon-check {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	.tooltip {
+		position: absolute;
+		right: calc(100% + 10px);
+		top: 50%;
+		padding: 3px 8px;
+		border-radius: 6px;
+		background-color: rgba(10, 15, 30, 0.9);
+		color: #ffffff;
+		font-family: var(--font-mono);
+		font-size: var(--font-xs);
+		line-height: var(--line-height-xs);
+		white-space: nowrap;
+		opacity: 0;
+		transform: translateY(-50%);
+		pointer-events: none;
+		transition: opacity 0.2s ease;
+	}
+
+	.copy-btn--done .tooltip {
+		opacity: 1;
+	}
+
+	.name {
+		display: flex;
+		align-items: center;
 		-webkit-writing-mode: vertical-rl;
 		writing-mode: vertical-rl;
 	}
@@ -40,17 +212,17 @@ const { email } = portfolio
 	}
 
 	@media only screen and (max-width: 768px) {
-		.name {
+		.rail {
 			display: none;
 		}
 	}
 	@media only screen and (min-width: 992px) {
-		.name {
+		.rail {
 			right: 30px;
 		}
 	}
 	@media only screen and (min-width: 1200px) {
-		.name {
+		.rail {
 			right: 50px;
 		}
 	}
