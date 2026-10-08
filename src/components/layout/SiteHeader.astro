@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from '@/components/layout/ThemeToggle.astro'
 import { portfolio } from '@/lib/portfolio'
+import { site } from '@/lib/site'
 
 const { logo, links } = portfolio.nav
 const navLinks = links
@@ -13,8 +14,8 @@ const navSectionIds = navLinks
 <header id='header'>
 	<nav class='nav'>
 		<div class='logo'>
-			<a href='/'>
-				<img class='logo-img' src={logo} alt='Vithushan – home' height='40px' />
+			<a href='/' title={site.author} aria-label={`${site.author} – home`}>
+				<img class='logo-img' src={logo} alt='' height='40px' />
 			</a>
 		</div>
 		<div class='h-links'>
