@@ -4,13 +4,15 @@ import SectionHeading from '@/components/ui/SectionHeading.astro'
 import { resolveImage } from '@/lib/images'
 import { portfolio } from '@/lib/portfolio'
 
-const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
+const { heading, intro, paragraphs, skillHeading, skills, avatar } =
+	portfolio.about
 ---
 
 <section id='about'>
 	<SectionHeading title={heading} />
 	<div class='content-section'>
 		<div class='left'>
+			<p class='intro'>{intro}</p>
 			{
 				paragraphs.map((paragraph, index) => (
 					<>
@@ -75,17 +77,23 @@ const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
 		height: 100%;
 		object-fit: cover;
 		border-radius: 8px;
-		filter: grayscale(100%) opacity(0.5) blur(0.5px);
+		filter: grayscale(30%) brightness(1.08);
 		transition:
 			transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
 			filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.right .wrapper:hover img {
 		transform: scale(1.02);
-		filter: blur(0.2px);
+		filter: none;
 	}
 	p {
 		margin: auto;
+	}
+	.intro {
+		margin-bottom: 20px;
+		font-size: var(--font-lg);
+		line-height: var(--line-height-lg);
+		color: color-mix(in srgb, var(--primary-color) 70%, var(--tertiary-color));
 	}
 	.skill-top {
 		margin-top: 20px;
@@ -102,7 +110,7 @@ const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
 	}
 	.skill-list li {
 		font-family: var(--font-mono);
-		font-size: var(--font-md);
+		font-size: var(--font-sm);
 		line-height: var(--line-height-md);
 		color: var(--tertiary-color);
 		text-decoration: none;
@@ -111,7 +119,7 @@ const { heading, paragraphs, skillHeading, skills, avatar } = portfolio.about
 	.skill-list li::before {
 		content: '▹ ';
 		position: relative;
-		color: var(--secondary-color);
+		color: var(--tertiary-color);
 	}
 	.highlight-link {
 		font-family: var(--font-mono);

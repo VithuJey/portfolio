@@ -41,12 +41,17 @@
 		"subtitle": "Associate Technical Lead",
 		"description": "Software Engineer specializing in building performant, scalable and secure web & mobile applications.",
 		"resumeUrl": "/docs/vithushan-jeyasothy-resume.pdf",
-		"resumeLabel": "Get Resume"
+		"resumeLabel": "Get Resume",
+		"currently": {
+			"label": "Currently",
+			"text": "Leading micro-frontend delivery with Next.js & TypeScript at Creative Software"
+		},
+		"scrollLabel": "Scroll to explore"
 	},
 	"about": {
 		"heading": "About Me",
 		"paragraphs": [
-			"I'm a Software Engineer with rich experience delivering complex, cross-platform mobile applications and large-scale web platforms.  I have a passion for building things that people love to use in their daily life.",
+			"I have rich experience delivering complex, cross-platform mobile applications and large-scale web platforms.",
 			"I make impactful contributions across the Software Development Life Cycle, from analysis and design to testing and deployment. As an engaged Agile collaborator, I thrive in fast-paced environments, mentoring junior engineers, and aligning stakeholders to drive progress."
 		],
 		"skillHeading": "Here are the few technologies I have been working with recently:",
@@ -67,7 +72,8 @@
 		"avatar": {
 			"src": "/images/vithu.png",
 			"alt": "Portrait of Vithushan Jeyasothy"
-		}
+		},
+		"intro": "I'm an engineer from Colombo who enjoys turning messy product problems into fast, simple apps people actually like using every day."
 	},
 	"experience": {
 		"heading": "Experience",
@@ -304,7 +310,9 @@
 		"heading": "Get In Touch",
 		"description": "I like to meet new people and exchange ideas. Let's grab a coffee!",
 		"buttonUrl": "mailto:vithushjeytharma@gmail.com",
-		"buttonText": "Say Hello"
+		"buttonText": "Say Hello",
+		"copyLabel": "Copy email",
+		"copiedLabel": "Copied!"
 	},
 	"socials": [
 		{

@@ -343,7 +343,7 @@ const groupedJobs = jobs.reduce((acc, job) => {
 
 	.job-separator {
 		margin: 0 10px;
-		color: var(--secondary-color);
+		color: var(--tertiary-color);
 	}
 
 	ul {
@@ -367,6 +367,16 @@ const groupedJobs = jobs.reduce((acc, job) => {
 		position: absolute;
 		left: 0;
 		top: 0;
-		color: var(--secondary-color);
+		color: var(--tertiary-color);
+	}
+
+	li :global(span) {
+		color: var(--primary-color);
+		font-weight: 500;
+	}
+
+	.tab-button:focus-visible {
+		outline: 2px solid var(--secondary-color);
+		outline-offset: -2px;
 	}
 </style>

@@ -1,6 +1,7 @@
 ---
+import CopyEmailButton from '@/components/ui/CopyEmailButton.astro'
 import { portfolio } from '@/lib/portfolio'
-const { socials, footer } = portfolio
+const { socials, footer, email } = portfolio
 ---
 
 <div class='footer'>
@@ -19,6 +20,10 @@ const { socials, footer } = portfolio
 					</a>
 				))
 		}
+	</div>
+	<div class='email-line'>
+		<a class='email-link' href={`mailto:${email}`}>{email}</a>
+		<CopyEmailButton tooltip='top' />
 	</div>
 	<p>{footer.builtWithText}</p>
 	<a href={footer.builtWithUrl} target='_blank' rel='noopener noreferrer'
@@ -41,8 +46,12 @@ const { socials, footer } = portfolio
 	.footer > * {
 		margin-bottom: 20px;
 	}
-	.social-list {
+	.social-list,
+	.email-line {
 		display: none;
+	}
+	.email-link {
+		overflow-wrap: anywhere;
 	}
 	p,
 	a {
@@ -65,6 +74,13 @@ const { socials, footer } = portfolio
 		}
 		.social-list a {
 			margin: 0 18px;
+		}
+		.email-line {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 4px 8px;
 		}
 		.social-icons {
 			filter: var(--social-icon-filter);

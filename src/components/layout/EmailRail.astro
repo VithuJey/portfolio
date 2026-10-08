@@ -1,20 +1,30 @@
 ---
+import CopyEmailButton from '@/components/ui/CopyEmailButton.astro'
 import { portfolio } from '@/lib/portfolio'
 
 const { email } = portfolio
 ---
 
-<div class='name'>
-	<a href={`mailto:${email}`}>{email}</a>
+<div class='rail'>
+	<CopyEmailButton tooltip='left' />
+	<div class='name'>
+		<a href={`mailto:${email}`}>{email}</a>
+	</div>
 </div>
 
 <style>
-	.name {
-		display: flex;
-		align-items: center;
+	.rail {
 		position: fixed;
 		bottom: 0;
 		right: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.name {
+		display: flex;
+		align-items: center;
 		-webkit-writing-mode: vertical-rl;
 		writing-mode: vertical-rl;
 	}
@@ -40,17 +50,17 @@ const { email } = portfolio
 	}
 
 	@media only screen and (max-width: 768px) {
-		.name {
+		.rail {
 			display: none;
 		}
 	}
 	@media only screen and (min-width: 992px) {
-		.name {
+		.rail {
 			right: 30px;
 		}
 	}
 	@media only screen and (min-width: 1200px) {
-		.name {
+		.rail {
 			right: 50px;
 		}
 	}
