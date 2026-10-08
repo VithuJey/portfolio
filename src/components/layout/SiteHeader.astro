@@ -15,7 +15,7 @@ const navSectionIds = navLinks
 	<nav class='nav'>
 		<div class='logo'>
 			<a href='/' class='logo-link' aria-label={`${site.author} – home`}>
-				<img class='logo-img' src={logo} alt='' height='40px' />
+				<img class='logo-img' src={logo} alt='' width='35' height='35' />
 				<span class='logo-tooltip' aria-hidden='true'>{site.author}</span>
 			</a>
 		</div>
@@ -47,7 +47,14 @@ const navSectionIds = navLinks
 			<ThemeToggle />
 		</div>
 		<div class='menu'>
-			<input class='checkbox' type='checkbox' id='checkbox' name='checkbox' />
+			<input
+				class='checkbox'
+				type='checkbox'
+				id='checkbox'
+				name='checkbox'
+				aria-label='Navigation menu'
+				aria-controls='side'
+			/>
 			<div class='hamburger-lines'>
 				<span class='line line1'></span>
 				<span class='line line2'></span>
@@ -86,7 +93,7 @@ const navSectionIds = navLinks
 	</nav>
 </header>
 
-<script define:vars={{ navSectionIds }}>
+<script is:inline define:vars={{ navSectionIds }}>
 	function initNavScrollSpy() {
 		const checkbox = document.getElementById('checkbox')
 		const content = document.getElementById('content')
@@ -195,6 +202,16 @@ const navSectionIds = navLinks
 		window.addEventListener('resize', updateActiveNavSection, { passive: true })
 		initActiveFromHash()
 		requestAnimationFrame(updateActiveNavSection)
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && checkbox && checkbox.checked) {
+				checkbox.checked = false
+				if (content) {
+					content.classList.remove('blurred')
+				}
+				checkbox.focus()
+			}
+		})
 
 		if (checkbox) {
 			checkbox.addEventListener('change', () => {
@@ -345,7 +362,16 @@ const navSectionIds = navLinks
 	}
 	.menu input[type='checkbox']:checked ~ aside {
 		transform: translateX(0);
+		visibility: visible;
 		overflow: hidden;
+		transition:
+			transform 0.5s ease-in-out,
+			visibility 0s linear 0s;
+	}
+	.menu input[type='checkbox']:focus-visible ~ .hamburger-lines {
+		outline: 2px solid var(--secondary-color);
+		outline-offset: 6px;
+		border-radius: 4px;
 	}
 	.menu input[type='checkbox']:checked ~ .hamburger-lines .line1 {
 		transform: rotate(45deg);
@@ -381,7 +407,10 @@ const navSectionIds = navLinks
 			top: 0;
 			bottom: 0;
 			transform: translateX(100%);
-			transition: transform 0.5s ease-in-out;
+			visibility: hidden;
+			transition:
+				transform 0.5s ease-in-out,
+				visibility 0s linear 0.5s;
 		}
 
 		aside::before {
