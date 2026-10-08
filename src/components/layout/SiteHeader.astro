@@ -14,8 +14,9 @@ const navSectionIds = navLinks
 <header id='header'>
 	<nav class='nav'>
 		<div class='logo'>
-			<a href='/' title={site.author} aria-label={`${site.author} – home`}>
+			<a href='/' class='logo-link' aria-label={`${site.author} – home`}>
 				<img class='logo-img' src={logo} alt='' height='40px' />
+				<span class='logo-tooltip' aria-hidden='true'>{site.author}</span>
 			</a>
 		</div>
 		<div class='h-links'>
@@ -248,6 +249,35 @@ const navSectionIds = navLinks
 	}
 	.logo-img {
 		height: 35px;
+	}
+	.logo-link {
+		position: relative;
+		display: inline-block;
+	}
+	.logo-tooltip {
+		position: absolute;
+		top: calc(100% + 8px);
+		left: 0;
+		padding: 3px 8px;
+		border-radius: 6px;
+		background-color: rgba(10, 15, 30, 0.9);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		color: #ffffff;
+		font-family: var(--font-mono);
+		font-size: var(--font-xs);
+		line-height: var(--line-height-xs);
+		white-space: nowrap;
+		opacity: 0;
+		transform: translateY(-4px);
+		pointer-events: none;
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease;
+	}
+	.logo-link:hover .logo-tooltip,
+	.logo-link:focus-visible .logo-tooltip {
+		opacity: 1;
+		transform: translateY(0);
 	}
 	.h-links a,
 	.v-links a {
