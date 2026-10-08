@@ -155,6 +155,14 @@ section {
 	transform-origin: bottom left;
 }
 
+/* Lock page scroll while the mobile menu is open (released on any close path). */
+@media only screen and (max-width: 768px) {
+	html:has(#checkbox:checked),
+	body:has(#checkbox:checked) {
+		overflow: hidden !important;
+	}
+}
+
 #content {
 	transition: filter 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }

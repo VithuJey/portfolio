@@ -15,7 +15,7 @@ const navSectionIds = navLinks
 	<nav class='nav'>
 		<div class='logo'>
 			<a href='/' class='logo-link' aria-label={`${site.author} – home`}>
-				<img class='logo-img' src={logo} alt='' width='35' height='35' />
+				<img class='logo-img' src={logo} alt='' width='37' height='37' />
 				<span class='logo-tooltip' aria-hidden='true'>{site.author}</span>
 			</a>
 		</div>
@@ -265,7 +265,7 @@ const navSectionIds = navLinks
 		width: 100%;
 	}
 	.logo-img {
-		height: 35px;
+		height: 37px;
 	}
 	.logo-link {
 		position: relative;
@@ -407,6 +407,7 @@ const navSectionIds = navLinks
 			top: 0;
 			bottom: 0;
 			transform: translateX(100%);
+			overscroll-behavior: contain;
 			visibility: hidden;
 			transition:
 				transform 0.5s ease-in-out,
