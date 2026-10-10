@@ -362,6 +362,42 @@ const groupedJobs = jobs.reduce((acc, job) => {
 		padding-left: 20px;
 	}
 
+	/* Bullets stagger in when the section is visible and whenever a tab opens. */
+	:global(#experience.is-visible) .tab-panel--active li {
+		animation: bullet-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+	}
+	:global(#experience.is-visible) .tab-panel--active li:nth-child(2) {
+		animation-delay: 45ms;
+	}
+	:global(#experience.is-visible) .tab-panel--active li:nth-child(3) {
+		animation-delay: 90ms;
+	}
+	:global(#experience.is-visible) .tab-panel--active li:nth-child(4) {
+		animation-delay: 135ms;
+	}
+	:global(#experience.is-visible) .tab-panel--active li:nth-child(5) {
+		animation-delay: 180ms;
+	}
+	:global(#experience.is-visible) .tab-panel--active li:nth-child(6) {
+		animation-delay: 225ms;
+	}
+	:global(#experience.is-visible) .tab-panel--active li:nth-child(7) {
+		animation-delay: 270ms;
+	}
+	:global(#experience.is-visible) .tab-panel--active li:nth-child(8) {
+		animation-delay: 315ms;
+	}
+	@keyframes bullet-in {
+		from {
+			opacity: 0;
+			transform: translateX(-10px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
 	li::before {
 		content: '▹';
 		position: absolute;
