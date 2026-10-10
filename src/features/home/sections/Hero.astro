@@ -15,9 +15,9 @@ const {
 <div class='hero'>
 	<div class='glow-bg'></div>
 	<div class='hero-content'>
-		<h6>{welcome}</h6>
+		<p class='welcome'>{welcome}</p>
 		<h1>{name}</h1>
-		<h2>{subtitle}</h2>
+		<p class='subtitle'>{subtitle}</p>
 		<p>{description}</p>
 		<a
 			href={resumeUrl}
@@ -94,14 +94,16 @@ const {
 			opacity: 1;
 		}
 	}
-	h6 {
+	.welcome {
+		margin: 2.33em 0;
+		font-weight: 700;
 		font-family: var(--font-mono);
 		font-size: var(--font-md);
 		line-height: var(--line-height-md);
 		color: var(--secondary-color);
 	}
 	h1,
-	h2 {
+	.subtitle {
 		font-family: var(--font-sans);
 		font-size: clamp(40px, 8vw, 80px);
 		font-weight: 550;
@@ -113,9 +115,10 @@ const {
 		color: var(--primary-color);
 		font-weight: 600;
 	}
-	h2 {
+	.subtitle {
 		color: var(--secondary-color);
 		margin: 30px 0;
+		max-width: none;
 	}
 	p {
 		margin: 20px 0;

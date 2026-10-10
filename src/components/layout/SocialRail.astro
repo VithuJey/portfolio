@@ -4,7 +4,7 @@ import { portfolio } from '@/lib/portfolio'
 const { socials } = portfolio
 ---
 
-<div class='social-list'>
+<aside class='social-list' aria-label='Social links'>
 	{
 		socials
 			.filter((social) => social.visible)
@@ -14,7 +14,7 @@ const { socials } = portfolio
 				</a>
 			))
 	}
-</div>
+</aside>
 
 <style>
 	.social-list {

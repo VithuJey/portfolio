@@ -78,14 +78,14 @@ const groupedJobs = jobs.reduce((acc, job) => {
 					>
 						{group.roles.map((role) => (
 							<div class='job-role-info'>
-								<h4 class='job-title'>
+								<h3 class='job-title'>
 									<span>{role.role}</span>
 									{role.companySuffix && (
 										<span class='company-suffix'>
 											<Fragment set:html={role.companySuffix} />
 										</span>
 									)}
-								</h4>
+								</h3>
 								<p class='job-duration-location'>
 									<span class='job-location'>{role.location}</span>
 									<span class='job-separator'>&bull;</span>
