@@ -69,18 +69,47 @@ section {
 	padding: clamp(56px, 7vw, 80px) 0;
 }
 
-/* Fade-in on scroll (only when JS is available) */
+/* Fade-in on scroll (only when JS is available). Uses a keyframe animation
+   with `backwards` fill so it never overrides the element's own hover
+   transitions/transforms once finished. */
 .js .reveal {
 	opacity: 0;
-	transform: translateY(18px);
-	transition:
-		opacity 0.6s ease,
-		transform 0.6s ease;
 }
 
 .js .reveal.is-visible {
 	opacity: 1;
-	transform: none;
+	animation: reveal-up 0.6s ease backwards;
+	animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes reveal-up {
+	from {
+		opacity: 0;
+		transform: translateY(18px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Section heading line draws out as the section enters */
+.js .reveal .content-heading::after {
+	transform: scaleX(0);
+	transform-origin: left center;
+}
+
+.js .reveal.is-visible .content-heading::after {
+	transform: scaleX(1);
+	transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+section[id] {
+	scroll-margin-top: 24px;
 }
 
 .sr-only {

@@ -38,27 +38,54 @@ const {
 		<EmailRail />
 		<BackToTop />
 		<script>
-			// Fade sections and cards in as they scroll into view.
-			const targets = document.querySelectorAll<HTMLElement>(
-				'main section:not(#certificate), .insight-tile'
-			)
-			if ('IntersectionObserver' in window) {
-				const observer = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add('is-visible')
-								observer.unobserve(entry.target)
-							}
-						})
-					},
-					{ rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
-				)
-				targets.forEach((el) => {
-					el.classList.add('reveal')
-					observer.observe(el)
+			// Fade sections and cards in as they scroll into view. A scroll sweep (not
+			// IntersectionObserver) so anything jumped over is revealed too.
+			const targets = [
+				...document.querySelectorAll<HTMLElement>(
+					'main section:not(#certificate), .insight-tile'
+				),
+			]
+			const grid = document.querySelector('.insights-grid')
+			const columns = grid
+				? getComputedStyle(grid).gridTemplateColumns.split(' ').length
+				: 1
+			let tileIndex = 0
+			const pending = new Set(targets)
+			targets.forEach((el) => {
+				el.classList.add('reveal')
+				if (el.classList.contains('insight-tile')) {
+					el.style.setProperty(
+						'--reveal-delay',
+						`${(tileIndex % columns) * 90}ms`
+					)
+					tileIndex += 1
+				}
+			})
+
+			let sweepQueued = false
+			function sweep() {
+				sweepQueued = false
+				const line = window.innerHeight * 0.92
+				pending.forEach((el) => {
+					if (el.getBoundingClientRect().top < line) {
+						el.classList.add('is-visible')
+						pending.delete(el)
+					}
 				})
+				if (pending.size === 0) {
+					window.removeEventListener('scroll', queueSweep)
+					window.removeEventListener('resize', queueSweep)
+				}
 			}
+			function queueSweep() {
+				if (!sweepQueued) {
+					sweepQueued = true
+					requestAnimationFrame(sweep)
+				}
+			}
+			window.addEventListener('scroll', queueSweep, { passive: true })
+			window.addEventListener('resize', queueSweep, { passive: true })
+			sweep()
 
 			// Analytics hook: elements with data-track fire an event on click.
 			// Works with Plausible, Umami or GA if one is added later; no-op otherwise.
