@@ -49,7 +49,9 @@ const { socials } = portfolio
 		filter: none;
 	}
 
-	@media only screen and (max-width: 768px) {
+	/* The rail needs the wide page margins (from 992px) and some height; the footer shows these links otherwise */
+	@media only screen and (max-width: 991px),
+		only screen and (max-height: 560px) {
 		.social-list {
 			display: none;
 		}
