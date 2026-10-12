@@ -56,14 +56,13 @@ const {
 <style>
 	.hero {
 		display: flex;
-		justify-content: center;
 		flex-direction: column;
 		align-items: flex-start;
 		/* svh = the visible height with browser toolbars showing, so the scroll cue is on the first screen of a phone */
 		min-height: 100vh;
 		min-height: 100svh;
-		/* clear the fixed header (5em) at the top and the scroll cue at the bottom */
-		padding: 5em 0 5rem;
+		/* the fixed header (5em) takes the top of the screen */
+		padding-top: 5em;
 		box-sizing: border-box;
 		position: relative;
 	}
@@ -84,9 +83,20 @@ const {
 		pointer-events: none;
 		animation: pulse-glow 8s infinite alternate ease-in-out;
 	}
+	/* Fills the space between the header and the scroll cue and centers the text in it,
+	   so the gap under the header always equals the gap above the cue. */
 	.hero-content {
 		position: relative;
 		z-index: 2;
+		flex: 1 1 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		box-sizing: border-box;
+		width: 100%;
+		/* minimum breathing room on both sides, equal by design */
+		padding-block: clamp(10px, 3svh, 32px);
 	}
 	@keyframes pulse-glow {
 		0% {
@@ -99,7 +109,7 @@ const {
 		}
 	}
 	.welcome {
-		margin: 2.33em 0;
+		margin: 0 0 clamp(12px, 2.5svh, 24px);
 		font-weight: 700;
 		font-family: var(--font-mono);
 		font-size: var(--font-md);
@@ -109,8 +119,7 @@ const {
 	h1,
 	.subtitle {
 		font-family: var(--font-sans);
-		/* also capped by height so the title cannot take over short landscape screens */
-		font-size: clamp(40px, min(8vw, 14vh), 80px);
+		font-size: clamp(40px, 8vw, 80px);
 		font-weight: 550;
 		line-height: 0.9;
 		color: var(--primary-color);
@@ -180,15 +189,16 @@ const {
 		}
 	}
 	.scroll-cue {
-		position: absolute;
-		bottom: 28px;
-		left: 50%;
-		transform: translateX(-50%);
+		position: relative;
 		z-index: 2;
+		flex: none;
+		align-self: center;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 4px;
+		/* keeps it clear of the screen edge, and of the rounded corners and gesture bar on phones */
+		padding: 4px 12px clamp(14px, 3svh, 28px);
 		color: var(--tertiary-color);
 		text-decoration: none;
 		transition: color 0.2s ease;
@@ -223,41 +233,28 @@ const {
 		box-shadow: 0 5px 15px rgba(6, 147, 227, 0.25);
 	}
 
-	/* Phones and portrait tablets: start under the header instead of centering in a tall box */
-	@media only screen and (max-width: 768px),
-		only screen and (orientation: portrait) {
-		.hero {
-			justify-content: flex-start;
-			padding-top: 6rem;
-		}
-		.welcome {
-			margin: 0 0 16px;
+	/* Screens under 780px tall (phones, small browser windows): tighten the type and spacing so the
+	   text, the gaps and the scroll cue all fit on the first screen. */
+	@media only screen and (max-height: 780px) {
+		h1,
+		.subtitle {
+			font-size: clamp(30px, min(8vw, 7svh), 80px);
 		}
 		.subtitle {
-			margin: 20px 0;
+			margin: clamp(8px, 2svh, 30px) 0;
+		}
+		p {
+			margin: clamp(8px, 2svh, 20px) 0;
 		}
 		.resume-button {
-			margin: 20px 0;
+			margin: clamp(8px, 2svh, 30px) 0;
 		}
 	}
 
-	/* Short screens (landscape phones): keep everything compact */
-	@media only screen and (max-height: 560px) {
-		.hero {
-			justify-content: flex-start;
-			padding-top: 5.5rem;
-		}
-		.welcome {
-			margin: 0 0 8px;
-		}
-		.subtitle {
-			margin: 12px 0;
-		}
-		.resume-button {
-			margin: 12px 0;
-		}
-		p {
-			margin: 12px 0;
+	/* Very short screens (landscape phones): the cue would not fit above the fold, so drop it */
+	@media only screen and (max-height: 520px) {
+		.scroll-cue {
+			display: none;
 		}
 	}
 </style>
