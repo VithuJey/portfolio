@@ -67,7 +67,9 @@ const { socials, footer, email } = portfolio
 	.built-with-logo {
 		filter: var(--social-icon-filter);
 	}
-	@media only screen and (max-width: 768px) {
+	/* Same breakpoint as the side rails, which this replaces when they are hidden */
+	@media only screen and (max-width: 991px),
+		only screen and (max-height: 560px) {
 		.social-list {
 			display: block;
 			text-align: center;

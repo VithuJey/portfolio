@@ -316,6 +316,12 @@ const navSectionIds = navLinks
 		opacity: 1;
 		transform: translateY(0);
 	}
+	/* touch screens have no hover, so the tooltip would only add hidden width */
+	@media (hover: none) {
+		.logo-tooltip {
+			display: none;
+		}
+	}
 	.h-links a,
 	.v-links a {
 		text-decoration: none;
@@ -426,6 +432,13 @@ const navSectionIds = navLinks
 	@media only screen and (max-width: 768px) {
 		#header {
 			padding: 0 2rem;
+		}
+		/* Page text scrolled behind the header was showing through it. The blur sits on a pseudo-element, because a backdrop-filter on #header itself would trap the fixed menu panel inside the 5em bar. */
+		#header::before {
+			background: var(--bg-light-color);
+			-webkit-backdrop-filter: blur(12px);
+			backdrop-filter: blur(12px);
+			border-bottom: 1px solid var(--nav-glass-border);
 		}
 		.h-links {
 			display: none;
