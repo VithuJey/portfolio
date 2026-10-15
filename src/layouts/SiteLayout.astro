@@ -38,19 +38,25 @@ const {
 		<EmailRail />
 		<BackToTop />
 		<script>
-			// Fade sections and cards in as they scroll into view. A scroll sweep (not
-			// IntersectionObserver) so anything jumped over is revealed too.
+			// Fade small elements (headings, cards, photo) in as they scroll into view.
+			// Large blocks are deliberately not animated: fading a tall section forces
+			// the browser to rasterise one huge layer mid-scroll, which stutters.
+			// A scroll sweep (not IntersectionObserver) so anything jumped over is
+			// revealed too. Sections only get an `is-visible` flag for CSS hooks.
 			const targets = [
 				...document.querySelectorAll<HTMLElement>(
-					'main section:not(#certificate), .insight-tile'
+					'main .content-heading, .insight-tile, #about .right, #contact .content'
 				),
+			]
+			const sections = [
+				...document.querySelectorAll<HTMLElement>('main section[id]'),
 			]
 			const grid = document.querySelector('.insights-grid')
 			const columns = grid
 				? getComputedStyle(grid).gridTemplateColumns.split(' ').length
 				: 1
 			let tileIndex = 0
-			const pending = new Set(targets)
+			const pending = new Set<HTMLElement>([...targets, ...sections])
 			targets.forEach((el) => {
 				el.classList.add('reveal')
 				if (el.classList.contains('insight-tile')) {

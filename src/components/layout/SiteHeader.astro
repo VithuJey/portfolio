@@ -250,20 +250,19 @@ const navSectionIds = navLinks
 		border-bottom: 1px solid transparent;
 		transition:
 			background-color 0.3s ease,
-			border-color 0.3s ease,
-			box-shadow 0.3s ease;
+			border-color 0.3s ease;
 		/* backdrop-filter: blur(var(--nav-glass-blur)) saturate(1.4);
 		-webkit-backdrop-filter: blur(var(--nav-glass-blur)) saturate(1.4); */
 		/* border-bottom: 1px solid var(--nav-glass-border); */
 		/* box-shadow: var(--nav-glass-shadow); */
 	}
 
-	/* Firmer header once the page has scrolled (no backdrop-filter: it would
-	   become the containing block for the fixed mobile menu). */
+	/* Firmer header once the page has scrolled. No backdrop-filter (it would become
+	   the containing block for the fixed mobile menu) and no blurred shadow (a
+	   large shadow on a fixed header is re-rastered while scrolling). */
 	#header.scrolled {
 		background: color-mix(in srgb, var(--bg-color) 82%, transparent);
 		border-bottom-color: var(--nav-glass-border);
-		box-shadow: var(--nav-glass-shadow);
 	}
 
 	#header::before {
