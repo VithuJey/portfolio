@@ -87,6 +87,38 @@ const {
 			window.addEventListener('resize', queueSweep, { passive: true })
 			sweep()
 
+			// Smooth-scroll in-page links only; normal wheel/trackpad/keyboard
+			// scrolling stays native (a global scroll-behavior makes it feel steppy).
+			document.addEventListener('click', (event) => {
+				if (event.defaultPrevented || event.button !== 0) return
+				if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+					return
+				const link = (event.target as HTMLElement).closest<HTMLAnchorElement>(
+					'a[href*="#"]'
+				)
+				if (!link || link.target === '_blank') return
+				const url = new URL(link.href, window.location.href)
+				if (url.origin !== window.location.origin) return
+				if (
+					url.pathname.replace(/\/$/, '') !==
+					window.location.pathname.replace(/\/$/, '')
+				)
+					return
+				const target = url.hash
+					? document.getElementById(url.hash.slice(1))
+					: null
+				if (!target) return
+				event.preventDefault()
+				const reduce = window.matchMedia(
+					'(prefers-reduced-motion: reduce)'
+				).matches
+				target.scrollIntoView({
+					behavior: reduce ? 'auto' : 'smooth',
+					block: 'start',
+				})
+				history.replaceState(null, '', `${url.pathname}${url.hash}`)
+			})
+
 			// Analytics hook: elements with data-track fire an event on click.
 			// Works with Plausible, Umami or GA if one is added later; no-op otherwise.
 			document.addEventListener('click', (event) => {

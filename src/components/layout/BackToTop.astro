@@ -55,9 +55,9 @@
 		padding: 0;
 		border: 1px solid var(--nav-glass-border);
 		border-radius: 50%;
-		background: var(--nav-glass-bg);
-		-webkit-backdrop-filter: blur(var(--nav-glass-blur));
-		backdrop-filter: blur(var(--nav-glass-blur));
+		/* Solid-ish rather than a live blur: a fixed blur re-renders the content
+		   scrolling beneath it on every frame. */
+		background: color-mix(in srgb, var(--bg-color) 88%, transparent);
 		color: var(--primary-color);
 		cursor: pointer;
 		box-shadow: var(--nav-glass-shadow);
