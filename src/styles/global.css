@@ -114,7 +114,7 @@ section {
 }
 
 #certificate {
-	height: 78vh;
+	min-height: 78vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

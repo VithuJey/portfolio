@@ -15,3 +15,11 @@ const { imgSrc, imgAlt } = Astro.props
 		<Image src={resolveImage(imgSrc)} alt={imgAlt} width={1600} />
 	</div>
 </section>
+
+<style>
+	/* the certificate image is 1600px wide; without this it forced the whole page wider than a phone screen */
+	.wrapper :global(img) {
+		max-width: 100%;
+		height: auto;
+	}
+</style>
