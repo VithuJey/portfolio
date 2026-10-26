@@ -20,11 +20,11 @@
 		"lint:fix": "eslint . --fix"
 	},
 	"devDependencies": {
-		"@astrojs/check": "^0.9.10",
+		"@astrojs/check": "^0.9.12",
 		"@astrojs/sitemap": "^3.7.4",
 		"@eslint/js": "^9.39.4",
 		"@typescript-eslint/parser": "^8.60.0",
-		"astro": "^7.3.7",
+		"astro": "^7.4.2",
 		"eslint": "^9.39.4",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-astro": "^1.7.0",
