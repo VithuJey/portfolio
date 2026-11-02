@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config'
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://vithushan.me',
-	integrations: [sitemap()],
+	integrations: [sitemap({ filter: (page) => !page.includes('/v2') })],
 	vite: {
 		resolve: {
 			alias: {
