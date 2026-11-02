@@ -3,9 +3,11 @@ import { portfolio } from '@/lib/portfolio'
 
 interface Props {
 	tooltip?: 'left' | 'top'
+	/** Button width and height in px (44 for touch targets). */
+	size?: number
 }
 
-const { tooltip = 'left' } = Astro.props
+const { tooltip = 'left', size = 32 } = Astro.props
 const { email } = portfolio
 const { copyLabel, copiedLabel } = portfolio.contact
 ---
@@ -14,6 +16,7 @@ const { copyLabel, copiedLabel } = portfolio.contact
 	<button
 		type='button'
 		class:list={['copy-btn', `copy-btn--tip-${tooltip}`]}
+		style={`--copy-size:${size}px`}
 		data-copy-email={email}
 		data-copied-label={copiedLabel}
 		aria-label={copyLabel}
@@ -110,8 +113,8 @@ const { copyLabel, copiedLabel } = portfolio.contact
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 32px;
-		height: 32px;
+		width: var(--copy-size, 32px);
+		height: var(--copy-size, 32px);
 		padding: 0;
 		border: 1px solid transparent;
 		border-radius: 8px;

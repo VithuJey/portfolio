@@ -35,6 +35,7 @@ const insightSchema = z.object({
 	desc: z.string(),
 	thumbnail: z.string(),
 	type: z.enum(['video', 'article']),
+	featured: z.boolean().optional(),
 })
 
 const jobSchema = z.object({
@@ -45,6 +46,7 @@ const jobSchema = z.object({
 	location: z.string(),
 	duration: z.string(),
 	bullets: z.array(z.string()),
+	summary: z.string().optional(),
 })
 
 const socialSchema = z.object({
@@ -108,6 +110,7 @@ export const portfolioSchema = z.object({
 		copyLabel: z.string(),
 		copiedLabel: z.string(),
 	}),
+	quiet: z.object({ today: z.string() }),
 	socials: z.array(socialSchema),
 	footer: z.object({
 		builtWithText: z.string(),

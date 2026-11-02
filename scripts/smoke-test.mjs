@@ -8,6 +8,7 @@ const read = (file) => readFileSync(join(dist, file), 'utf8')
 
 for (const file of [
 	'index.html',
+	'v2/index.html',
 	'404.html',
 	'robots.txt',
 	'sitemap-index.xml',
@@ -45,6 +46,9 @@ const resolves = (path) => {
 for (const file of htmlFiles) {
 	const html = read(file)
 	if (!html.includes('rel="canonical"')) errors.push(`${file}: no canonical`)
+	if (file.startsWith('v2') && !html.includes('noindex')) {
+		errors.push(`${file}: v2 must stay noindex until it replaces the home page`)
+	}
 	const og = html.match(/property="og:image" content="([^"]+)"/)
 	if (!og || !/^https:\/\//.test(og[1])) {
 		errors.push(`${file}: og:image is missing or not absolute`)

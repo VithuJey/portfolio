@@ -90,7 +90,8 @@
 					"Built a shared component library using <span>Atomic Design</span> and <span>SOLID principles</span> to ease app development.",
 					"Fostered code quality and team upskilling through regular <span>code reviews</span> and <span>pair programming</span> with junior devs.",
 					"Standardized coding guidelines and championed <span>Agile practices</span> for cross-functional sprint deliveries."
-				]
+				],
+				"summary": "Micro-frontend applications with Next.js, React and TypeScript."
 			},
 			{
 				"role": "Senior Software Engineer",
@@ -105,7 +106,8 @@
 					"Engineered secure token-based user authentication using <span>OAuth 2.0</span> Authorization Code Flow and <span>JWT</span> via Microsoft Identity Platform.",
 					"Maintained more than <span>80% code coverage</span> using <span>Vitest</span>, <span>Cypress</span>, <span>Jest</span>, and <span>React Testing Library</span>.",
 					"Streamlined deployment pipelines and infrastructure using <span>Docker</span>, <span>Jenkins</span>, and <span>Git hooks</span>."
-				]
+				],
+				"summary": "Page loads under 10ms, with more than 80% test coverage."
 			},
 			{
 				"role": "Software Engineer",
@@ -119,7 +121,8 @@
 					"Developed real-time chat, background sync, and animations using <span>MobX-State-Tree, Moti, and Emotion</span>.",
 					"Implemented <span>Sentry</span> and <span>Firebase</span> for performance and analytics tracking, alongside <span>RevenueCat</span> for in-app subscription Lifecycles.",
 					"Collaborated with UI/UX teams using the <span>Microsoft Fluent Design System</span> to build web apps for the Netherlands Government."
-				]
+				],
+				"summary": "Cut a job portal's load time from 12 seconds to 3, and shipped an app to 2,000+ users."
 			},
 			{
 				"role": "Software Engineer Trainee",
@@ -133,7 +136,8 @@
 					"Created a PDF text/image search engine using <span>Elasticsearch (Ingest Attachment Plugin)</span>, radically lowering query processing times.",
 					"Programmed an automated Excel sheet parser to eliminate manual verification work for the bot maintenance team.",
 					"Resolved critical system issues during UAT by managing <span>Jira</span> tickets and providing on-call support."
-				]
+				],
+				"summary": "A dashboard and a PDF search engine in Java, Spring Boot and Elasticsearch."
 			}
 		]
 	},
@@ -253,7 +257,8 @@
 				"title": "Next.js Performance Optimization Techniques",
 				"desc": "Fine-tune the applications for maximum speed and efficiency",
 				"thumbnail": "https://img.youtube.com/vi/oSlOMEJ3xkc/hqdefault.jpg",
-				"type": "video"
+				"type": "video",
+				"featured": true
 			},
 			{
 				"link": "https://medium.com/geekculture/embracing-bugs-and-learning-from-fixing-228c653dc885",
@@ -267,7 +272,8 @@
 				"title": "How to Use Web Workers in React",
 				"desc": "An introduction to web workers in React ecosystem",
 				"thumbnail": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9M2o1CnQbNj9Oj5IeME8pQ.png",
-				"type": "article"
+				"type": "article",
+				"featured": true
 			},
 			{
 				"link": "https://javascript.plainenglish.io/do-you-know-the-5-types-of-states-in-react-8734a04a5ffb",
@@ -349,5 +355,8 @@
 		"builtWithUrl": "https://astro.build/",
 		"builtWithLogo": "/icons/astro.svg",
 		"builtWithAlt": "astro-logo"
+	},
+	"quiet": {
+		"today": "Associate Technical Lead at Creative Software in Colombo, leading micro-frontend delivery with Next.js and TypeScript. Before that I built web and mobile apps at Flatline Agency."
 	}
 }

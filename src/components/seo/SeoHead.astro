@@ -7,9 +7,19 @@ interface Props {
 	title: string
 	noindex?: boolean
 	personSchema?: boolean
+	/** Follow the visitor's system light/dark setting by default. */
+	themeMode?: 'dark' | 'system'
+	/** Load the Google Fonts used by the main site. */
+	fonts?: boolean
 }
 
-const { title, noindex = false, personSchema = false } = Astro.props
+const {
+	title,
+	noindex = false,
+	personSchema = false,
+	themeMode = 'dark',
+	fonts = true,
+} = Astro.props
 const pageTitle = title || site.titleFallback
 const canonicalUrl = new URL(Astro.url.pathname, site.url).href
 const ogImageUrl = new URL(site.ogImage, site.url).href
@@ -73,12 +83,18 @@ const personJsonLd = {
 	)
 }
 
-<link rel='preconnect' href='https://fonts.googleapis.com' />
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
-<link
-	href='https://fonts.googleapis.com/css2?family=Space+Mono&family=Syne&display=swap'
-	rel='stylesheet'
-/>
+{
+	fonts && (
+		<Fragment>
+			<link rel='preconnect' href='https://fonts.googleapis.com' />
+			<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+			<link
+				href='https://fonts.googleapis.com/css2?family=Space+Mono&family=Syne&display=swap'
+				rel='stylesheet'
+			/>
+		</Fragment>
+	)
+}
 
 <title>{pageTitle}</title>
-<ThemeInit />
+<ThemeInit mode={themeMode} />

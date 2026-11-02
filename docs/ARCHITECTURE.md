@@ -32,3 +32,12 @@ This portfolio uses a **feature-based** layout on top of Astro’s file-based ro
 2. Add an entry to `src/features/home/home.config.ts` with matching `navLabel`.
 3. Import and render it in `src/features/home/HomePage.astro`.
 4. Add a nav link in `portfolio.json` if it should appear in the header.
+
+## The /v2 page
+
+`/v2/` is a quiet, single-column version of the site that reads the same data (`portfolio.json`).
+
+- It uses `src/layouts/QuietLayout.astro` and `src/pages/v2/index.astro`; the main site is untouched.
+- The page follows the visitor's light or dark system setting (`ThemeInit` with `mode='system'`), self-hosts Inter, and loads no third-party fonts.
+- It is `noindex` and left out of the sitemap until it replaces the home page. To promote it, move the page to `src/pages/index.astro`, drop `noindex`, and remove the sitemap filter in `astro.config.mjs`.
+- Projects only appear when the Projects nav link is set to visible in `portfolio.json`.
